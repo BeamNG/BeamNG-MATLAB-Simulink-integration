@@ -349,7 +349,7 @@ Figure 7: The Memory Block
 
 The Lua controller must be loaded in order to start the tight coupling.  We can do this with the following three steps:
 
-1. First, bring up the Lua console debug window with the “~” key.  
+1. First, bring up the Lua console debug window with the ' key.  
 2. The vehicle should then be selected at the bottom-left of this screen (usually this will be “BeamNG - Current Vehicle”).
 3. The following command should be typed into the command bar, to load the controller:  “controller.loadControllerExternal('tech/vehicleSystemsCoupling', 'vehicleSystemsCoupling', {})”
 
