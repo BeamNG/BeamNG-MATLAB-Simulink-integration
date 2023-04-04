@@ -190,107 +190,107 @@ Figure 6: S-function block
 ### BeamNG → Simulink Message (Fixed Format):
 
 Bank A: Core Driver Control
-|Bank|Position|  	Name	| Range  |
-|---|---|-------------------|--------|
-|A1	|1	|throttle	        | [0,1]  |
-|A2	|2	|throttle_input	    | [0,1]  |
-|A3	|3	|brake	            | [0,1]  |
-|A4	|4	|brake_input	    | [0,1]  |
-|A5	|5	|clutch	            | [0,1]  |
-|A6	|6	|clutch_input	    | [0,1]  |
-|A7	|7	|parkingbrake	    | [0,1]  |
-|A8	|8	|parkingbrake_input | [0,1]  |
-|A9	|9	|steering	        | [-1,1] |
-|A10	|10	|steering_input	| [-1, 1]|
+|Bank|  	Name	| Range  |
+|---|-------------------|--------|
+|A1	|throttle	        | [0,1]  |
+|A2	|throttle_input	    | [0,1]  |
+|A3	|brake	            | [0,1]  |
+|A4	|brake_input	    | [0,1]  |
+|A5	|clutch	            | [0,1]  |
+|A6	|clutch_input	    | [0,1]  |
+|A7	|parkingbrake	    | [0,1]  |
+|A8	|parkingbrake_input | [0,1]  |
+|A9	|steering	        | [-1,1] |
+|A10	|steering_input	| [-1, 1]|
 
 Bank B: Vehicle Kinematics
-|Bank|Position|  	Name	| Range  |
-|---|---|-------------------|--------|
-|B1 |	11|	posX 	|	m | 
-|B2 |	12|	posY 	|	m |
-|B3 |	13|	posZ 	|	m |
-|B4 |	14|	velX 	|	m/s |
-|B5 |	15|	velY 	|	m/s |
-|B6 |	16|	velZ 	|	m/s |
-|B7 |	17|	groundspeed |	m/s|
-|B8 |	18|	accX 	|	m/s² |
-|B9 |	19|	accY 	|	m/s² |
-|B10 |	20|	accZ 	|	m/s² |
-|B11 |	21|	roll 	|	rad |
-|B12 |	22|	pitch 	|	rad |
-|B13 |	23|	yaw   	|	rad |
-|B14 |	24|	altitude|	m   |
+|Bank|  	Name	| Units  |
+|---|-------------------|--------|
+|B1 |	posX 	|	m | 
+|B2 |	posY 	|	m |
+|B3 |	posZ 	|	m |
+|B4 |	velX 	|	m/s |
+|B5 |	velY 	|	m/s |
+|B6 |	velZ 	|	m/s |
+|B7 |	groundspeed |	m/s|
+|B8 |	accX 	|	m/s² |
+|B9 |	accY 	|	m/s² |
+|B10 |	accZ 	|	m/s² |
+|B11 |	roll 	|	rad |
+|B12 |	pitch 	|	rad |
+|B13 |	yaw   	|	rad |
+|B14 |	altitude|	m   |
 
 
 
 Bank C: Secondary Vehicle Properties
-|Bank|Position|  	Name	| Range  |
-|---|---|-------------------|--------|
-|C1 |	25	| ignitionLevel | 	[0, 1, 2, 3] |
-|C2 |	26	| gear | 	TBD |
-|C3 |	27	| fuel | 	[0,1] |
-|C4 |	28	| engineLoad | 	[0,1] |
-|C5 |	29	| highbeam | 	[0,1] |
-|C6 |	30	| lowbeam | 	[0,1] |
-|C7 |	31	| maxrpm | 	1/min |
-|C8 |	32	| reverse | 	[0,1] |
-|C9 |	33	| rpm | 	1/min |
-|C10 |	34	| signal_L | 	[0 or 1] |
-|C11 |	35	| signal_R | 	[0 or 1] |
-|C12 |	36	| wheelspeed | 	m/s |
+|Bank|  	Name	| Range or Units |
+|---|-------------------|--------|
+|C1 | ignitionLevel | 	[0, 1, 2, 3] |
+|C2 | gear | 	TBD |
+|C3 | fuel | 	[0,1] |
+|C4 | engineLoad | 	[0,1] |
+|C5 | highbeam | 	[0,1] |
+|C6 | lowbeam | 	[0,1] |
+|C7 | maxrpm | 	1/min |
+|C8 | reverse | 	[0,1] |
+|C9 | rpm | 	1/min |
+|C10 | signal_L | 	[0 or 1] |
+|C11 | signal_R | 	[0 or 1] |
+|C12 | wheelspeed | 	m/s |
 
 
 
 Bank D: Wheel FL (Front-Left)
-|Bank|Position|  	Name	| Range  |
-|---|---|-------------------|--------|
-|D1 |	37|	wheelFL_angularVelocity |	rad/s |
-|D2 |	38|	wheelFL_wheelSpeed |	m/s |
-|D3 |	39|	wheelFL_brakingTorque |	Nm |
-|D4 |	40|	wheelFL_propulsiontorque |	Nm |
-|D5 |	41|	wheelFL_frictionTorque |	Nm |
-|D6 |	42|	wheelFL_downForce |	Nm |
+|Bank|  	Name	| Units |
+|---|-------------------|--------|
+|D1 |	wheelFL_angularVelocity |	rad/s |
+|D2 |	wheelFL_wheelSpeed |	m/s |
+|D3 |	wheelFL_brakingTorque |	Nm |
+|D4 |	wheelFL_propulsiontorque |	Nm |
+|D5 |	wheelFL_frictionTorque |	Nm |
+|D6 |	wheelFL_downForce |	Nm |
 
 
 
 Bank E: Wheel FR (Front-Right)
-|Bank|Position|  	Name	| Range  |
-|---|---|-------------------|--------|
-|E1	|43 |wheelFR_angularVelocity |	rad/s | 
-|E2	|44 |wheelFR_wheelSpeed |	m/s | 
-|E3	|45 |wheelFR_brakingTorque |	Nm| 
-|E4	|46 |wheelFR_propulsiontorque |	Nm| 
-|E5	|47 |wheelFR_frictionTorque |	Nm| 
-|E6	|48 |wheelFR_downForce |	Nm| 
+|Bank|  	Name	| Units  |
+|---|-------------------|--------|
+|E1	|wheelFR_angularVelocity |	rad/s | 
+|E2	|wheelFR_wheelSpeed |	m/s | 
+|E3	|wheelFR_brakingTorque |	Nm| 
+|E4	|wheelFR_propulsiontorque |	Nm| 
+|E5	|wheelFR_frictionTorque |	Nm| 
+|E6	|wheelFR_downForce |	Nm| 
 
 Bank F: Wheel RL (Rear-Left)
-|Bank|Position|  	Name	| Range  |
-|---|---|-------------------|--------|
-|F1	|49	|wheelRL_angularVelocity |	rad/s |
-|F2	|50	|wheelRL_wheelSpeed |	m/s |
-|F3	|51	|wheelRL_brakingTorque |	Nm|
-|F4	|52	|wheelRL_propulsiontorque |	Nm|
-|F5	|53	|wheelRL_frictionTorque |	Nm|
-|F6	|54	|wheelRL_downForce| 	Nm |
+|Bank|  	Name	| Units  |
+|---|-------------------|--------|
+|F1	|wheelRL_angularVelocity |	rad/s |
+|F2	|wheelRL_wheelSpeed |	m/s |
+|F3	|wheelRL_brakingTorque |	Nm|
+|F4	|wheelRL_propulsiontorque |	Nm|
+|F5	|wheelRL_frictionTorque |	Nm|
+|F6	|wheelRL_downForce| 	Nm |
 
 
 
 Bank G: Wheel RR (Rear-Right)
-|Bank|Position|  	Name	| Range  |
-|---|---|-------------------|--------|
-|G1	|55	|wheelRL_angularVelocity |	rad/s |
-|G2	|56	|wheelRL_wheelSpeed |	m/s |
-|G3	|57	|wheelRL_brakingTorque |	Nm|
-|G4	|58	|wheelRL_propulsiontorque |	Nm|
-|G5	|59	|wheelRL_frictionTorque |	Nm|
-|G6	|60	|wheelRL_downForce |	Nm |
+|Bank|  	Name	| Units  |
+|---|-------------------|--------|
+|G1	|wheelRL_angularVelocity |	rad/s |
+|G2	|wheelRL_wheelSpeed |	m/s |
+|G3	|wheelRL_brakingTorque |	Nm|
+|G4	|wheelRL_propulsiontorque |	Nm|
+|G5	|wheelRL_frictionTorque |	Nm|
+|G6	|wheelRL_downForce |	Nm |
 
 Bank H: Custom User Values
-|Bank|Position|  	Name	| 
-|---|---|---------------------------|
-|H1	 | 61| 	custom user values (up to 50)|
-|..|		   |                   |
-|H50	 | 110	| |
+|Bank|  	Name	| 
+|---|---------------------------|
+|H1	 | 	custom user values (up to 50)|
+|..|		                     |
+|H50	 |  |
 
 
 Note: Bank H contains the custom user values.  These are values over which the user can manually choose properties in BeamNG and send them to Simulink.  With some implementation, this could involve readings from sensors, environmental information, or anything else available in BeamNG.  We leave this up to the user to decide on what to add, if required. 
@@ -300,28 +300,28 @@ Note: Bank H contains the custom user values.  These are values over which the u
 
 
 Bank A: Core Vehicle Data
-|Bank|Position|  	Name	| Range  |
-|---|---|-------------------|--------|
-|A1	|1	|engine throttle	| [0, 1] |
-|A2	|2	|brake pedal	| [0, 1] |
-|A3	|3	|steering	| [-1, 1] |
-|A4	|4	|RESERVED	|N/A|
-|A5 |	5	|wheelFL_brakingTorque |	Nm|
-|A6 |	6	|wheelFR_brakingTorque |	Nm|
-|A7 |	7	|wheelRL_brakingTorque |	Nm|
-|A8 |	8	|wheelRR_brakingTorque |	Nm|
-|A9 |	9	|wheelFL_propulsionTorque |	Nm|
-|A10 |	10	|wheelFR_propulsionTorque |	Nm|
-|A11 |	11	|wheelRL_propulsionTorque |	Nm|
-|A12 |	12	|wheelRR_propulsionTorque |	Nm|
-|A13 |	13	|drive mode				  |bool|
+|Bank|  	Name	| Range or Units |
+|---|-------------------|--------|
+|A1	|engine throttle	| [0, 1] |
+|A2	|brake pedal	| [0, 1] |
+|A3	|steering	| [-1, 1] |
+|A4	|RESERVED	|N/A|
+|A5 |wheelFL_brakingTorque |	Nm|
+|A6 |wheelFR_brakingTorque |	Nm|
+|A7 |wheelRL_brakingTorque |	Nm|
+|A8 |wheelRR_brakingTorque |	Nm|
+|A9 |wheelFL_propulsionTorque |	Nm|
+|A10 |wheelFR_propulsionTorque |	Nm|
+|A11 |wheelRL_propulsionTorque |	Nm|
+|A12 |wheelRR_propulsionTorque |	Nm|
+|A13 |drive mode				  |bool|
 
 Bank B: Custom User Values
-|Bank|Position|  	Name	| 
-|---|---|-------------------|
-|B1	|14	|custom user values (up to 50)|
-|..|		   |                   |
-|B50 |	61 |	
+|Bank|  	Name	| 
+|---|-------------------|
+|B1	|custom user values (up to 50)|
+|..|		                     |
+|B50 |    |	
 
 
 Bank B contains space to allow the user to send any properties from Simulink to BeamNG.  Such data could then be processed within BeamNG and used to control some custom code. 
@@ -349,7 +349,7 @@ Figure 7: The Memory Block
 
 The Lua controller must be loaded in order to start the tight coupling.  We can do this with the following three steps:
 
-1. First, bring up the Lua console debug window with the ` key.  
+1. First, bring up the Lua console debug window with the “~” key.  
 2. The vehicle should then be selected at the bottom-left of this screen (usually this will be “BeamNG - Current Vehicle”).
 3. The following command should be typed into the command bar, to load the controller:  “controller.loadControllerExternal('tech/vehicleSystemsCoupling', 'vehicleSystemsCoupling', {})”
 
