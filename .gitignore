@@ -1,0 +1,9 @@
+.vscode/
+.git/
+.vs/
+slprj/ 
+
+docs/build/
+docs/source/_build
+
+**my.launch
