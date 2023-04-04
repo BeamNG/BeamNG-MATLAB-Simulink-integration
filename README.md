@@ -3,7 +3,7 @@
 
 ## About
 
-We are excited to announce that the highly requested feature of interfacing [BeamNG.Tech](https://documentation.beamng.com/beamng_tech/) in [Simulink](https://www.mathworks.com/products/simulink.html) is here. The purpose of this document is to provide details/instructions on how to use the BeamNG Simulink Vehicle Systems Interface.  The user can connect the BeamNG simulator with a specially designed Simulink S-function, which will allow management of a tightly coupled two-way communication between these two environments.  The major focus here is on allowing native Simulink code to control and query a vehicle in BeamNG.  This includes various powertrain properties, including wheel torques (both drive and brake), or pedal inputs.
+We are excited to announce that the highly requested feature of interfacing [BeamNG.Tech](https://documentation.beamng.com/beamng_tech/) in [Simulink](https://www.mathworks.com/products/simulink.html) is here. The purpose of this document is to provide details/instructions on how to use the BeamNG Simulink Vehicle Systems Interface.  The user can connect the BeamNG simulator with a specially designed Simulink [S-function](https://www.mathworks.com/help/simulink/sfg/what-is-an-s-function.html), which will allow management of a tightly coupled two-way communication between these two environments.  The major focus here is on allowing native Simulink code to control and query a vehicle in BeamNG.  This includes various powertrain properties, including wheel torques (both drive and brake), or pedal inputs.
 
 
 ## Table of Contents
