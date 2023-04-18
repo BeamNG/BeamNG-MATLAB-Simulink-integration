@@ -451,7 +451,7 @@ static void mdlOutputs(SimStruct *S, int_T tid) {
 
     memcpy(&sendData[0], u0, u0Size);
     memcpy(&sendData[u0Size], u1, u1Size);
-    memcpy(&sendData[u1Size], u2, u2Size);
+    memcpy(&sendData[u0Size + u1Size], u2, u2Size);
 
     struct sockaddr_in serverAddrOut;
     serverAddrOut.sin_family = AF_INET;
