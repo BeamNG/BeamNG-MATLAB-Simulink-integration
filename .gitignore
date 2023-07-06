@@ -7,3 +7,5 @@ docs/build/
 docs/source/_build
 
 **my.launch
+
+*.slxc

@@ -137,6 +137,8 @@ SOCKET socketIn;
 SOCKET socketOut;
 int maxId = 0;
 bool uniqueId = true;
+struct timeval tv;
+bool connectionStarted;
 
 char *sliceString(char *str, int start, int end)
 {
@@ -315,6 +317,13 @@ static void mdlStart(SimStruct *S) {
         printf("UDP in socket failed with error %d\n", WSAGetLastError());
         return ;
     }
+
+    tv.tv_sec = 1; //milliseconds
+    tv.tv_usec = 0;
+    if (setsockopt(socketIn, SOL_SOCKET, SO_RCVTIMEO, (const char *)&tv, sizeof(tv)) < 0) {
+        printf("Error setting socket timeout");
+    }
+
         
     struct sockaddr_in serverAddrIn;
     serverAddrIn.sin_family = AF_INET;
@@ -332,6 +341,8 @@ static void mdlStart(SimStruct *S) {
         printf("UDP out socket failed with error %d\n", WSAGetLastError());
         return ;
     }
+
+    connectionStarted = false;
 }
 
 
@@ -385,7 +396,24 @@ static void mdlOutputs(SimStruct *S, int_T tid) {
         struct sockaddr_in incomingAddress;
         int incomingAddrSize = sizeof(incomingAddress);
         int recvLength = recvfrom(socketIn, recvData, BUF_SIZE, 0, (SOCKADDR *) &incomingAddress, &incomingAddrSize);
-        
+
+        if (WSAGetLastError() == WSAETIMEDOUT) {
+            if (connectionStarted) {
+                ssSetStopRequested(S, 1);
+                printf("Simulation stopped due to disconnection");
+                connectionStarted = false;
+            }
+        } else {
+            if (!connectionStarted) {
+                tv.tv_sec = 3000; //milliseconds
+                if (setsockopt(socketIn, SOL_SOCKET, SO_RCVTIMEO, (const char *)&tv, sizeof(tv)) < 0) {
+                    printf("Error setting socket timeout");
+                }
+                printf("Connection opened at time: %f\n", ssGetT(S));
+                connectionStarted = true;
+            }
+        }
+
         char *y0Data = sliceString(recvData, start, end);
         memcpy(y0, y0Data, y0Size);
 
@@ -460,12 +488,14 @@ static void mdlOutputs(SimStruct *S, int_T tid) {
     sendto(socketOut, sendData, sizeOfInputData, 0, (SOCKADDR *) &serverAddrOut, sizeof(serverAddrOut));
 }
 
+
 static void mdlTerminate(SimStruct *S){
     // this function is called at the end of the simulation
     closesocket(socketIn);
     closesocket(socketOut);
     WSACleanup();
 }
+
 
 #ifdef MATLAB_MEX_FILE                 /* Is this file being compiled as a MEX-file? */
 #include "simulink.c"                  /* MEX-file interface mechanism */
