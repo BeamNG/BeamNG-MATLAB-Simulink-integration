@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB 2022b"><title>Lidar tour</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 28.8px; min-height: 0px; white-space: pre-wrap; color: rgb(192, 76, 11); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 24px; font-weight: 400; text-align: left;  }
+.S1 { margin: 20px 10px 5px 4px; padding: 0px; line-height: 20px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }
+.CodeBlock { background-color: #F5F5F5; margin: 10px 0 10px 0; }
+.S2 { border-left: 1px solid rgb(191, 191, 191); border-right: 1px solid rgb(191, 191, 191); border-top: 1px solid rgb(191, 191, 191); border-bottom: 0px none rgb(33, 33, 33); border-radius: 4px 4px 0px 0px; padding: 6px 45px 0px 13px; line-height: 18.004px; min-height: 0px; white-space: nowrap; color: rgb(33, 33, 33); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S3 { border-left: 1px solid rgb(191, 191, 191); border-right: 1px solid rgb(191, 191, 191); border-top: 0px none rgb(33, 33, 33); border-bottom: 0px none rgb(33, 33, 33); border-radius: 0px; padding: 0px 45px 0px 13px; line-height: 18.004px; min-height: 0px; white-space: nowrap; color: rgb(33, 33, 33); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S4 { border-left: 1px solid rgb(191, 191, 191); border-right: 1px solid rgb(191, 191, 191); border-top: 0px none rgb(33, 33, 33); border-bottom: 1px solid rgb(191, 191, 191); border-radius: 0px 0px 4px 4px; padding: 0px 45px 4px 13px; line-height: 18.004px; min-height: 0px; white-space: nowrap; color: rgb(33, 33, 33); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }</style></head><body><div class = rtcContent><h1  class = 'S0'><span>Lidar tour</span></h1><h2  class = 'S1'><span>Scenario setup</span></h2><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: pre"><span style="color: rgb(0, 128, 19);">% link bng object to BeamNG folder </span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span >beamng =  py.beamngpy.BeamNGpy(</span><span style="color: rgb(167, 9, 245);">'localhost'</span><span >, int32(64256));</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span style="color: rgb(0, 128, 19);">% beamng = py.beamngpy.BeamNGpy('localhost', int32(64256), home='/path/to/BeamNG.drive');</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'>&nbsp;</div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span >beamng.open();</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span style="color: rgb(0, 128, 19);">% Add scenario information; name and level</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span >scenario = py.beamngpy.Scenario(</span><span style="color: rgb(167, 9, 245);">'west_coast_usa'</span><span >, </span><span style="color: rgb(167, 9, 245);">'example'</span><span >);</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span style="color: rgb(0, 128, 19);">% Add vehicle's information; name plate no. and vehicle model </span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span >vehicle = py.beamngpy.Vehicle(</span><span style="color: rgb(167, 9, 245);">'ego_vehicle'</span><span >, model=</span><span style="color: rgb(167, 9, 245);">'etk800'</span><span >, licence=</span><span style="color: rgb(167, 9, 245);">'MATLAB'</span><span >);</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span style="color: rgb(0, 128, 19);">% specify the veicle's starting position </span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span >scenario.add_vehicle(vehicle, pos=[-717, 101, 118], </span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span >    rot_quat=[0, 0, 0.3826834, 0.9238795]);</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span style="color: rgb(0, 128, 19);">% save all data and load the scenario </span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span >scenario.make(beamng);</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span style="color: rgb(0, 128, 19);">% waiting for the loaing process</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span >pause(2);</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span style="color: rgb(0, 128, 19);">% load the vehicle, level, and scensors in scenario </span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span >beamng.load_scenario(scenario);</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span >beamng.set_steps_per_second(60);</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span >beamng.set_deterministic();</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >pause(2);</span></span></div></div></div><h2  class = 'S1'><span>Run simulation</span></h2><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: pre"><span style="color: rgb(0, 128, 19);">% start the scenario </span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span >beamng.start_scenario();</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span >pause(2);</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'>&nbsp;</div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span style="color: rgb(0, 128, 19);">% adding initial throttle and strearing angle </span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span >vehicle.control(throttle=1);</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span >vehicle.control(steering=0.5);</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span style="color: rgb(0, 128, 19);">% setup the AI driving mode </span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span >vehicle.ai_set_mode(</span><span style="color: rgb(167, 9, 245);">'span'</span><span >);</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span >lidar1 =  py.beamngpy.sensors.Lidar(</span><span style="color: rgb(167, 9, 245);">'lidar1'</span><span >, beamng, vehicle, </span><span style="color: rgb(14, 0, 255);">...</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span >    is_using_shared_memory=true, is_visualised=true);</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span >pause(3);</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'>&nbsp;</div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span style="color: rgb(0, 128, 19);">% LiDAR point cloud data (automatic polling)</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span style="color: rgb(0, 128, 19);">% parse lidar data in data object </span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span >data = lidar1.poll();</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'>&nbsp;</div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span >pause(1);</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span >                                </span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span style="color: rgb(0, 128, 19);">% Collect the data now that it has been computed.</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span >beamng.step(3, wait=false);</span></span></div></div><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span >pause(10);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >beamng.close();</span></span></div></div></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+%% Lidar tour
+%% Scenario setup
+
+% link bng object to BeamNG folder 
+beamng =  py.beamngpy.BeamNGpy('localhost', int32(64256));
+% beamng = py.beamngpy.BeamNGpy('localhost', int32(64256), home='/path/to/BeamNG.drive');
+
+beamng.open();
+% Add scenario information; name and level
+scenario = py.beamngpy.Scenario('west_coast_usa', 'example');
+% Add vehicle's information; name plate no. and vehicle model 
+vehicle = py.beamngpy.Vehicle('ego_vehicle', model='etk800', licence='MATLAB');
+% specify the veicle's starting position 
+scenario.add_vehicle(vehicle, pos=[-717, 101, 118], ...
+    rot_quat=[0, 0, 0.3826834, 0.9238795]);
+% save all data and load the scenario 
+scenario.make(beamng);
+% waiting for the loaing process
+pause(2);
+% load the vehicle, level, and scensors in scenario 
+beamng.load_scenario(scenario);
+beamng.set_steps_per_second(60);
+beamng.set_deterministic();
+pause(2);
+%% Run simulation
+
+% start the scenario 
+beamng.start_scenario();
+pause(2);
+
+% adding initial throttle and strearing angle 
+vehicle.control(throttle=1);
+vehicle.control(steering=0.5);
+% setup the AI driving mode 
+vehicle.ai_set_mode('span');
+lidar1 =  py.beamngpy.sensors.Lidar('lidar1', beamng, vehicle, ...
+    is_using_shared_memory=true, is_visualised=true);
+pause(3);
+
+% LiDAR point cloud data (automatic polling)
+% parse lidar data in data object 
+data = lidar1.poll();
+
+pause(1);
+                                
+% Collect the data now that it has been computed.
+beamng.step(3, wait=false);
+pause(10);
+beamng.close();
+##### SOURCE END #####
+-->
+</div></body></html>

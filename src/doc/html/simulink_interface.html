@@ -1,0 +1,163 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Simulink Interface</title><meta name="generator" content="MATLAB 9.13"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-09-13"><meta name="DC.source" content="simulink_interface.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Simulink Interface</h1><!--introduction--><p>This document provides details and contains instructions for using the prototype UDP tight-coupling system for Simulink model with the BeamNG simulator. This prototype solution demonstrates typical communication between both ends of the system.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">BeamNG Architecture Considerations</a></li><li><a href="#2">Execution</a></li></ul></div><h2 id="1">BeamNG Architecture Considerations</h2><p>BeamNG operates within a multi-threaded architecture. Graphics rendering, collision detection, UI etc. all run on separate threads. Also running on its own thread are the physics computations.</p><p>Wall-clock time refers to the time which has passed in the real world. Simulation time refers to the the amount of time which has been simulated; note that we can simulate ahead in time, so the current simulation time could ahead of the current wall clock time.</p><p><b>BeamNG has both graphics steps (frames) and physics steps</b>:</p><p>Frames describe how often the user receives a visual update on screen, and can be measured in Frames-per-Second (FPS). Eg for 30 FPS, we update the image on screen 30 times every second. This quantity varies a lot of time, but is guaranteed not to drop below 20 FPS at any time.</p><p>At the start of a frame, predictions are made as to when the next frame is expected in (wall-clock time). Within each frame, BeamNG computes enough physics steps to take the simulation time up to this predicted wall-clock time, at which time the next frame will start to execute.</p><p>Each physics step computes exactly 0.5ms of simulation time. This quantity is fixed, and can also be expressed as 2000hz. Within any frame, BeamNG knows how many physics steps it must compute to take the simulation time up to the next frame start time (predicted). However, there is no guarantee as to when &#8211; inside the current frame &#8211; these steps will be computed; only that they must be computed ahead of wall-clock time, in order to keep the simulation real-time.</p><p><img vspace="5" hspace="5" src="pictures/1_BeamNG_Multithreading.png" alt=""> </p><p>This pictures shows a simplified overview of this, where the physics steps are shown to be running concurrently with various other processes. In particular in this picutre two cases are hilighted:</p><div><ul><li>In frame 1 (left), we have the case where the physics steps are computed earlier than   the work being performed on the other concurrent threads.   This results in a gap on the physics thread towards the end of the frame.   The other threads are the frame bottleneck here, not the physics.</li><li>In frame 2 (right), we have the second case where the other threads finish earlier than   the physics steps; we say here that the physics steps are the frame bottleneck.</li></ul></div><p>A main thing to note here, particularly when looking over multiple frames, is the irregular nature of when physics steps occur. We cannot predict when future physics steps will be, since this depends on many non-deterministic factors (especially within Human-In-The-Loop environments). Further, depending on what needs to be computed, some physics steps can take longer than others to compute.</p><p>However, we can guarantee a fixed number of physics steps being performed on average, over reasonable lengths of time. This is important to note, especially since we are typically simulating ahead of time.</p><h2 id="2">Execution</h2><p>In order to execute efficient coupling, the user must provide accurate measurements for two things:</p><div><ul><li><b>The Simulink computation time</b>:   This is the time required for Simulink to process a message sent to it from BeamNG.   If this varies, then the user could choose either the maximum or the average time and see which provides more optimal results.   If it is regular, more optimal coupling can be made between the two.   The <tt>simulinkTime</tt> property in the BeamNG controller should be set to this time.</li><li><b>The UDP round-trip time</b>:   This is the time required for the UDP infrastructure to send a message from the BeamNG machine to the Simulink machine, and back again.   Even if they are on the same machine, this should still be measured.   A standard ping test from a terminal is sufficient for this. For example, on windows:</li></ul></div><pre>Type "cmd" to bring up the Command Prompt.
+Open the Command Prompt.
+Type "ping" in the black box and hit the space bar.
+Type the IP address you'd like to ping (e.g., 192.XXX.X.X).
+Review the ping results displayed.
+When this value has been computed, the pingTime property in the BeamNG controller should be set to this.</pre><p><b>V-Sync</b>: The user should ensure that the V-Sync mode is switched off in BeamNG. If it is switched on, optimal coupling will not be achieved since V-Sync will add extra latency. This option can be found in the Display menu on the main options screen (press ESC).</p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Simulink Interface
+% This document provides details and contains instructions for 
+% using the prototype UDP tight-coupling system for Simulink 
+% model with the BeamNG simulator. 
+% This prototype solution demonstrates typical communication 
+% between both ends of the system.
+
+%% BeamNG Architecture Considerations
+% BeamNG operates within a multi-threaded architecture. 
+% Graphics rendering, collision detection, UI etc. 
+% all run on separate threads. 
+% Also running on its own thread are the physics computations.
+%
+% Wall-clock time refers to the time which has passed in the real world. 
+% Simulation time refers to the the amount of time which has been simulated; 
+% note that we can simulate ahead in time, 
+% so the current simulation time could ahead of the current wall clock time.
+%
+% *BeamNG has both graphics steps (frames) and physics steps*:
+%
+% Frames describe how often the user receives a visual update on screen, 
+% and can be measured in Frames-per-Second (FPS). 
+% Eg for 30 FPS, we update the image on screen 30 times every second. 
+% This quantity varies a lot of time, but is guaranteed not to drop below 20 FPS at any time.
+%
+% At the start of a frame, predictions are made as to when the next frame is expected in (wall-clock time). 
+% Within each frame, BeamNG computes enough physics steps to take the simulation time 
+% up to this predicted wall-clock time, at which time the next frame will start to execute.
+%
+% Each physics step computes exactly 0.5ms of simulation time. 
+% This quantity is fixed, and can also be expressed as 2000hz. 
+% Within any frame, BeamNG knows how many physics steps it must compute to take the simulation time
+% up to the next frame start time (predicted). 
+% However, there is no guarantee as to when – inside the current frame – 
+% these steps will be computed; only that they must be computed ahead of wall-clock time, 
+% in order to keep the simulation real-time.
+%
+% <<pictures/1_BeamNG_Multithreading.png>>
+%
+% This pictures shows a simplified overview of this, 
+% where the physics steps are shown to be running concurrently with various other processes.
+% In particular in this picutre two cases are hilighted:
+%
+% * In frame 1 (left), we have the case where the physics steps are computed earlier than 
+%   the work being performed on the other concurrent threads. 
+%   This results in a gap on the physics thread towards the end of the frame. 
+%   The other threads are the frame bottleneck here, not the physics.
+% * In frame 2 (right), we have the second case where the other threads finish earlier than 
+%   the physics steps; we say here that the physics steps are the frame bottleneck.
+%
+% A main thing to note here, particularly when looking over multiple frames, 
+% is the irregular nature of when physics steps occur. 
+% We cannot predict when future physics steps will be, 
+% since this depends on many non-deterministic factors (especially within Human-In-The-Loop environments). 
+% Further, depending on what needs to be computed, some physics steps can take longer than others to compute.
+%
+% However, we can guarantee a fixed number of physics steps being performed on average, 
+% over reasonable lengths of time. This is important to note, especially since we are typically 
+% simulating ahead of time.
+
+%% Execution
+%
+% In order to execute efficient coupling, the user must provide accurate measurements for two things:
+% 
+% * *The Simulink computation time*: 
+%   This is the time required for Simulink to process a message sent to it from BeamNG. 
+%   If this varies, then the user could choose either the maximum or the average time and see which provides more optimal results. 
+%   If it is regular, more optimal coupling can be made between the two.
+%   The |simulinkTime| property in the BeamNG controller should be set to this time.
+% * *The UDP round-trip time*:
+%   This is the time required for the UDP infrastructure to send a message from the BeamNG machine to the Simulink machine, and back again. 
+%   Even if they are on the same machine, this should still be measured.
+%   A standard ping test from a terminal is sufficient for this. For example, on windows:
+%   
+%  Type "cmd" to bring up the Command Prompt.
+%  Open the Command Prompt.
+%  Type "ping" in the black box and hit the space bar.
+%  Type the IP address you'd like to ping (e.g., 192.XXX.X.X).
+%  Review the ping results displayed.
+%  When this value has been computed, the pingTime property in the BeamNG controller should be set to this.
+%
+% *V-Sync*: 
+% The user should ensure that the V-Sync mode is switched off in BeamNG. 
+% If it is switched on, optimal coupling will not be achieved since V-Sync will add extra latency. 
+% This option can be found in the Display menu on the main options screen (press ESC).
+##### SOURCE END #####
+--></body></html>
