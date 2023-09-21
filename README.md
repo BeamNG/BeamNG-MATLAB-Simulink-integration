@@ -6,3 +6,5 @@ MATLAB and Simulink Support for BeamNG.tech allows to connect the Mathworks prod
 
 - MATLAB $\leftrightarrow$ BeamNGpy $\leftrightarrow$ BeamNG.tech
 - Simulink $\leftrightarrow$ BeamNG.tech
+
+For more information, please refer to the [documentation]().

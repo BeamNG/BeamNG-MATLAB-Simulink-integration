@@ -1,16 +1,16 @@
 <deployment-project plugin="plugin.toolbox" plugin-version="1.0">
   <configuration build-checksum="2682585833" file="C:\Users\matti\Documents\Work\BeamNG\GitHub repos\BeamNG-MATLAB-Simulink-integration\MATLAB and Simulink Support for BeamNG.tech.prj" location="C:\Users\matti\Documents\Work\BeamNG\GitHub repos\BeamNG-MATLAB-Simulink-integration" name="MATLAB and Simulink Support for BeamNG.tech" target="target.toolbox" target-name="Package Toolbox">
     <param.appname>MATLAB and Simulink Support for BeamNG.tech</param.appname>
-    <param.authnamewatermark />
+    <param.authnamewatermark>BeamNG GmbH</param.authnamewatermark>
     <param.email>tech@beamng.gmbh</param.email>
-    <param.company>BeamNG</param.company>
+    <param.company>BeamNG GmbH</param.company>
     <param.summary>Connects MATLAB and Simulink to BeamNG.tech</param.summary>
     <param.description>MATLAB and Simulink Support for BeamNG.tech allows to connect the Mathworks products with the BeamNG.tech software with two different methods:
 
 - MATLAB &lt;&gt; BeamNGpy &lt;&gt; BeamNG.tech
 - Simulink &lt;&gt; BeamNG.tech</param.description>
     <param.screenshot>${PROJECT_ROOT}\src\resources\pictures\BeamNG-complete-logo.jpg</param.screenshot>
-    <param.version>1.0</param.version>
+    <param.version>0.1</param.version>
     <param.output>${PROJECT_ROOT}\MATLAB and Simulink Support for BeamNG.tech.mltbx</param.output>
     <param.products.name>
       <item>MATLAB</item>
@@ -114,8 +114,6 @@
     <param.additional.sw.mac.url />
     <param.additional.sw.linux.url />
     <unset>
-      <param.authnamewatermark />
-      <param.version />
       <param.output />
       <param.platforms />
       <param.exclude.pcodedmfiles />
