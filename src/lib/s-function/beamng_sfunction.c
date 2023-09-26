@@ -122,10 +122,11 @@ CUSTOM
 #define MDL_START
 
 /* -------------- SOCKET DEFINES -------------- */
-#define IN_UDPPORT     64890
-#define OUT_UDPPORT    64891
-#define IN_UDPADDR     "127.0.0.1"
-#define OUT_UDPADDR    "127.0.0.1"
+#define NPARAMS        4
+#define IN_UDPPORT     (u_short) mxGetScalar(ssGetSFcnParam(S, 0))
+#define OUT_UDPPORT    (u_short) mxGetScalar(ssGetSFcnParam(S, 1))
+#define IN_UDPADDR     ssGetSFcnParam(S, 2)
+#define OUT_UDPADDR    ssGetSFcnParam(S, 3)
 #define BUF_SIZE       (OUTPUT_0_NUM_ELEMS + OUTPUT_1_NUM_ELEMS + \
                         OUTPUT_2_NUM_ELEMS + OUTPUT_3_NUM_ELEMS + \
                         OUTPUT_4_NUM_ELEMS + OUTPUT_5_NUM_ELEMS + \
@@ -135,6 +136,7 @@ CUSTOM
 // globals for storing the socket state
 SOCKET socketIn;    
 SOCKET socketOut;
+
 int maxId = 0;
 bool uniqueId = true;
 struct timeval tv;
@@ -158,7 +160,7 @@ static void mdlInitializeSizes(SimStruct *S) {
     // this function is called when the model is compiled
     DECL_AND_INIT_DIMSINFO(inputDimsInfo);
     DECL_AND_INIT_DIMSINFO(outputDimsInfo);
-    ssSetNumSFcnParams(S, 0);
+    ssSetNumSFcnParams(S, NPARAMS);
     if (ssGetNumSFcnParams(S) != ssGetSFcnParamsCount(S)) return;
   
     ssSetArrayLayoutForCodeGen(S, SS_COLUMN_MAJOR);
@@ -324,11 +326,10 @@ static void mdlStart(SimStruct *S) {
         printf("Error setting socket timeout");
     }
 
-        
     struct sockaddr_in serverAddrIn;
     serverAddrIn.sin_family = AF_INET;
     serverAddrIn.sin_port = htons(IN_UDPPORT);
-    serverAddrIn.sin_addr.s_addr = inet_addr(IN_UDPADDR);
+    serverAddrIn.sin_addr.s_addr = inet_addr(mxArrayToString(IN_UDPADDR));
     if (bind(socketIn, (SOCKADDR*) & serverAddrIn, sizeof (serverAddrIn))) {
         printf("bind failed with error %d\n", WSAGetLastError());
         return ;
@@ -484,7 +485,7 @@ static void mdlOutputs(SimStruct *S, int_T tid) {
     struct sockaddr_in serverAddrOut;
     serverAddrOut.sin_family = AF_INET;
     serverAddrOut.sin_port = htons(OUT_UDPPORT);
-    serverAddrOut.sin_addr.s_addr = inet_addr(OUT_UDPADDR);
+    serverAddrOut.sin_addr.s_addr = inet_addr(mxArrayToString(OUT_UDPADDR));
     sendto(socketOut, sendData, sizeOfInputData, 0, (SOCKADDR *) &serverAddrOut, sizeof(serverAddrOut));
 }
 
