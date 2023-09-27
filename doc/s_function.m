@@ -56,3 +56,20 @@
 % When communication has been established over the UDP send and recieve sockets 
 % (after both ends of the communication have start executing), 
 % the tight coupling process will commence.
+
+%% Custom IP adresses and ports
+%
+% In order to use different ports and IP addresses than the default ones
+% (64890, 64891, '127.0.0.1', '127.0.0.1') the field |S-Function
+% parameters| can be changed double-clicking on the s-function block in
+% simulink. The parameters in order are:
+%
+% # Simulink receive port
+% # BeamNG receive port
+% # Simulink receive IP address
+% # BeamNG receive IP address
+%
+% Then, these parameter should be changed also in the lua controller file
+% that can be found at:
+% |lua/vehicle/controller/tech/vehicleSystemCoupling.lua|.
+
