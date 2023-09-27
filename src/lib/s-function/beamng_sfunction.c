@@ -31,6 +31,8 @@ OF THIS SOFTWARE.
 #else
 #endif
 
+#define SAFE_RELEASE(ptr) free(ptr); ptr = NULL
+
 /* -------------- INPUT PORTS DEFINES -------------- */
 #define NUM_INPUTS                     3  
 /* 
@@ -134,25 +136,20 @@ CUSTOM
                         OUTPUT_8_NUM_ELEMS) * 8
 
 // globals for storing the socket state
-SOCKET socketIn;    
-SOCKET socketOut;
+static SOCKET socketIn;    
+static SOCKET socketOut;
 
-int maxId = 0;
-bool uniqueId = true;
-struct timeval tv;
-bool connectionStarted;
+static int maxId = 0;
+static bool uniqueId = true;
+static struct timeval tv;
+static bool connectionStarted;
 
-char *sliceString(char *str, int start, int end)
+static char *dupBufferSlice(char *str, int start, int end)
 {
-    int i;
-    int size = (end - start) + 1;
-    char *output = (char *)malloc(size * sizeof(char));
+    int size = end - start + 1;
+    void* output = malloc(size * sizeof(char));
 
-    for (i = 0; start <= end; start++, i++)
-    {
-        output[i] = str[start];
-    }
-    return output;
+    return (char*)memcpy(output, &str[start], size);
 }
 
 
@@ -415,8 +412,9 @@ static void mdlOutputs(SimStruct *S, int_T tid) {
             }
         }
 
-        char *y0Data = sliceString(recvData, start, end);
+        char *y0Data = dupBufferSlice(recvData, start, end);
         memcpy(y0, y0Data, y0Size);
+        SAFE_RELEASE(y0Data);
 
         if (y0[0] > maxId) {
             invalid = false;
@@ -439,28 +437,28 @@ static void mdlOutputs(SimStruct *S, int_T tid) {
 
     start = end;
     end = start + y1Size;
-    char *y1Data = sliceString(recvData, start, end);
+    char *y1Data = dupBufferSlice(recvData, start, end);
     start = end;
     end = start + y2Size;
-    char *y2Data = sliceString(recvData, start, end);
+    char *y2Data = dupBufferSlice(recvData, start, end);
     start = end;
     end = start + y3Size;
-    char *y3Data = sliceString(recvData, start, end);
+    char *y3Data = dupBufferSlice(recvData, start, end);
     start = end;
     end = start + y4Size;
-    char *y4Data = sliceString(recvData, start, end);
+    char *y4Data = dupBufferSlice(recvData, start, end);
     start = end;
     end = start + y5Size;
-    char *y5Data = sliceString(recvData, start, end);
+    char *y5Data = dupBufferSlice(recvData, start, end);
     start = end;
     end = start + y6Size;
-    char *y6Data = sliceString(recvData, start, end);
+    char *y6Data = dupBufferSlice(recvData, start, end);
     start = end;
     end = start + y7Size;
-    char *y7Data = sliceString(recvData, start, end);
+    char *y7Data = dupBufferSlice(recvData, start, end);
     start = end;
     end = start + y8Size;
-    char *y8Data = sliceString(recvData, start, end);
+    char *y8Data = dupBufferSlice(recvData, start, end);
 
     memcpy(y1, y1Data, y1Size);
     memcpy(y2, y2Data, y2Size);
@@ -470,6 +468,15 @@ static void mdlOutputs(SimStruct *S, int_T tid) {
     memcpy(y6, y6Data, y6Size);
     memcpy(y7, y7Data, y7Size);
     memcpy(y8, y8Data, y8Size);
+
+    SAFE_RELEASE(y1Data);
+    SAFE_RELEASE(y2Data);
+    SAFE_RELEASE(y3Data);
+    SAFE_RELEASE(y4Data);
+    SAFE_RELEASE(y5Data);
+    SAFE_RELEASE(y6Data);
+    SAFE_RELEASE(y7Data);
+    SAFE_RELEASE(y8Data);
 
     const int u0Size = (int) ssGetInputPortWidth(S, 0) * sizeof(double);
     const int u1Size = (int) ssGetInputPortWidth(S, 1) * sizeof(double);

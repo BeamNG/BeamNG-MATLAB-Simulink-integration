@@ -9,7 +9,7 @@
 
 - MATLAB &lt;&gt; BeamNGpy &lt;&gt; BeamNG.tech
 - Simulink &lt;&gt; BeamNG.tech</param.description>
-    <param.screenshot>${PROJECT_ROOT}\src\resources\pictures\BeamNG-complete-logo.jpg</param.screenshot>
+    <param.screenshot>${PROJECT_ROOT}\src\pictures\BeamNG-complete-logo.jpg</param.screenshot>
     <param.version>0.1</param.version>
     <param.output>${PROJECT_ROOT}\MATLAB and Simulink Support for BeamNG.tech.mltbx</param.output>
     <param.products.name>
@@ -142,7 +142,7 @@
       <file>${PROJECT_ROOT}\src\examples</file>
       <file>${PROJECT_ROOT}\src\info.xml</file>
       <file>${PROJECT_ROOT}\src\lib</file>
-      <file>${PROJECT_ROOT}\src\resources</file>
+      <file>${PROJECT_ROOT}\src\pictures</file>
     </fileset.rootfiles>
     <fileset.depfun.included />
     <fileset.depfun.excluded />
