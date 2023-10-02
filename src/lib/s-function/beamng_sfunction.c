@@ -31,8 +31,6 @@ OF THIS SOFTWARE.
 #else
 #endif
 
-#define SAFE_RELEASE(ptr) free(ptr); ptr = NULL
-
 /* -------------- INPUT PORTS DEFINES -------------- */
 #define NUM_INPUTS                     3  
 /* 
@@ -143,15 +141,6 @@ static int maxId = 0;
 static bool uniqueId = true;
 static struct timeval tv;
 static bool connectionStarted;
-
-static char *dupBufferSlice(char *str, int start, int end)
-{
-    int size = end - start + 1;
-    void* output = malloc(size * sizeof(char));
-
-    return (char*)memcpy(output, &str[start], size);
-}
-
 
 static void mdlInitializeSizes(SimStruct *S) {
     // this function is called when the model is compiled
@@ -385,8 +374,7 @@ static void mdlOutputs(SimStruct *S, int_T tid) {
     clock_t t1, t2;
     double elapsedTime;
 
-    int start = 0;
-    int end = start + y0Size;
+    int recvReadPos = 0;
 
     t1 = clock();
     
@@ -412,9 +400,7 @@ static void mdlOutputs(SimStruct *S, int_T tid) {
             }
         }
 
-        char *y0Data = dupBufferSlice(recvData, start, end);
-        memcpy(y0, y0Data, y0Size);
-        SAFE_RELEASE(y0Data);
+        memcpy(y0, &recvData[recvReadPos], y0Size);
 
         if (y0[0] > maxId) {
             invalid = false;
@@ -435,48 +421,22 @@ static void mdlOutputs(SimStruct *S, int_T tid) {
         }
     }
 
-    start = end;
-    end = start + y1Size;
-    char *y1Data = dupBufferSlice(recvData, start, end);
-    start = end;
-    end = start + y2Size;
-    char *y2Data = dupBufferSlice(recvData, start, end);
-    start = end;
-    end = start + y3Size;
-    char *y3Data = dupBufferSlice(recvData, start, end);
-    start = end;
-    end = start + y4Size;
-    char *y4Data = dupBufferSlice(recvData, start, end);
-    start = end;
-    end = start + y5Size;
-    char *y5Data = dupBufferSlice(recvData, start, end);
-    start = end;
-    end = start + y6Size;
-    char *y6Data = dupBufferSlice(recvData, start, end);
-    start = end;
-    end = start + y7Size;
-    char *y7Data = dupBufferSlice(recvData, start, end);
-    start = end;
-    end = start + y8Size;
-    char *y8Data = dupBufferSlice(recvData, start, end);
-
-    memcpy(y1, y1Data, y1Size);
-    memcpy(y2, y2Data, y2Size);
-    memcpy(y3, y3Data, y3Size);
-    memcpy(y4, y4Data, y4Size);
-    memcpy(y5, y5Data, y5Size);
-    memcpy(y6, y6Data, y6Size);
-    memcpy(y7, y7Data, y7Size);
-    memcpy(y8, y8Data, y8Size);
-
-    SAFE_RELEASE(y1Data);
-    SAFE_RELEASE(y2Data);
-    SAFE_RELEASE(y3Data);
-    SAFE_RELEASE(y4Data);
-    SAFE_RELEASE(y5Data);
-    SAFE_RELEASE(y6Data);
-    SAFE_RELEASE(y7Data);
-    SAFE_RELEASE(y8Data);
+    recvReadPos += y0Size;
+    memcpy(y1, &recvData[recvReadPos], y1Size);
+    recvReadPos += y1Size;
+    memcpy(y2, &recvData[recvReadPos], y2Size);
+    recvReadPos += y2Size;
+    memcpy(y3, &recvData[recvReadPos], y3Size);
+    recvReadPos += y3Size;
+    memcpy(y4, &recvData[recvReadPos], y4Size);
+    recvReadPos += y4Size;
+    memcpy(y5, &recvData[recvReadPos], y5Size);
+    recvReadPos += y5Size;
+    memcpy(y6, &recvData[recvReadPos], y6Size);
+    recvReadPos += y6Size;
+    memcpy(y7, &recvData[recvReadPos], y7Size);
+    recvReadPos += y7Size;
+    memcpy(y8, &recvData[recvReadPos], y8Size);
 
     const int u0Size = (int) ssGetInputPortWidth(S, 0) * sizeof(double);
     const int u1Size = (int) ssGetInputPortWidth(S, 1) * sizeof(double);
