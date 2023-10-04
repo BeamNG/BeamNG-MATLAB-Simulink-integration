@@ -10,7 +10,7 @@
 - MATLAB &lt;&gt; BeamNGpy &lt;&gt; BeamNG.tech
 - Simulink &lt;&gt; BeamNG.tech</param.description>
     <param.screenshot>${PROJECT_ROOT}\src\pictures\BeamNG-complete-logo.jpg</param.screenshot>
-    <param.version>0.1</param.version>
+    <param.version>1.0.0</param.version>
     <param.output>${PROJECT_ROOT}\MATLAB and Simulink Support for BeamNG.tech.mltbx</param.output>
     <param.products.name>
       <item>MATLAB</item>
