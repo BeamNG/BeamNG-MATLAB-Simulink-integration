@@ -218,7 +218,7 @@ static void windowsReceive(char* recvData, SimStruct* S)
 }
 
 
-static void windowsSend(char* sendData, u_short outUdpPort, const mxArray* outUdpAddr)
+static void windowsSend(char* sendData, const int sizeOfInputData, u_short outUdpPort, const mxArray* outUdpAddr)
 {
     struct sockaddr_in serverAddrOut;
     serverAddrOut.sin_family = AF_INET;
