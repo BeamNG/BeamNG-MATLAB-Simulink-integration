@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.py": "python",
+        "simstruc.h": "c",
+        "cerrno": "c"
+    }
+}

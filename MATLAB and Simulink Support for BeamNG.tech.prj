@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.toolbox" plugin-version="1.0">
-  <configuration build-checksum="2682585833" file="C:\Users\matti\Documents\Work\BeamNG\GitHub repos\BeamNG-MATLAB-Simulink-integration\MATLAB and Simulink Support for BeamNG.tech.prj" location="C:\Users\matti\Documents\Work\BeamNG\GitHub repos\BeamNG-MATLAB-Simulink-integration" name="MATLAB and Simulink Support for BeamNG.tech" target="target.toolbox" target-name="Package Toolbox">
+  <configuration build-checksum="2682585833" file="/home/mattia/BeamNG/BeamNG-MATLAB-Simulink-integration/MATLAB and Simulink Support for BeamNG.tech.prj" location="/home/mattia/BeamNG/BeamNG-MATLAB-Simulink-integration" name="MATLAB and Simulink Support for BeamNG.tech" target="target.toolbox" target-name="Package Toolbox">
     <param.appname>MATLAB and Simulink Support for BeamNG.tech</param.appname>
     <param.authnamewatermark>BeamNG GmbH</param.authnamewatermark>
     <param.email>tech@beamng.gmbh</param.email>
@@ -9,9 +9,9 @@
 
 - MATLAB &lt;&gt; BeamNGpy &lt;&gt; BeamNG.tech
 - Simulink &lt;&gt; BeamNG.tech</param.description>
-    <param.screenshot>${PROJECT_ROOT}\src\pictures\BeamNG-complete-logo.jpg</param.screenshot>
-    <param.version>1.0.0</param.version>
-    <param.output>${PROJECT_ROOT}\MATLAB and Simulink Support for BeamNG.tech.mltbx</param.output>
+    <param.screenshot>${PROJECT_ROOT}/src/pictures/BeamNG-complete-logo.png</param.screenshot>
+    <param.version>1.1.0</param.version>
+    <param.output>${PROJECT_ROOT}/MATLAB and Simulink Support for BeamNG.tech.mltbx</param.output>
     <param.products.name>
       <item>MATLAB</item>
       <item>Simulink</item>
@@ -86,8 +86,8 @@
     <param.demosxml />
     <param.apps />
     <param.registered.apps />
-    <param.docs>${PROJECT_ROOT}\src\info.xml</param.docs>
-    <param.getting.started.guide>${PROJECT_ROOT}\src\doc\GettingStarted.mlx</param.getting.started.guide>
+    <param.docs>${PROJECT_ROOT}/src/info.xml</param.docs>
+    <param.getting.started.guide>${PROJECT_ROOT}/src/doc/GettingStarted.mlx</param.getting.started.guide>
     <param.matlabpath.excludes>
       <item>/examples/simulink/slprj</item>
       <item>/examples/simulink/slprj/sim</item>
@@ -105,7 +105,7 @@
     <param.release.current.only>false</param.release.current.only>
     <param.compatiblity.windows>true</param.compatiblity.windows>
     <param.compatiblity.macos>false</param.compatiblity.macos>
-    <param.compatiblity.linux>false</param.compatiblity.linux>
+    <param.compatiblity.linux>true</param.compatiblity.linux>
     <param.compatiblity.matlabonline>false</param.compatiblity.matlabonline>
     <param.installation.map />
     <param.additional.sw.names />
@@ -127,6 +127,7 @@
       <param.matlab.project.name />
       <param.release.current.only />
       <param.compatiblity.windows />
+      <param.compatiblity.linux />
       <param.additional.sw.names />
       <param.additional.sw.licenses />
       <param.additional.sw.win.url />
@@ -134,77 +135,47 @@
       <param.additional.sw.linux.url />
     </unset>
     <fileset.rootdir>
-      <file>${PROJECT_ROOT}\src</file>
+      <file>${PROJECT_ROOT}/src</file>
     </fileset.rootdir>
     <fileset.rootfiles>
-      <file>${PROJECT_ROOT}\src\demos.xml</file>
-      <file>${PROJECT_ROOT}\src\doc</file>
-      <file>${PROJECT_ROOT}\src\examples</file>
-      <file>${PROJECT_ROOT}\src\info.xml</file>
-      <file>${PROJECT_ROOT}\src\lib</file>
-      <file>${PROJECT_ROOT}\src\pictures</file>
+      <file>${PROJECT_ROOT}/src/demos.xml</file>
+      <file>${PROJECT_ROOT}/src/doc</file>
+      <file>${PROJECT_ROOT}/src/examples</file>
+      <file>${PROJECT_ROOT}/src/info.xml</file>
+      <file>${PROJECT_ROOT}/src/lib</file>
+      <file>${PROJECT_ROOT}/src/pictures</file>
     </fileset.rootfiles>
     <fileset.depfun.included />
     <fileset.depfun.excluded />
     <fileset.package />
     <build-deliverables>
-      <file location="${PROJECT_ROOT}" name="MATLAB and Simulink Support for BeamNG.tech.mltbx" optional="false">C:\Users\matti\Documents\Work\BeamNG\GitHub repos\BeamNG-MATLAB-Simulink-integration\MATLAB and Simulink Support for BeamNG.tech.mltbx</file>
+      <file location="${PROJECT_ROOT}" name="MATLAB and Simulink Support for BeamNG.tech.mltbx" optional="false">/home/mattia/BeamNG/BeamNG-MATLAB-Simulink-integration/MATLAB and Simulink Support for BeamNG.tech.mltbx</file>
     </build-deliverables>
     <workflow />
     <matlab>
-      <root>C:\Program Files\MATLAB\R2022b</root>
+      <root>/home/mattia/MATLAB</root>
       <toolboxes>
         <toolbox name="matlabcoder" />
-        <toolbox name="embeddedcoder" />
-        <toolbox name="gpucoder" />
-        <toolbox name="fixedpoint" />
-        <toolbox name="matlabhdlcoder" />
-        <toolbox name="neuralnetwork" />
       </toolboxes>
       <toolbox>
         <matlabcoder>
           <enabled>true</enabled>
         </matlabcoder>
       </toolbox>
-      <toolbox>
-        <embeddedcoder>
-          <enabled>true</enabled>
-        </embeddedcoder>
-      </toolbox>
-      <toolbox>
-        <gpucoder>
-          <enabled>true</enabled>
-        </gpucoder>
-      </toolbox>
-      <toolbox>
-        <fixedpoint>
-          <enabled>true</enabled>
-        </fixedpoint>
-      </toolbox>
-      <toolbox>
-        <matlabhdlcoder>
-          <enabled>true</enabled>
-        </matlabhdlcoder>
-      </toolbox>
-      <toolbox>
-        <neuralnetwork>
-          <enabled>true</enabled>
-        </neuralnetwork>
-      </toolbox>
     </matlab>
     <platform>
-      <unix>false</unix>
+      <unix>true</unix>
       <mac>false</mac>
-      <windows>true</windows>
+      <windows>false</windows>
       <win2k>false</win2k>
       <winxp>false</winxp>
       <vista>false</vista>
-      <linux>false</linux>
+      <linux>true</linux>
       <solaris>false</solaris>
-      <osver>10.0</osver>
+      <osver>6.2.0-35-generic</osver>
       <os32>false</os32>
       <os64>true</os64>
-      <arch>win64</arch>
+      <arch>glnxa64</arch>
       <matlab>true</matlab>
     </platform>
   </configuration>
