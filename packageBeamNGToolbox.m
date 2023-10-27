@@ -32,7 +32,7 @@ end
 %% Publish documentation
 doc_folder = 'doc/';
 src_doc_folder = 'src/doc/html/';
-[~] = export(strcat(doc_folder, 'GettingStarted.mlx'), strcat(src_doc_folder, 'GettingStarted.html'));
+%[~] = export(strcat(doc_folder, 'GettingStarted.mlx'), strcat(src_doc_folder, 'GettingStarted.html'));
 documentation_files = {'documentation_home'
                        's_function'
                        'setting_up_simulink'

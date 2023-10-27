@@ -24,16 +24,21 @@ OF THIS SOFTWARE.
 #include "string.h"
 #include "time.h"
 
-#ifdef _WIN32                               // needed for winsock.
-#  include <WinSock2.h>
-#  include <Ws2tcpip.h>
-#  pragma comment(lib, "Ws2_32.lib")
-#else
+#ifdef _WIN32
+# include <WinSock2.h>
+# include <Ws2tcpip.h>
+# pragma comment(lib, "Ws2_32.lib")
+#elif __linux__
+# include <sys/socket.h>
+# include <netinet/in.h>
+# include <arpa/inet.h>
+# include <errno.h>
+# include <unistd.h>
 #endif
 
 /* -------------- INPUT PORTS DEFINES -------------- */
-#define NUM_INPUTS                     3  
-/* 
+#define NUM_INPUTS                     3
+/*
 MESSAGE ID
 CORE
 CUSTOM
@@ -58,8 +63,8 @@ CUSTOM
 #define INPUT_2_FEEDTHROUGH            1
 
 /* -------------- OUTPUT PORTS DEFINES -------------- */
-#define NUM_OUTPUTS                    9  
-/* 
+#define NUM_OUTPUTS                    9
+/*
 MESSAGE ID
 DRIVER_CONTROLS
 BODY_STATE
@@ -133,22 +138,185 @@ CUSTOM
                         OUTPUT_6_NUM_ELEMS + OUTPUT_7_NUM_ELEMS + \
                         OUTPUT_8_NUM_ELEMS) * 8
 
-// globals for storing the socket state
-static SOCKET socketIn;    
-static SOCKET socketOut;
-
 static int maxId = 0;
 static bool uniqueId = true;
 static struct timeval tv;
 static bool connectionStarted;
 
-static void mdlInitializeSizes(SimStruct *S) {
+#ifdef _WIN32
+// globals for storing the socket state
+static SOCKET socketIn;
+static SOCKET socketOut;
+
+static int windowsSocketSetup(u_short inUdpPort, const mxArray* inUdpAddr)
+{
+    // this function is called a the beginning of the simulation
+    WSADATA wsaData;
+    int res = WSAStartup(MAKEWORD(2, 2), &wsaData);
+
+    if (res != NO_ERROR) {
+        printf("WSAStartup failed with error ");
+        return 1;
+    }
+
+    // Set up a socket to receive data from Lua, on port 64890.
+    socketIn = INVALID_SOCKET;
+    socketIn = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+    if (socketIn == INVALID_SOCKET) {
+        printf("UDP in socket failed with error %d\n", WSAGetLastError());
+        return 1;
+    }
+
+    tv.tv_sec = 1; //milliseconds
+    tv.tv_usec = 0;
+    if (setsockopt(socketIn, SOL_SOCKET, SO_RCVTIMEO, (const char *)&tv, sizeof(tv)) < 0)
+        printf("Error setting socket timeout");
+
+    struct sockaddr_in serverAddrIn;
+    serverAddrIn.sin_family = AF_INET;
+    serverAddrIn.sin_port = htons(inUdpPort);
+    serverAddrIn.sin_addr.s_addr = inet_addr(mxArrayToString(inUdpAddr));
+    if (bind(socketIn, (SOCKADDR*) & serverAddrIn, sizeof (serverAddrIn))) {
+        printf("bind failed with error %d\n", WSAGetLastError());
+        return 1;
+    }
+
+    // Set up a socket to send data to Lua, on port 64891.
+    socketOut = INVALID_SOCKET;
+    socketOut = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+    if (socketOut == INVALID_SOCKET) {
+        printf("UDP out socket failed with error %d\n", WSAGetLastError());
+        return 1;
+    }
+
+    return 0;
+}
+
+
+static void windowsReceive(char* recvData, SimStruct* S)
+{
+    struct sockaddr_in incomingAddress;
+    int incomingAddrSize = sizeof(incomingAddress);
+    int recvLength = recvfrom(socketIn, recvData, BUF_SIZE, 0, (SOCKADDR *) &incomingAddress, &incomingAddrSize);
+
+    if (WSAGetLastError() == WSAETIMEDOUT) {
+        if (connectionStarted) {
+            ssSetStopRequested(S, 1);
+            printf("Simulation stopped due to disconnection");
+            connectionStarted = false;
+        }
+    } else {
+        if (!connectionStarted) {
+            tv.tv_sec = 3000; //milliseconds
+            if (setsockopt(socketIn, SOL_SOCKET, SO_RCVTIMEO, (const char *)&tv, sizeof(tv)) < 0)
+                printf("Error setting socket timeout");
+
+            printf("Connection opened at time: %f\n", ssGetT(S));
+            connectionStarted = true;
+        }
+    }
+}
+
+
+static void windowsSend(char* sendData, const int sizeOfInputData, u_short outUdpPort, const mxArray* outUdpAddr)
+{
+    struct sockaddr_in serverAddrOut;
+    serverAddrOut.sin_family = AF_INET;
+    serverAddrOut.sin_port = htons(outUdpPort);
+    serverAddrOut.sin_addr.s_addr = inet_addr(mxArrayToString(outUdpAddr));
+    sendto(socketOut, sendData, sizeOfInputData, 0, (SOCKADDR *) &serverAddrOut, sizeof(serverAddrOut));
+}
+
+
+#elif __linux__
+static int socketIn;
+static int socketOut;
+
+static int linuxSocketSetup(u_short inUdpPort, const mxArray* inUdpAddr)
+{
+    // Set up a socket to receive data from Lua, on port 64890.
+    socketIn = socket(AF_INET, SOCK_DGRAM, 0);
+    if (socketIn < 0) {
+        printf("UDP in socket failed");
+        return 1;
+    }
+
+    tv.tv_sec = 0;
+    tv.tv_usec = 1000;
+    if (setsockopt(socketIn, SOL_SOCKET, SO_RCVTIMEO, (const char *)&tv, sizeof(tv)) < 0) {
+        printf("Error setting socket timeout");
+        close(socketIn);
+        return 1;
+    }
+
+    struct sockaddr_in serverAddrIn;
+    serverAddrIn.sin_family = AF_INET;
+    serverAddrIn.sin_port = htons(inUdpPort);
+    inet_pton(AF_INET, mxArrayToString(inUdpAddr), &(serverAddrIn.sin_addr));
+
+    if (bind(socketIn, (struct sockaddr*) &serverAddrIn, sizeof(serverAddrIn)) < 0) {
+        printf("Bind failed");
+        close(socketIn);
+        return 1;
+    }
+
+    // Set up a socket to send data to Lua, on port 64891.
+    socketOut = socket(AF_INET, SOCK_DGRAM, 0);
+    if (socketOut < 0) {
+        perror("UDP out socket failed");
+        return 1;
+    }
+
+    return 0;
+}
+
+
+static void linuxReceive(char* recvData, SimStruct* S)
+{
+    struct sockaddr_in incomingAddress;
+    socklen_t incomingAddrSize = sizeof(incomingAddress);
+    int recvLength = recvfrom(socketIn, recvData, BUF_SIZE, 0, (struct sockaddr *) &incomingAddress, &incomingAddrSize);
+
+    if (recvLength < 0) {
+        if (connectionStarted) {
+            ssSetStopRequested(S, 1);
+            printf("Simulation stopped due to disconnection");
+            connectionStarted = false;
+        }
+    } else {
+        if (!connectionStarted) {
+            tv.tv_sec = 3;
+            tv.tv_usec = 0;
+            if (setsockopt(socketIn, SOL_SOCKET, SO_RCVTIMEO, (const char *)&tv, sizeof(tv)) < 0)
+                printf("Error setting socket timeout");
+
+            printf("Connection opened at time: %f\n", ssGetT(S));
+            connectionStarted = true;
+        }
+    }
+}
+
+
+static void linuxSend(const char* sendData, const int sizeOfInputData, const u_short outUdpPort, const mxArray* outUdpAddr)
+{
+    struct sockaddr_in serverAddrOut;
+    //memset(&serverAddrOut, 0, sizeof(serverAddrOut));
+    serverAddrOut.sin_family = AF_INET;
+    serverAddrOut.sin_port = htons(outUdpPort);
+    inet_pton(AF_INET, mxArrayToString(outUdpAddr), &serverAddrOut.sin_addr);
+    sendto(socketOut, sendData, sizeOfInputData, 0, (struct sockaddr *) &serverAddrOut, sizeof(serverAddrOut));
+}
+#endif
+
+
+static void mdlInitializeSizes(SimStruct *S)
+{
     // this function is called when the model is compiled
     DECL_AND_INIT_DIMSINFO(inputDimsInfo);
     DECL_AND_INIT_DIMSINFO(outputDimsInfo);
     ssSetNumSFcnParams(S, NPARAMS);
     if (ssGetNumSFcnParams(S) != ssGetSFcnParamsCount(S)) return;
-  
+
     ssSetArrayLayoutForCodeGen(S, SS_COLUMN_MAJOR);
     ssSetOperatingPointCompliance(S, USE_DEFAULT_OPERATING_POINT);
     ssSetNumContStates(S, NUM_CONT_STATES);
@@ -158,7 +326,7 @@ static void mdlInitializeSizes(SimStruct *S) {
 
     ssAllowSignalsWithMoreThan2D(S);
     inputDimsInfo.numDims = 2;
-  
+
     /* Input Port  0: MESSAGE ID */
     inputDimsInfo.width = INPUT_0_NUM_ELEMS;
     int_T in0Dims[] = INPUT_0_DIMS_ND;
@@ -191,7 +359,7 @@ static void mdlInitializeSizes(SimStruct *S) {
 
     if (!ssSetNumOutputPorts(S, NUM_OUTPUTS))
       return;
-  
+
     /* Output Port 0: MESSAGE ID */
     ssSetOutputPortWidth(S, 0, OUTPUT_0_NUM_ELEMS);
     ssSetOutputPortDataType(S, 0, SS_DOUBLE);
@@ -284,63 +452,34 @@ static void mdlInitializeSizes(SimStruct *S) {
 
     ssSetSimulinkVersionGeneratedIn(S, "10.6");
     ssSetNumSampleTimes(S, 1);
-    ssSetOptions(S, SS_OPTION_EXCEPTION_FREE_CODE); 
+    ssSetOptions(S, SS_OPTION_EXCEPTION_FREE_CODE);
 }
 
 
-static void mdlStart(SimStruct *S) {
-    // this function is called a the beginning of the simulation
-    WSADATA wsaData;
-    int res = WSAStartup(MAKEWORD(2, 2), &wsaData);
-    
-    if (res != NO_ERROR) {
-        printf("WSAStartup failed with error ");
+static void mdlStart(SimStruct *S)
+{
+    #ifdef _WIN32
+    if (windowsSocketSetup(IN_UDPPORT, IN_UDPADDR))
         return;
-    }
-
-    // Set up a socket to receive data from Lua, on port 64890.
-    socketIn = INVALID_SOCKET;
-    socketIn = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
-    if (socketIn == INVALID_SOCKET) {
-        printf("UDP in socket failed with error %d\n", WSAGetLastError());
-        return ;
-    }
-
-    tv.tv_sec = 1; //milliseconds
-    tv.tv_usec = 0;
-    if (setsockopt(socketIn, SOL_SOCKET, SO_RCVTIMEO, (const char *)&tv, sizeof(tv)) < 0) {
-        printf("Error setting socket timeout");
-    }
-
-    struct sockaddr_in serverAddrIn;
-    serverAddrIn.sin_family = AF_INET;
-    serverAddrIn.sin_port = htons(IN_UDPPORT);
-    serverAddrIn.sin_addr.s_addr = inet_addr(mxArrayToString(IN_UDPADDR));
-    if (bind(socketIn, (SOCKADDR*) & serverAddrIn, sizeof (serverAddrIn))) {
-        printf("bind failed with error %d\n", WSAGetLastError());
-        return ;
-    }
-    
-    // Set up a socket to send data to Lua, on port 64891.
-    socketOut = INVALID_SOCKET;
-    socketOut = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
-    if (socketOut == INVALID_SOCKET) {
-        printf("UDP out socket failed with error %d\n", WSAGetLastError());
-        return ;
-    }
+    #elif __linux__
+    if (linuxSocketSetup(IN_UDPPORT, IN_UDPADDR))
+        return;
+    #endif
 
     connectionStarted = false;
 }
 
 
-static void mdlInitializeSampleTimes(SimStruct *S) {
+static void mdlInitializeSampleTimes(SimStruct *S)
+{
     // set the saple time of the s-function to be equal to the sample time of the simulink solver
     ssSetSampleTime(S, 0, INHERITED_SAMPLE_TIME);
     ssSetOffsetTime(S, 0, 0.0);
 }
 
 
-static void mdlOutputs(SimStruct *S, int_T tid) {
+static void mdlOutputs(SimStruct *S, int_T tid)
+{
     // this function is called at each iteration
     const real_T *u0 = (real_T *) ssGetInputPortRealSignal(S, 0);
     const real_T *u1 = (real_T *) ssGetInputPortRealSignal(S, 1);
@@ -355,7 +494,7 @@ static void mdlOutputs(SimStruct *S, int_T tid) {
     real_T *y6 = (real_T *) ssGetOutputPortRealSignal(S, 6);
     real_T *y7 = (real_T *) ssGetOutputPortRealSignal(S, 7);
     real_T *y8 = (real_T *) ssGetOutputPortRealSignal(S, 8);
-    
+
     const int y0Size = (int) ssGetOutputPortWidth(S, 0) * sizeof(double);
     const int y1Size = (int) ssGetOutputPortWidth(S, 1) * sizeof(double);
     const int y2Size = (int) ssGetOutputPortWidth(S, 2) * sizeof(double);
@@ -377,28 +516,13 @@ static void mdlOutputs(SimStruct *S, int_T tid) {
     int recvReadPos = 0;
 
     t1 = clock();
-    
-    while (invalid) {
-        struct sockaddr_in incomingAddress;
-        int incomingAddrSize = sizeof(incomingAddress);
-        int recvLength = recvfrom(socketIn, recvData, BUF_SIZE, 0, (SOCKADDR *) &incomingAddress, &incomingAddrSize);
 
-        if (WSAGetLastError() == WSAETIMEDOUT) {
-            if (connectionStarted) {
-                ssSetStopRequested(S, 1);
-                printf("Simulation stopped due to disconnection");
-                connectionStarted = false;
-            }
-        } else {
-            if (!connectionStarted) {
-                tv.tv_sec = 3000; //milliseconds
-                if (setsockopt(socketIn, SOL_SOCKET, SO_RCVTIMEO, (const char *)&tv, sizeof(tv)) < 0) {
-                    printf("Error setting socket timeout");
-                }
-                printf("Connection opened at time: %f\n", ssGetT(S));
-                connectionStarted = true;
-            }
-        }
+    while (invalid) {
+        #ifdef _WIN32
+        windowsReceive(recvData, S);
+        #elif __linux__
+        linuxReceive(recvData, S);
+        #endif
 
         memcpy(y0, &recvData[recvReadPos], y0Size);
 
@@ -449,19 +573,25 @@ static void mdlOutputs(SimStruct *S, int_T tid) {
     memcpy(&sendData[u0Size], u1, u1Size);
     memcpy(&sendData[u0Size + u1Size], u2, u2Size);
 
-    struct sockaddr_in serverAddrOut;
-    serverAddrOut.sin_family = AF_INET;
-    serverAddrOut.sin_port = htons(OUT_UDPPORT);
-    serverAddrOut.sin_addr.s_addr = inet_addr(mxArrayToString(OUT_UDPADDR));
-    sendto(socketOut, sendData, sizeOfInputData, 0, (SOCKADDR *) &serverAddrOut, sizeof(serverAddrOut));
+    #ifdef _WIN32
+    windowsSend(sendData, sizeOfInputData, OUT_UDPPORT, OUT_UDPADDR);
+    #elif __linux__
+    linuxSend(sendData, sizeOfInputData, OUT_UDPPORT, OUT_UDPADDR);
+    #endif
 }
 
 
-static void mdlTerminate(SimStruct *S){
+static void mdlTerminate(SimStruct *S)
+{
     // this function is called at the end of the simulation
+    #ifdef _WIN32
     closesocket(socketIn);
     closesocket(socketOut);
     WSACleanup();
+    #elif __linux__
+    close(socketIn);
+    close(socketOut);
+    #endif
 }
 
 

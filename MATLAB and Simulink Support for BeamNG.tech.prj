@@ -9,8 +9,8 @@
 
 - MATLAB &lt;&gt; BeamNGpy &lt;&gt; BeamNG.tech
 - Simulink &lt;&gt; BeamNG.tech</param.description>
-    <param.screenshot>${PROJECT_ROOT}\src\pictures\BeamNG-complete-logo.jpg</param.screenshot>
-    <param.version>1.0.0</param.version>
+    <param.screenshot>${PROJECT_ROOT}\src\pictures\BeamNG-complete-logo.png</param.screenshot>
+    <param.version>1.1.0</param.version>
     <param.output>${PROJECT_ROOT}\MATLAB and Simulink Support for BeamNG.tech.mltbx</param.output>
     <param.products.name>
       <item>MATLAB</item>
@@ -105,7 +105,7 @@
     <param.release.current.only>false</param.release.current.only>
     <param.compatiblity.windows>true</param.compatiblity.windows>
     <param.compatiblity.macos>false</param.compatiblity.macos>
-    <param.compatiblity.linux>false</param.compatiblity.linux>
+    <param.compatiblity.linux>true</param.compatiblity.linux>
     <param.compatiblity.matlabonline>false</param.compatiblity.matlabonline>
     <param.installation.map />
     <param.additional.sw.names />
@@ -127,6 +127,7 @@
       <param.matlab.project.name />
       <param.release.current.only />
       <param.compatiblity.windows />
+      <param.compatiblity.linux />
       <param.additional.sw.names />
       <param.additional.sw.licenses />
       <param.additional.sw.win.url />
