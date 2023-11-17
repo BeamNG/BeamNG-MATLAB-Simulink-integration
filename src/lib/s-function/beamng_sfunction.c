@@ -36,112 +36,32 @@ OF THIS SOFTWARE.
 # include <unistd.h>
 #endif
 
-/* -------------- INPUT PORTS DEFINES -------------- */
-#define NUM_INPUTS                     3
-/*
-MESSAGE ID
-CORE
-CUSTOM
-*/
-
-/* Input Port 0: MESSAGE ID */
-#define INPUT_0_DIMS_ND                {1, 1}
-#define INPUT_0_NUM_ELEMS              1
-#define INPUT_0_COMPLEX                COMPLEX_NO
-#define INPUT_0_FEEDTHROUGH            1
-
-/* Input Port 1: CORE */
-#define INPUT_1_DIMS_ND                {13, 1}
-#define INPUT_1_NUM_ELEMS              13
-#define INPUT_1_COMPLEX                COMPLEX_NO
-#define INPUT_1_FEEDTHROUGH            1
-
-/* Input Port 2: CUSTOM */
-#define INPUT_2_DIMS_ND                {50, 1}
-#define INPUT_2_NUM_ELEMS              50
-#define INPUT_2_COMPLEX                COMPLEX_NO
-#define INPUT_2_FEEDTHROUGH            1
-
-/* -------------- OUTPUT PORTS DEFINES -------------- */
-#define NUM_OUTPUTS                    9
-/*
-MESSAGE ID
-DRIVER_CONTROLS
-BODY_STATE
-STATUS
-WHEEL_FL
-WHEEL_FR
-WHEEL_RL
-WHEEL_RR
-CUSTOM
-*/
-
-/* Output Port 0: MESSAGE ID */
-#define OUTPUT_0_DIMS_ND               {1, 1}
-#define OUTPUT_0_NUM_ELEMS             1
-#define OUTPUT_0_COMPLEX               COMPLEX_NO
-
-/* Output Port 1: DRIVER_CONTROLS */
-#define OUTPUT_1_DIMS_ND               {10, 1}
-#define OUTPUT_1_NUM_ELEMS             10
-#define OUTPUT_1_COMPLEX               COMPLEX_NO
-
-/* Output Port 2: BODY_STATE */
-#define OUTPUT_2_DIMS_ND               {14, 1}
-#define OUTPUT_2_NUM_ELEMS             14
-#define OUTPUT_2_COMPLEX               COMPLEX_NO
-
-/* Output Port 3: STATUS */
-#define OUTPUT_3_DIMS_ND               {12, 1}
-#define OUTPUT_3_NUM_ELEMS             12
-#define OUTPUT_3_COMPLEX               COMPLEX_NO
-
-/* Output Port 4: WHEEL_FL */
-#define OUTPUT_4_DIMS_ND               {6, 1}
-#define OUTPUT_4_NUM_ELEMS             6
-#define OUTPUT_4_COMPLEX               COMPLEX_NO
-
-/* Output Port 5: WHEEL_FR */
-#define OUTPUT_5_DIMS_ND               {6, 1}
-#define OUTPUT_5_NUM_ELEMS             6
-#define OUTPUT_5_COMPLEX               COMPLEX_NO
-
-/* Output Port 6: WHEEL_RL */
-#define OUTPUT_6_DIMS_ND               {6, 1}
-#define OUTPUT_6_NUM_ELEMS             6
-#define OUTPUT_6_COMPLEX               COMPLEX_NO
-
-/* Output Port 7: WHEEL_RR */
-#define OUTPUT_7_DIMS_ND               {6, 1}
-#define OUTPUT_7_NUM_ELEMS             6
-#define OUTPUT_7_COMPLEX               COMPLEX_NO
-
-/* Output Port 8: CUSTOM */
-#define OUTPUT_8_DIMS_ND               {50, 1}
-#define OUTPUT_8_NUM_ELEMS             50
-#define OUTPUT_8_COMPLEX               COMPLEX_NO
-
-#define NUM_DISC_STATES                0
-#define NUM_CONT_STATES                0
-
+#define IN_DIM              1
+#define OUT_DIM             1
+#define NUM_DISC_STATES     0
+#define NUM_CONT_STATES     0
 #define MDL_START
 
+// CSV
+#define CSV_PATH            ssGetSFcnParam(S, 4)
+#define MAX_CSV_LINE_SIZE   1024
+#define MAX_CSV_FIELDS      9
+
 /* -------------- SOCKET DEFINES -------------- */
-#define NPARAMS        4
+#define NPARAMS        5
 #define IN_UDPPORT     (u_short) mxGetScalar(ssGetSFcnParam(S, 0))
 #define OUT_UDPPORT    (u_short) mxGetScalar(ssGetSFcnParam(S, 1))
 #define IN_UDPADDR     ssGetSFcnParam(S, 2)
 #define OUT_UDPADDR    ssGetSFcnParam(S, 3)
-#define BUF_SIZE       (OUTPUT_0_NUM_ELEMS + OUTPUT_1_NUM_ELEMS + \
-                        OUTPUT_2_NUM_ELEMS + OUTPUT_3_NUM_ELEMS + \
-                        OUTPUT_4_NUM_ELEMS + OUTPUT_5_NUM_ELEMS + \
-                        OUTPUT_6_NUM_ELEMS + OUTPUT_7_NUM_ELEMS + \
-                        OUTPUT_8_NUM_ELEMS) * 8
+#define BUF_SIZE       1024*8
 
 static int maxId = 0;
 static bool uniqueId = true;
 static struct timeval tv;
 static bool connectionStarted;
+
+static int num_inputs = 0;
+static int num_outputs = 0;
 
 #ifdef _WIN32
 // globals for storing the socket state
@@ -321,134 +241,73 @@ static void mdlInitializeSizes(SimStruct *S)
     ssSetOperatingPointCompliance(S, USE_DEFAULT_OPERATING_POINT);
     ssSetNumContStates(S, NUM_CONT_STATES);
     ssSetNumDiscStates(S, NUM_DISC_STATES);
-    if (!ssSetNumInputPorts(S, NUM_INPUTS))
+
+    FILE* file = fopen(mxArrayToString(CSV_PATH), "r");
+    if (!file) {
+        printf("Error opening file\n");
+        return;
+    }
+
+    num_inputs = 0;
+    num_outputs = 0;
+
+    char line[MAX_CSV_LINE_SIZE];
+
+    // parse csv
+    while (fgets(line, sizeof(line), file)) {
+        // Remove newline character
+        line[strcspn(line, "\n")] = '\0';
+
+        // Tokenize the line based on commas
+        char *token;
+        char *fields[MAX_CSV_FIELDS];
+        int fieldCount = 0;
+
+        token = strtok(line, ",");
+        while (token != NULL && fieldCount < MAX_CSV_FIELDS) {
+            fields[fieldCount++] = token;
+            token = strtok(NULL, ",");
+        }
+
+        if (strcmp(fields[4], "BeamNG_to_Simulink") == 0) {
+            num_outputs += 1;
+        } else if (strcmp(fields[4], "Simulink_to_BeamNG") == 0) {
+            num_inputs += 1;
+        }
+    }
+
+    // input ports
+    if (!ssSetNumInputPorts(S, num_inputs))
       return;
 
     ssAllowSignalsWithMoreThan2D(S);
     inputDimsInfo.numDims = 2;
+    inputDimsInfo.width = IN_DIM;
+    int_T inDims[] = {IN_DIM, 1};
+    inputDimsInfo.dims = inDims;
 
-    /* Input Port  0: MESSAGE ID */
-    inputDimsInfo.width = INPUT_0_NUM_ELEMS;
-    int_T in0Dims[] = INPUT_0_DIMS_ND;
-    inputDimsInfo.dims = in0Dims;
-    ssSetInputPortDimensionInfo(S, 0, &inputDimsInfo);
-    ssSetInputPortDataType(S, 0, SS_DOUBLE);
-    ssSetInputPortComplexSignal(S, 0, INPUT_0_COMPLEX);
-    ssSetInputPortDirectFeedThrough(S, 0, INPUT_0_FEEDTHROUGH);
-    ssSetInputPortRequiredContiguous(S, 0, 1); /* direct input signal access */
+    for (int i = 0; i < num_inputs; i++) {
+        ssSetInputPortDimensionInfo(S, i, &inputDimsInfo);
+        ssSetInputPortDataType(S, i, SS_DOUBLE);
+        ssSetInputPortComplexSignal(S, i, COMPLEX_NO);
+        ssSetInputPortDirectFeedThrough(S, i, 1);
+        ssSetInputPortRequiredContiguous(S, i, 1); /* direct input signal access */
+    }
 
-    /* Input Port  1: CORE */
-    inputDimsInfo.width = INPUT_1_NUM_ELEMS;
-    int_T in1Dims[] = INPUT_1_DIMS_ND;
-    inputDimsInfo.dims = in1Dims;
-    ssSetInputPortDimensionInfo(S, 1, &inputDimsInfo);
-    ssSetInputPortDataType(S, 1, SS_DOUBLE);
-    ssSetInputPortComplexSignal(S, 1, INPUT_1_COMPLEX);
-    ssSetInputPortDirectFeedThrough(S, 1, INPUT_1_FEEDTHROUGH);
-    ssSetInputPortRequiredContiguous(S, 1, 1); /* direct input signal access */
-
-    /* Input Port  0: CUSTOM */
-    inputDimsInfo.width = INPUT_2_NUM_ELEMS;
-    int_T in2Dims[] = INPUT_2_DIMS_ND;
-    inputDimsInfo.dims = in2Dims;
-    ssSetInputPortDimensionInfo(S, 2, &inputDimsInfo);
-    ssSetInputPortDataType(S, 2, SS_DOUBLE);
-    ssSetInputPortComplexSignal(S, 2, INPUT_2_COMPLEX);
-    ssSetInputPortDirectFeedThrough(S, 2, INPUT_2_FEEDTHROUGH);
-    ssSetInputPortRequiredContiguous(S, 2, 1); /* direct input signal access */
-
-    if (!ssSetNumOutputPorts(S, NUM_OUTPUTS))
+    // output ports
+    if (!ssSetNumOutputPorts(S, num_outputs))
       return;
 
-    /* Output Port 0: MESSAGE ID */
-    ssSetOutputPortWidth(S, 0, OUTPUT_0_NUM_ELEMS);
-    ssSetOutputPortDataType(S, 0, SS_DOUBLE);
-    ssSetOutputPortComplexSignal(S, 0, OUTPUT_0_COMPLEX);
-    ssSetNumPWork(S, 0);
-    ssSetNumRWork(S, 0);
-    ssSetNumIWork(S, 0);
-    ssSetNumModes(S, 0);
-    ssSetNumNonsampledZCs(S, 0);
-
-    /* Output Port 1: DRIVER_CONTROLS */
-    ssSetOutputPortWidth(S, 1, OUTPUT_1_NUM_ELEMS);
-    ssSetOutputPortDataType(S, 1, SS_DOUBLE);
-    ssSetOutputPortComplexSignal(S, 1, OUTPUT_1_COMPLEX);
-    ssSetNumPWork(S, 1);
-    ssSetNumRWork(S, 1);
-    ssSetNumIWork(S, 1);
-    ssSetNumModes(S, 1);
-    ssSetNumNonsampledZCs(S, 1);
-
-    /* Output Port 2: BODY_STATE */
-    ssSetOutputPortWidth(S, 2, OUTPUT_2_NUM_ELEMS);
-    ssSetOutputPortDataType(S, 2, SS_DOUBLE);
-    ssSetOutputPortComplexSignal(S, 2, OUTPUT_2_COMPLEX);
-    ssSetNumPWork(S, 2);
-    ssSetNumRWork(S, 2);
-    ssSetNumIWork(S, 2);
-    ssSetNumModes(S, 2);
-    ssSetNumNonsampledZCs(S, 2);
-
-    /* Output Port 3: STATUS */
-    ssSetOutputPortWidth(S, 3, OUTPUT_3_NUM_ELEMS);
-    ssSetOutputPortDataType(S, 3, SS_DOUBLE);
-    ssSetOutputPortComplexSignal(S, 3, OUTPUT_3_COMPLEX);
-    ssSetNumPWork(S, 3);
-    ssSetNumRWork(S, 3);
-    ssSetNumIWork(S, 3);
-    ssSetNumModes(S, 3);
-    ssSetNumNonsampledZCs(S, 3);
-
-    /* Output Port 4: WHEEL_FL */
-    ssSetOutputPortWidth(S, 4, OUTPUT_4_NUM_ELEMS);
-    ssSetOutputPortDataType(S, 4, SS_DOUBLE);
-    ssSetOutputPortComplexSignal(S, 4, OUTPUT_4_COMPLEX);
-    ssSetNumPWork(S, 4);
-    ssSetNumRWork(S, 4);
-    ssSetNumIWork(S, 4);
-    ssSetNumModes(S, 4);
-    ssSetNumNonsampledZCs(S, 4);
-
-    /* Output Port 5: WHEEL_FR */
-    ssSetOutputPortWidth(S, 5, OUTPUT_5_NUM_ELEMS);
-    ssSetOutputPortDataType(S, 5, SS_DOUBLE);
-    ssSetOutputPortComplexSignal(S, 5, OUTPUT_5_COMPLEX);
-    ssSetNumPWork(S, 5);
-    ssSetNumRWork(S, 5);
-    ssSetNumIWork(S, 5);
-    ssSetNumModes(S, 5);
-    ssSetNumNonsampledZCs(S, 5);
-
-    /* Output Port 6: WHEEL_RL */
-    ssSetOutputPortWidth(S, 6, OUTPUT_6_NUM_ELEMS);
-    ssSetOutputPortDataType(S, 6, SS_DOUBLE);
-    ssSetOutputPortComplexSignal(S, 6, OUTPUT_6_COMPLEX);
-    ssSetNumPWork(S, 6);
-    ssSetNumRWork(S, 6);
-    ssSetNumIWork(S, 6);
-    ssSetNumModes(S, 6);
-    ssSetNumNonsampledZCs(S, 6);
-
-    /* Output Port 7: WHEEL_RR */
-    ssSetOutputPortWidth(S, 7, OUTPUT_7_NUM_ELEMS);
-    ssSetOutputPortDataType(S, 7, SS_DOUBLE);
-    ssSetOutputPortComplexSignal(S, 7, OUTPUT_7_COMPLEX);
-    ssSetNumPWork(S, 7);
-    ssSetNumRWork(S, 7);
-    ssSetNumIWork(S, 7);
-    ssSetNumModes(S, 7);
-    ssSetNumNonsampledZCs(S, 7);
-
-    /* Output Port 8: CUSTOM */
-    ssSetOutputPortWidth(S, 8, OUTPUT_8_NUM_ELEMS);
-    ssSetOutputPortDataType(S, 8, SS_DOUBLE);
-    ssSetOutputPortComplexSignal(S, 8, OUTPUT_8_COMPLEX);
-    ssSetNumPWork(S, 8);
-    ssSetNumRWork(S, 8);
-    ssSetNumIWork(S, 8);
-    ssSetNumModes(S, 8);
-    ssSetNumNonsampledZCs(S, 8);
+    for (int i = 0; i < num_outputs; i++) {
+        ssSetOutputPortWidth(S, i, OUT_DIM);
+        ssSetOutputPortDataType(S, i, SS_DOUBLE);
+        ssSetOutputPortComplexSignal(S, i, COMPLEX_NO);
+        ssSetNumPWork(S, i);
+        ssSetNumRWork(S, i);
+        ssSetNumIWork(S, i);
+        ssSetNumModes(S, i);
+        ssSetNumNonsampledZCs(S, i);
+    }
 
     ssSetSimulinkVersionGeneratedIn(S, "10.6");
     ssSetNumSampleTimes(S, 1);
@@ -481,29 +340,7 @@ static void mdlInitializeSampleTimes(SimStruct *S)
 static void mdlOutputs(SimStruct *S, int_T tid)
 {
     // this function is called at each iteration
-    const real_T *u0 = (real_T *) ssGetInputPortRealSignal(S, 0);
-    const real_T *u1 = (real_T *) ssGetInputPortRealSignal(S, 1);
-    const real_T *u2 = (real_T *) ssGetInputPortRealSignal(S, 2);
-
-    real_T *y0 = (real_T *) ssGetOutputPortRealSignal(S, 0);
-    real_T *y1 = (real_T *) ssGetOutputPortRealSignal(S, 1);
-    real_T *y2 = (real_T *) ssGetOutputPortRealSignal(S, 2);
-    real_T *y3 = (real_T *) ssGetOutputPortRealSignal(S, 3);
-    real_T *y4 = (real_T *) ssGetOutputPortRealSignal(S, 4);
-    real_T *y5 = (real_T *) ssGetOutputPortRealSignal(S, 5);
-    real_T *y6 = (real_T *) ssGetOutputPortRealSignal(S, 6);
-    real_T *y7 = (real_T *) ssGetOutputPortRealSignal(S, 7);
-    real_T *y8 = (real_T *) ssGetOutputPortRealSignal(S, 8);
-
-    const int y0Size = (int) ssGetOutputPortWidth(S, 0) * sizeof(double);
-    const int y1Size = (int) ssGetOutputPortWidth(S, 1) * sizeof(double);
-    const int y2Size = (int) ssGetOutputPortWidth(S, 2) * sizeof(double);
-    const int y3Size = (int) ssGetOutputPortWidth(S, 3) * sizeof(double);
-    const int y4Size = (int) ssGetOutputPortWidth(S, 4) * sizeof(double);
-    const int y5Size = (int) ssGetOutputPortWidth(S, 5) * sizeof(double);
-    const int y6Size = (int) ssGetOutputPortWidth(S, 6) * sizeof(double);
-    const int y7Size = (int) ssGetOutputPortWidth(S, 7) * sizeof(double);
-    const int y8Size = (int) ssGetOutputPortWidth(S, 8) * sizeof(double);
+    real_T *y = (real_T *) ssGetOutputPortRealSignal(S, 0);
 
     char recvData[BUF_SIZE];
     double recvArray[BUF_SIZE / sizeof(double)];
@@ -524,13 +361,13 @@ static void mdlOutputs(SimStruct *S, int_T tid)
         linuxReceive(recvData, S);
         #endif
 
-        memcpy(y0, &recvData[recvReadPos], y0Size);
+        memcpy(y, &recvData[recvReadPos], sizeof(double));
 
-        if (y0[0] > maxId) {
+        if (y[0] > maxId) {
             invalid = false;
             uniqueId = true;
-            maxId = y0[0];
-        } else if (y0[0] == maxId && uniqueId) {
+            maxId = y[0];
+        } else if (y[0] == maxId && uniqueId) {
             invalid = false;
             uniqueId = false;
         } else {
@@ -545,33 +382,21 @@ static void mdlOutputs(SimStruct *S, int_T tid)
         }
     }
 
-    recvReadPos += y0Size;
-    memcpy(y1, &recvData[recvReadPos], y1Size);
-    recvReadPos += y1Size;
-    memcpy(y2, &recvData[recvReadPos], y2Size);
-    recvReadPos += y2Size;
-    memcpy(y3, &recvData[recvReadPos], y3Size);
-    recvReadPos += y3Size;
-    memcpy(y4, &recvData[recvReadPos], y4Size);
-    recvReadPos += y4Size;
-    memcpy(y5, &recvData[recvReadPos], y5Size);
-    recvReadPos += y5Size;
-    memcpy(y6, &recvData[recvReadPos], y6Size);
-    recvReadPos += y6Size;
-    memcpy(y7, &recvData[recvReadPos], y7Size);
-    recvReadPos += y7Size;
-    memcpy(y8, &recvData[recvReadPos], y8Size);
+    for (int i = 0; i < num_outputs; i++) {
+        real_T *y = (real_T *) ssGetOutputPortRealSignal(S, i);
+        memcpy(y, &recvData[recvReadPos], sizeof(double));
+        recvReadPos += sizeof(double);
+    }
 
-    const int u0Size = (int) ssGetInputPortWidth(S, 0) * sizeof(double);
-    const int u1Size = (int) ssGetInputPortWidth(S, 1) * sizeof(double);
-    const int u2Size = (int) ssGetInputPortWidth(S, 2) * sizeof(double);
-    const int sizeOfInputData = u0Size + u1Size + u2Size;
-
+    const int sizeOfInputData = num_inputs * sizeof(double);
     char sendData[sizeOfInputData];
 
-    memcpy(&sendData[0], u0, u0Size);
-    memcpy(&sendData[u0Size], u1, u1Size);
-    memcpy(&sendData[u0Size + u1Size], u2, u2Size);
+    int sendCopyPos = 0;
+    for (int i = 0; i < num_inputs; i++) {
+        real_T *u = (real_T *) ssGetInputPortRealSignal(S, i);
+        memcpy(&sendData[sendCopyPos], u, sizeof(double));
+        sendCopyPos += sizeof(double);
+    }
 
     #ifdef _WIN32
     windowsSend(sendData, sizeOfInputData, OUT_UDPPORT, OUT_UDPADDR);
