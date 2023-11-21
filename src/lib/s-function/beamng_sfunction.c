@@ -269,9 +269,9 @@ static void mdlInitializeSizes(SimStruct *S)
             token = strtok(NULL, ",");
         }
 
-        if (strcmp(fields[4], "BeamNG_to_Simulink") == 0) {
+        if (strcmp(fields[3], "BeamNG_to_Simulink") == 0) {
             num_outputs += 1;
-        } else if (strcmp(fields[4], "Simulink_to_BeamNG") == 0) {
+        } else if (strcmp(fields[3], "Simulink_to_BeamNG") == 0) {
             num_inputs += 1;
         }
     }
