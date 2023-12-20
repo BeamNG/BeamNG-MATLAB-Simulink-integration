@@ -459,8 +459,8 @@ Running the BeamNG-MATLAB-Simulink generic interface requires three individual s
 | BeamNG.tech | BeamNGpy | BeamNG-MATLAB-Simulink-integration | MATLAB | Python  |
 |-------------|----------|---------------------------|--------|---------|
 | [0.31](https://beamng.tech/blog/beamng-tech-031/)   | [1.28](https://github.com/BeamNG/BeamNGpy/releases/tag/v1.28)     | [1.2.0.0](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/releases/tag/v1.2.0)                     | [R2022b & later](https://www.mathworks.com/downloads)  | [3.9](https://www.python.org/downloads/release/python-390/)  | 
-| [0.28](https://beamng.tech/blog/beamng-tech-028/)   | [1.26.1](https://github.com/BeamNG/BeamNGpy/releases/tag/v1.26.1)     | [1.1.0.0](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/releases/tag/v1.1.0)                     | [R2022b & later](https://www.mathworks.com/downloads)  | [3.9](https://www.python.org/downloads/release/python-390/)  | 
-| [0.27](https://beamng.tech/blog/beamng-tech-027/)   | [1.25.1](https://github.com/BeamNG/BeamNGpy/releases/tag/v1.25.1) | [1.0.0.0](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/releases/tag/v1.0.0)                     | [R2022b & later](https://www.mathworks.com/downloads)  | [3.9](https://www.python.org/downloads/release/python-390/)     | 
+| [0.30](https://beamng.tech/blog/beamng-tech-030/)   | [1.27.1](https://github.com/BeamNG/BeamNGpy/releases/tag/v1.26.1)     | [1.1.0.0](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/releases/tag/v1.1.0)                     | [R2022b & later](https://www.mathworks.com/downloads)  | [3.9](https://www.python.org/downloads/release/python-390/)  | 
+| [0.29](https://beamng.tech/blog/beamng-tech-029)   | [1.26.1](https://github.com/BeamNG/BeamNGpy/releases/tag/v1.26) | [1.0.0.0](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/releases/tag/v1.0.0)                     | [R2022b & later](https://www.mathworks.com/downloads)  | [3.9](https://www.python.org/downloads/release/python-390/)     | 
 
 
 
