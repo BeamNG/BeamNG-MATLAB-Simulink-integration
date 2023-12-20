@@ -433,7 +433,7 @@ Figure 9: The controller function of the Simulink model
 Starting positions: (-920, 870), (-870, 875), (-820, 0), (-770, 0)
 Target velocity: 50 km/h
 
-<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/0.31/media/Simulink_demo_figure_1.png" alt="Simulink_demo_figure_1" >
+<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/0.31/media/Simulink_demo_figure_1.jpg" alt="Simulink_demo_figure_1" >
 
 
 ### Example #2 Brake Test Demo:
@@ -443,7 +443,7 @@ Target velocity: 80 km/h
 End position: (-700, 767)
 
 
-<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/0.31/media/Simulink_demo_figure_2.png" alt="Simulink_demo_figure_2" >
+<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/0.31/media/Simulink_demo_figure_2.jpg" alt="Simulink_demo_figure_2" >
 
 ### Example #3 Interactive Demo:
 Torque gain: 3000
@@ -451,7 +451,7 @@ Brake torque gain: -5000
 Torque bias: 18000
 Torque rate: 400
 
-<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/0.31/media/Simulink_demo_figure_3.png" alt="Simulink_demo_figure_3" >
+<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/0.31/media/Simulink_demo_figure_3.jpg" alt="Simulink_demo_figure_3" >
 
 
 
