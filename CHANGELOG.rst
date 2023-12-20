@@ -4,8 +4,9 @@ Changelog
 
 Version 1.2.0.0
 =============
-- clean up the code 
-- Add initial position for vehicle in demo script 
+
+- update the code with latest BeamNGpy 1.28 and BeamNG.Tech 0.31
+
 
 Version 1.1.0.0
 ===========
