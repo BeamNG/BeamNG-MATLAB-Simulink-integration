@@ -21,11 +21,14 @@ Both the bridges can be use independently from each other and have different sco
 - [MATLAB bridge setup](#matlab_setup)
 - [Simulink bridge setup](#simulink_setup)
 - [Compatibility](#compatibility)
+- [Contributions](#Contributions)
 - [License](#license)
+
+<a name="matlab_setup"></a>
+
 
 ## MATLAB bridge setup
 
-<a name="matlab_setup"></a>
 
 ### 1. Setup a compatible python version   
 After installing the [compatible python version](https://www.mathworks.com/support/requirements/python-compatibility.html) with MATLAB, make sure to include the path of excutable python file (exe) in your in "path" variable of "environment variables" as explained [here](https://docs.oracle.com/en/database/oracle/machine-learning/oml4r/1.5.1/oread/creating-and-modifying-environment-variables-on-windows.html#GUID-DD6F9982-60D5-48F6-8270-A27EC53807D0).  
@@ -71,11 +74,11 @@ Get semantic annotations, instance annotations, and draw bounding boxes (note th
 
 
 
+<a name="simulink_setup"></a>
 
 
 ## Simulink Integration with BeamNG.Tech
 
-<a name="simulink_setup"></a>
 
 
 We are excited to announce that the highly requested feature of interfacing [BeamNG.Tech](https://documentation.beamng.com/beamng_tech/) in [Simulink](https://www.mathworks.com/products/simulink.html) is here. The purpose of this document is to provide details/instructions on how to use the BeamNG Simulink Vehicle Systems Interface.  The user can connect the BeamNG simulator with a specially designed Simulink [S-function](https://www.mathworks.com/help/simulink/sfg/what-is-an-s-function.html), which will allow management of a tightly coupled two-way communication between these two environments.  The major focus here is on allowing native Simulink code to control and query a vehicle in BeamNG.  This includes various powertrain properties, including wheel torques (both drive and brake), or pedal inputs.
@@ -119,7 +122,6 @@ A main thing to note here, particularly when looking over multiple frames, is th
 However, we can guarantee a fixed number of physics steps being performed on average, over reasonable lengths of time. This is important to note, especially since we are typically simulating ahead of time.
 
 
-<a name="Sim_execution"></a>
 
 ## Execution:
 
@@ -153,6 +155,7 @@ The user should ensure that the V-Sync mode is switched off in BeamNG.  If it is
 
 
 <a name="Sim_setup"></a>
+
 
 ## Setting up Simulink:
 
@@ -194,7 +197,6 @@ Figure 4: Coupling Case #2.
 
 
 
-<a name="Sim_sfunc"></a>
 
 ## S-Function Block:
 
@@ -381,7 +383,6 @@ Bank B contains space to allow the user to send any properties from Simulink to 
 Note: for both messages, we expect all values to be double precision (8 bytes). If the user wishes to send other values (eg integer or boolean), they should be converted to double-precision before forming the message.  For example, a boolean flag could be sent as 0.0 or 1.0. This is an important consideration to note since some properties are not naturally double-valued.  An standard integer, for example, is only 4 bytes - adding this to the message would alter the makeup of the contiguous data in the message, and would lead to errors.
 
 
-<a name="Sim_memory"></a>
 
 ## Simulink Memory Block:
 
@@ -393,7 +394,6 @@ We have introduced a memory block as shown in Figure 7.  In Simulink, memory blo
 
 Figure 7: The Memory Block
 
-<a name="Sim_instructions"></a>
 
 ## Instructions:
 
@@ -450,6 +450,8 @@ Torque rate: 400
 
 <a name="compatibility"></a>
 
+
+
 ## Compatibility  
 
 Running the BeamNG-MATLAB-Simulink generic interface requires three individual software components, here is a list of compatible versions.
@@ -461,12 +463,6 @@ Running the BeamNG-MATLAB-Simulink generic interface requires three individual s
 | [0.27](https://beamng.tech/blog/beamng-tech-027/)   | [1.25.1](https://github.com/BeamNG/BeamNGpy/releases/tag/v1.25.1) | [1.0.0.0](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/releases/tag/v1.0.0)                     | [R2022b & later](https://www.mathworks.com/downloads)  | [3.9](https://www.python.org/downloads/release/python-390/)     | 
 
 
-<a name="license"></a>
-
-## License
-
-This project is licensed under the BSD 3-Clause License - see the [LICENSE](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/blob/main/LICENSE) file for details.
-
 
 ## Troubleshooting
 
@@ -477,9 +473,20 @@ recommended to consult the documentation on BeamNG.drive here:
 [https://documentation.beamng.com/][8]
 
 
+<a name="Contributions"></a>
+
+
 ## Contributions
 
 We always welcome user contributions, be sure to check out our [contribution guidelines][9] first, before starting your work.
+
+
+<a name="license"></a>
+
+## License
+
+This project is licensed under the BSD 3-Clause License - see the [LICENSE](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/blob/main/LICENSE) file for details.
+
 
 [8]: https://documentation.beamng.com/
 [9]: https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/blob/master/contributing.md
