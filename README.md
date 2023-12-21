@@ -2,7 +2,7 @@
 
 [![View BeamNG-MATLAB-Simulink-integration on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://nl.mathworks.com/matlabcentral/fileexchange/136144-beamng-matlab-simulink-integration)
 
-![BeamNG-MATLAB-Simulink-integration_Toolbox](https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/0.31/media/BeamNG-MATLAB-Simulink-integration_Toolbox.png)
+![BeamNG-MATLAB-Simulink-integration_Toolbox](https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/main/media/BeamNG-MATLAB-Simulink-integration_Toolbox.png)
 
 
 
@@ -14,7 +14,6 @@ MATLAB and Simulink Support for BeamNG.tech allows to connect the Mathworks prod
 
 Both the bridges can be use independently from each other and have different scopes. However, they can be really handy when used together as in this example . 
 
-#TODO add demos example 
 
 
 ## Table of Contents
@@ -43,10 +42,10 @@ Both the bridges can be use independently from each other and have different sco
 After installing the [compatible python version](https://www.mathworks.com/support/requirements/python-compatibility.html) with MATLAB, make sure to include the path of excutable python file (exe) in your in "path" variable of "environment variables" as explained [here](https://docs.oracle.com/en/database/oracle/machine-learning/oml4r/1.5.1/oread/creating-and-modifying-environment-variables-on-windows.html#GUID-DD6F9982-60D5-48F6-8270-A27EC53807D0).  
 
 ### 2. Run pyhton engine in MATLAB 
-Run the [test_python.m](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/blob/0.31/test_python.m) to make sure that python engine is connected to your MATLAB engine as shown in the picture below. 
+Run the [test_python.m](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/blob/main/test_python.m) to make sure that python engine is connected to your MATLAB engine as shown in the picture below. 
 
 
-![Testing python in MATLAB](https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/0.31/media/test_python.png)
+![Testing python in MATLAB](https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/main/media/test_python.png)
 
 
 
@@ -60,28 +59,28 @@ We have developed 5 fundamental scripts that showcase the versatility of using t
 ### 1. Vehicle State Plot
 Use the state sensor to plot some graphs of the vehicle position, wheel speed and direction, throttle, and brake. 
 
-<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/0.31/media/vehicle_state_ploting.png" alt="Vehicle state plotting" >
+<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/main/media/vehicle_state_ploting.png" alt="Vehicle state plotting" >
 
     
 ### 2. Running Lidar sensor, and AI control. 
 Create a simple scenario and use the simulator's AI with BeamNGpy.
 
-<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/0.31/media/lidar_tour.png" alt="Lidar sensor and AI control mode" >
+<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/main/media/lidar_tour.png" alt="Lidar sensor and AI control mode" >
 
 ### 3. Multi-shot Camera    
 Change the position and rotation of a camera.
 
-<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/0.31/media/multi_shots_1.png" alt="Multi-shot Camera" >
+<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/main/media/multi_shots_1.png" alt="Multi-shot Camera" >
 
 ### 4. Object Placement    
 Define a custom scenario for a given map and generate procedural content, i.e. simple meshes.
 
-<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/0.31/media/object_placment_0.png" alt="Object Placement" >
+<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/main/media/object_placment_0.png" alt="Object Placement" >
 
 ### 5. Annotation and Bounding Boxes
 Get semantic annotations, instance annotations, and draw bounding boxes (note that this feature is not ready for use yet).
 
-<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/0.31/media/annotation_bounding_boxes.png" alt="Annotation and Bounding Boxes" >
+<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/main/media/annotation_bounding_boxes.png" alt="Annotation and Bounding Boxes" >
 
 
 
@@ -121,7 +120,7 @@ Each physics step computes exactly 0.5ms of simulation time.  This quantity is f
 
 
 
-<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/0.31/media/1_BeamNG_Multithreading.png" alt="Figure 1: BeamNG Multithreaded Architecture" >
+<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/main/media/1_BeamNG_Multithreading.png" alt="Figure 1: BeamNG Multithreaded Architecture" >
 
 
 Figure 1: BeamNG Multithreaded Architecture
@@ -182,7 +181,7 @@ where simulinkDt is the Simulink computation time, physicsDt is the BeamNG physi
 
 Figure 2 shows where this is set (highlighted in yellow).
 
-<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/0.31/media/2_Setting_The_Simulink_Simulation_Time.png" alt="Vehicle state plotting" >
+<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/main/media/2_Setting_The_Simulink_Simulation_Time.png" alt="Vehicle state plotting" >
 
 Figure 2: Setting The Simulink Simulation Time
 
@@ -196,7 +195,7 @@ In Figure 3, we have the case where the Simulink computation time is similar in 
 For efficient coupling, we need to have multiple messages sent out before any are received back in BeamNG.  Internally, BeamNG will use the two given time measurements to compute the optimal coupling management, which will send, receive and block execution at the appropriate times.
 
 
-<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/0.31/media/3_Coupling_Case_1.png" alt="Figure 3: Coupling Case #1" >
+<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/main/media/3_Coupling_Case_1.png" alt="Figure 3: Coupling Case #1" >
 
 Figure 3: Coupling Case #1
 
@@ -207,7 +206,7 @@ In Figure 4, we have the opposite case; the Simulink computation time is much sl
 Here, it is optimal to have the coupled system skip sending messages on every second physics step.  If messages were sent at this time, then Simulink would still be processing the previous step and would need to buffer them, and this buffering would lead to sync problems in a short amount of time.  The clear bottleneck here is the Simulink computation time.
 
 
-<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/0.31/media/4_Coupling_Case_2.png" alt="Figure 3: Coupling Case #1" >
+<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/main/media/4_Coupling_Case_2.png" alt="Figure 3: Coupling Case #1" >
 Figure 4: Coupling Case #2.
 
 
@@ -221,7 +220,7 @@ Let us now look at the Simulink [S-Function](https://www.mathworks.com/help/simu
 
 
 
-<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/0.31/media/5_The_Simulink_S_Function.png" alt="Figure 5: The Simulink S-Function" >
+<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/main/media/5_The_Simulink_S_Function.png" alt="Figure 5: The Simulink S-Function" >
 
 Figure 5: The Simulink S-Function
 
@@ -255,7 +254,7 @@ The S-function is designed to transfer data between Simulink and BeamNG using th
 
 
 
-<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/0.31/media/6_S_function_block.png" alt="Figure 5: The Simulink S-Function" >
+<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/main/media/6_S_function_block.png" alt="Figure 5: The Simulink S-Function" >
 
 Figure 6: S-function block
 
@@ -416,7 +415,7 @@ We have introduced a memory block as shown in Figure 7.  In Simulink, memory blo
 
 
 
-<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/0.31/media/7_The_Memory_Block.png" alt="Figure 7: The Memory Block" >
+<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/main/media/7_The_Memory_Block.png" alt="Figure 7: The Memory Block" >
 
 Figure 7: The Memory Block
 
@@ -440,21 +439,21 @@ The Simulink process should also be started.  If BeamNG is not running, Simulink
 When communication has been established over the UDP send and recieve sockets (after both ends of the communication have start executing), the tight coupling process will commence.
 
 
-<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/0.31/media/8_The_Console_Window_Command_Bar.png" alt="Figure 8: The Console Window Command Bar" >
+<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/main/media/8_The_Console_Window_Command_Bar.png" alt="Figure 8: The Console Window Command Bar" >
 
 
 Figure 8: The Console Window Command Bar
 
 ## Simulink Examples :
 
-We have provided some Simulink code examples to help the user see the BeamNG-Simulink coupling in action. If the user wishes to execute these examples, the three control parameters described in this document (window width, send wait, send offset) should be set up appropriately. The examples can be found in the  repository named as [beamng_simulink_interface_vehicle_control_demos.slx](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/blob/0.31/src/examples/simulink/beamng_simulink_interface_vehicle_control_demos.slx) , and are briefly described below:
+We have provided some Simulink code examples to help the user see the BeamNG-Simulink coupling in action. If the user wishes to execute these examples, the three control parameters described in this document (window width, send wait, send offset) should be set up appropriately. The examples can be found in the  repository named as [beamng_simulink_interface_vehicle_control_demos.slx](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/blob/main/src/examples/simulink/beamng_simulink_interface_vehicle_control_demos.slx) , and are briefly described below:
 
 
 
 
 
 
-<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/0.31/media/9_The_controller_function_of_the_Simulink_model.png" alt="Figure 9: The controller function of the Simulink model" >
+<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/main/media/9_The_controller_function_of_the_Simulink_model.png" alt="Figure 9: The controller function of the Simulink model" >
 
 Figure 9: The controller function of the Simulink model
 
@@ -464,10 +463,10 @@ Figure 9: The controller function of the Simulink model
 ## MATLAB and Simulink Examples:
 
 
-We have provided some Simulink live script examples to help the user see the BeamNG-MATLAB-Simulink coupling in action. The examples can be found in the repository named as [beamng_simulink_and_matlab_interface_demos.mlx](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/blob/0.31/src/examples/simulink/beamng_simulink_and_matlab_interface_demos.mlx) , and are briefly described below: 
+We have provided some Simulink live script examples to help the user see the BeamNG-MATLAB-Simulink coupling in action. The examples can be found in the repository named as [beamng_simulink_and_matlab_interface_demos.mlx](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/blob/main/src/examples/simulink/beamng_simulink_and_matlab_interface_demos.mlx) , and are briefly described below: 
 
 
-<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/0.31/media/matlab_simulink_exmaples.png" alt="Figure 9: The controller function of the Simulink model" >
+<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/main/media/matlab_simulink_exmaples.png" alt="Figure 9: The controller function of the Simulink model" >
 
 Figure 9: The controller function of the Simulink model that run from MATLAB 
 
@@ -496,7 +495,7 @@ The user is able to test a basic controller to maintain an angle of the vehicle 
 Starting positions: (-920, 870), (-870, 875), (-820, 0), (-770, 0)
 Target velocity: 50 km/h
 
-<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/0.31/media/Simulink_demo_figure_1.jpg" alt="Simulink_demo_figure_1" >
+<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/main/media/Simulink_demo_figure_1.jpg" alt="Simulink_demo_figure_1" >
 
 
 ### Example #2 Brake Test Demo:
@@ -506,7 +505,7 @@ Target velocity: 80 km/h
 End position: (-700, 767)
 
 
-<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/0.31/media/Simulink_demo_figure_2.jpg" alt="Simulink_demo_figure_2" >
+<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/main/media/Simulink_demo_figure_2.jpg" alt="Simulink_demo_figure_2" >
 
 ### Example #3 Interactive Demo:
 Torque gain: 3000
@@ -514,7 +513,7 @@ Brake torque gain: -5000
 Torque bias: 18000
 Torque rate: 400
 
-<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/0.31/media/Simulink_demo_figure_3.jpg" alt="Simulink_demo_figure_3" >
+<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/main/media/Simulink_demo_figure_3.jpg" alt="Simulink_demo_figure_3" >
 
 
 
