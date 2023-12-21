@@ -19,13 +19,22 @@ Both the bridges can be use independently from each other and have different sco
 
 ## Table of Contents
 - [MATLAB bridge setup](#matlab_setup)
-- [Simulink bridge setup](#simulink_setup)
+    - [ Getting Started with MATLAB bridge](#matlab_start)  
+- [Simulink bridge](#simulink_start)
+    - [BeamNG Architecture Considerations](#Architecture)
+    - [Setting up Simulink](#simulink_setup)
+    - [S-Function](#s_function)
+    - [Inputs and Outputs](#inputs_outputs)
+    - [Simulink Memory Block](#Simulink_Memory_Block)
+    - [Instructions](#Instructions)
+
+- [MATLAB and Simulink Example](#matlab_simulink_exmaples)
 - [Compatibility](#compatibility)
 - [Contributions](#Contributions)
 - [License](#license)
 
-<a name="matlab_setup"></a>
 
+<a name="matlab_setup"></a>
 
 ## MATLAB bridge setup
 
@@ -41,7 +50,10 @@ Run the [test_python.m](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integra
 
 
 
-## Getting Started
+<a name="matlab_start"></a>
+
+
+## Getting Started with MATLAB bridge 
 
 We have developed 5 fundamental scripts that showcase the versatility of using the MATLAB bridge to launch the Beamng.Tech simulator. These scripts demonstrate various capabilities such as utilizing sensors, creating scenarios, capturing screenshots from multiple viewpoints, analyzing movements, and visualizing sensors including lidar, depth camera, and AI driving for the vehicle.
 
@@ -74,7 +86,7 @@ Get semantic annotations, instance annotations, and draw bounding boxes (note th
 
 
 
-<a name="simulink_setup"></a>
+<a name="simulink_start"></a>
 
 
 ## Simulink Integration with BeamNG.Tech
@@ -85,9 +97,12 @@ We are excited to announce that the highly requested feature of interfacing [Bea
 
 
 
-### Tight-Coupling:
+###  BeamNG Architecture Considerations:
 
-#### BeamNG Architecture Considerations:
+
+<a name="Architecture"></a>
+
+#### Tight-Coupling:
 
 BeamNG operates within a multi-threaded architecture.  Graphics rendering, collision detection, UI etc. all run on separate threads.  Also running on its own thread are the physics computations.
 
@@ -154,7 +169,7 @@ When this value has been computed, the pingTime property in the BeamNG controlle
 The user should ensure that the V-Sync mode is switched off in BeamNG.  If it is switched on, optimal coupling will not be achieved since V-Sync will add extra latency.  This option can be found in the Display menu on the main options screen (press ESC).
 
 
-<a name="Sim_setup"></a>
+<a name="simulink_setup"></a>
 
 
 ## Setting up Simulink:
@@ -197,6 +212,7 @@ Figure 4: Coupling Case #2.
 
 
 
+<a name="s_function"></a>
 
 ## S-Function Block:
 
@@ -211,7 +227,12 @@ Figure 5: The Simulink S-Function
 
 
 
+<a name="inputs_outputs"></a>
+
+
 ### Inputs and Outputs:
+
+
 
 The BeamNG S-function block is shown in Figure 6.  The inputs are controlled with a message of fixed format, and the outputs are controlled with another message with a different fixed format.  These are both described below in detail.
 
@@ -383,8 +404,13 @@ Bank B contains space to allow the user to send any properties from Simulink to 
 Note: for both messages, we expect all values to be double precision (8 bytes). If the user wishes to send other values (eg integer or boolean), they should be converted to double-precision before forming the message.  For example, a boolean flag could be sent as 0.0 or 1.0. This is an important consideration to note since some properties are not naturally double-valued.  An standard integer, for example, is only 4 bytes - adding this to the message would alter the makeup of the contiguous data in the message, and would lead to errors.
 
 
+<a name="Simulink_Memory_Block"></a>
+
 
 ## Simulink Memory Block:
+
+
+
 
 We have introduced a memory block as shown in Figure 7.  In Simulink, memory blocks are used to store the previous value of a signal or variable, so that it can be accessed in a subsequent iteration of the simulation. They are necessary when modeling systems with delays or feedback loops, where different parts of the model may not process at the same time.  Memory blocks enable the storage and retrieval of values across multiple time steps, allowing for the implementation of feedback loops and the handling of delayed responses.
 
@@ -394,8 +420,12 @@ We have introduced a memory block as shown in Figure 7.  In Simulink, memory blo
 
 Figure 7: The Memory Block
 
+<a name="Instructions"></a>
+
 
 ## Instructions:
+
+
 
 The Lua controller must be loaded in order to start the tight coupling.  We can do this with the following three steps:
 
@@ -415,17 +445,50 @@ When communication has been established over the UDP send and recieve sockets (a
 
 Figure 8: The Console Window Command Bar
 
-<a name="Sim_exmaples"></a>
+## Simulink Examples :
 
-## Examples:
+We have provided some Simulink code examples to help the user see the BeamNG-Simulink coupling in action. If the user wishes to execute these examples, the three control parameters described in this document (window width, send wait, send offset) should be set up appropriately. The examples can be found in the  repository named as [beamng_simulink_interface_vehicle_control_demos.slx](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/blob/0.31/src/examples/simulink/beamng_simulink_interface_vehicle_control_demos.slx) , and are briefly described below:
 
-We have provided some Simulink code examples to help the user see the BeamNG-Simulink coupling in action.  If the user wishes to execute these examples, the three control parameters described in this document (window width, send wait, send offset) should be set up appropriately.  The examples can be found in the repository, and are briefly described below: 
 
- 
+
+
+
 
 <img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/0.31/media/9_The_controller_function_of_the_Simulink_model.png" alt="Figure 9: The controller function of the Simulink model" >
 
 Figure 9: The controller function of the Simulink model
+
+
+<a name="matlab_simulink_exmaples"></a>
+
+## MATLAB and Simulink Examples:
+
+
+We have provided some Simulink live script examples to help the user see the BeamNG-MATLAB-Simulink coupling in action. The examples can be found in the repository named as [beamng_simulink_and_matlab_interface_demos.mlx](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/blob/0.31/src/examples/simulink/beamng_simulink_and_matlab_interface_demos.mlx) , and are briefly described below: 
+
+
+<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/0.31/media/matlab_simulink_exmaples.png" alt="Figure 9: The controller function of the Simulink model" >
+
+Figure 9: The controller function of the Simulink model that run from MATLAB 
+
+
+### Example #1:
+
+The user is able to test a basic controller to maintain the speed limit at using pedals of the vehicle.  The speed limit can be edited speed_input constant as shown in Figure 9.  Switching the vehicle control from torque to pedal by the toggle switch at the bottom of the model. 
+
+
+
+### Example #2:
+
+The user is able to test a basic controller to maintain the speed limit using only the wheel torque. User can switch from the torque control by using the toggle switch at the bottom of the model in Figure 9.
+
+
+
+### Example #3:
+
+The user is able to test a basic controller to maintain an angle of the vehicle in the map using Desired_steering_angle_input constant as shown in Figure 9. switching the vehicle control from torque to pedal by the toggle switch at the bottom of the model. 
+
+ 
 
 
 ### Example #1 Double Lane Change Demo:
@@ -455,11 +518,13 @@ Torque rate: 400
 
 
 
+
+
 <a name="compatibility"></a>
 
-
-
 ## Compatibility  
+
+
 
 Running the BeamNG-MATLAB-Simulink generic interface requires three individual software components, here is a list of compatible versions.
 
@@ -480,10 +545,11 @@ recommended to consult the documentation on BeamNG.drive here:
 [https://documentation.beamng.com/][8]
 
 
+
 <a name="Contributions"></a>
 
-
 ## Contributions
+
 
 We always welcome user contributions, be sure to check out our [contribution guidelines][9] first, before starting your work.
 
@@ -491,6 +557,7 @@ We always welcome user contributions, be sure to check out our [contribution gui
 <a name="license"></a>
 
 ## License
+
 
 This project is licensed under the BSD 3-Clause License - see the [LICENSE](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/blob/main/LICENSE) file for details.
 
