@@ -431,7 +431,7 @@ The Lua controller must be loaded in order to start the tight coupling.  We can 
 1. Launch the BeamNG.drive simulator and navigate to the main menu.
 2. Select the "Freeroam" option to enter the free-roaming mode.
 3. Choose your preferred map from the available options.
-4. Access the Lua console debug window by pressing the backtick (`) key.
+4. Access the Lua console debug window by pressing the backtick (`) key or the tilde (~) key.
 5. The vehicle should then be selected at the bottom-left of this screen (usually this will be “BeamNG - Current Vehicle”).
 6. The following command should be typed into the command bar, to load the controller:  “controller.loadControllerExternal('tech/vehicleSystemsCoupling', 'vehicleSystemsCoupling', {})”
 
