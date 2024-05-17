@@ -41,13 +41,4 @@
          <file>examples/matlab/html/vehicle_state_plotting.html</file>
       </demoitem>
    </demosection>
-   <demosection>
-      <label>simulink</label>
-      <demoitem>
-         <label>simulink_demos</label>
-         <type>other</type>
-         <source>simulink_demos</source>
-         <file>examples/simulink/html/simulink_demos.html</file>
-      </demoitem>
-   </demosection>
 </demos>

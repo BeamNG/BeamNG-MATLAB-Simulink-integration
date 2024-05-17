@@ -2,19 +2,28 @@
 Changelog
 =========
 
-Version 1.2.0.0
+Version 1.3.0
 =============
 
-- update the code with latest BeamNGpy 1.28 and BeamNG.Tech 0.31
+- Added Simulink integration using FMI
+- Added Examples with FMI 
+- Added csv parser to the S-function
+- Added the integration with co-simulation tool in BeamNG.tech 
+- updated the code with latest BeamNGpy 1.29 and BeamNG.tech 0.32
+
+Version 1.2.0
+=============
+
+- updated the code with latest BeamNGpy 1.28 and BeamNG.tech 0.31
 
 
-Version 1.1.0.0
+Version 1.1.0
 ===========
 
-- update the code with latest BeamNGpy 1.26 and BeamNG.Tech 0.28
+- updated the code with latest BeamNGpy 1.26 and BeamNG.tech 0.28
 
 
-Version 1.0.0.0
+Version 1.0.0
 ===========
 - We have developed Five fundamental scripts that showcase the versatility of using the MATLAB bridge to launch the Beamng.Tech simulator. 
 - the Five scripts are: 

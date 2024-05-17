@@ -12,9 +12,9 @@ When contributing to this repository, please first discuss the change you wish t
 
 ### Accepting the Contributor License Agreement
 
-If you are a submitting work on behalf of yourself, then read through [this form](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/blob/master/CLA-individual.pdf) and send a mail to tech@beamng.gmbh agreeing to the contributor license agreement. The mail should contain your full name, your GitHub username, your address, your phone number, email and explicitly state that you agree to the **"BeamNG-MATLAB-Simulink-integration Individual Contributor License Agreement"**.
+If you are a submitting work on behalf of yourself, then read through [this form](CLA-individual.pdf) and send a mail to tech@beamng.gmbh agreeing to the contributor license agreement. The mail should contain your full name, your GitHub username, your address, your phone number, email and explicitly state that you agree to the **"BeamNG-MATLAB-Simulink-integration Individual Contributor License Agreement"**.
 
-If you are a submitting work on behalf of your employer, then read through [this form](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/blob/master/CLA-entity.pdf) and send a mail to tech@beamng.gmbh agreeing to the contributor license agreement. The mail should contain your full name, the name of your organization, your GitHub username, your address, your phone number, email and explicitly state that you agree to the **"BeamNG-MATLAB-Simulink-integration Entity Contributor License Agreement"**.
+If you are a submitting work on behalf of your employer, then read through [this form](CLA-entity.pdf) and send a mail to tech@beamng.gmbh agreeing to the contributor license agreement. The mail should contain your full name, the name of your organization, your GitHub username, your address, your phone number, email and explicitly state that you agree to the **"BeamNG-MATLAB-Simulink-integration Entity Contributor License Agreement"**.
 
 ### Submitting Your Contribution
 

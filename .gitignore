@@ -1,2 +1,5 @@
 slprj/
 *.slxc
+*.original
+*.bak
+*.r2022b

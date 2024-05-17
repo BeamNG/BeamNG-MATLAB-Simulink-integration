@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.toolbox" plugin-version="1.0">
-  <configuration build-checksum="2682585833" file="C:\Users\matti\Documents\Work\BeamNG\GitHub repos\BeamNG-MATLAB-Simulink-integration\MATLAB and Simulink Support for BeamNG.tech.prj" location="C:\Users\matti\Documents\Work\BeamNG\GitHub repos\BeamNG-MATLAB-Simulink-integration" name="MATLAB and Simulink Support for BeamNG.tech" target="target.toolbox" target-name="Package Toolbox">
+  <configuration build-checksum="1053822612" file="D:\BeamNG_Technical\repositories\Gitlab\beamng-matlab-simulink-integration\MATLAB and Simulink Support for BeamNG.tech.prj" location="D:\BeamNG_Technical\repositories\Gitlab\beamng-matlab-simulink-integration" name="MATLAB and Simulink Support for BeamNG.tech" target="target.toolbox" target-name="Package Toolbox">
     <param.appname>MATLAB and Simulink Support for BeamNG.tech</param.appname>
     <param.authnamewatermark>BeamNG GmbH</param.authnamewatermark>
     <param.email>tech@beamng.gmbh</param.email>
@@ -10,7 +10,7 @@
 - MATLAB &lt;&gt; BeamNGpy &lt;&gt; BeamNG.tech
 - Simulink &lt;&gt; BeamNG.tech</param.description>
     <param.screenshot>${PROJECT_ROOT}\src\pictures\BeamNG-complete-logo.png</param.screenshot>
-    <param.version>1.1.0</param.version>
+    <param.version>1.3.0</param.version>
     <param.output>${PROJECT_ROOT}\MATLAB and Simulink Support for BeamNG.tech.mltbx</param.output>
     <param.products.name>
       <item>MATLAB</item>
@@ -21,30 +21,12 @@
       <item>2</item>
     </param.products.id>
     <param.products.version>
-      <item>9.13</item>
-      <item>10.6</item>
+      <item>23.2</item>
+      <item>23.2</item>
     </param.products.version>
     <param.platforms />
-    <param.guid>459aad13-bd9d-4eaf-96e7-0c6d5e55b01f</param.guid>
-    <param.exclude.filters>% List files contained in your toolbox folder that you would like to exclude
-% from packaging.  Excludes should be listed relative to the toolbox folder.
-% Some examples of how to specify excludes are provided below:
-%
-% A single file in the toolbox folder:
-% .svn
-%
-% A single file in a subfolder of the toolbox folder:
-% example/.svn
-%
-% All files in a subfolder of the toolbox folder:
-% example/*
-%
-% All files of a certain name in all subfolders of the toolbox folder:
-% **/.svn
-%
-% All files matching a pattern in all subfolders of the toolbox folder:
-% **/*.bak
-%</param.exclude.filters>
+    <param.guid>75942b9a-64cc-4fa0-ac94-65e199d93865</param.guid>
+    <param.exclude.filters />
     <param.exclude.pcodedmfiles>true</param.exclude.pcodedmfiles>
     <param.examples>&lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;examples&gt;
@@ -75,32 +57,19 @@
          &lt;file type="thumbnail"/&gt;
       &lt;/example&gt;
    &lt;/exampleCategory&gt;
-   &lt;exampleCategory name="simulink"&gt;
-      &lt;example name="simulink_demos" type="html"&gt;
-         &lt;file type="source"&gt;/examples/simulink/html/simulink_demos.html&lt;/file&gt;
-         &lt;file type="main"&gt;/examples/simulink/simulink_demos.mlx&lt;/file&gt;
-         &lt;file type="thumbnail"/&gt;
-      &lt;/example&gt;
-   &lt;/exampleCategory&gt;
 &lt;/examples&gt;</param.examples>
     <param.demosxml />
     <param.apps />
     <param.registered.apps />
     <param.docs>${PROJECT_ROOT}\src\info.xml</param.docs>
     <param.getting.started.guide>${PROJECT_ROOT}\src\doc\GettingStarted.mlx</param.getting.started.guide>
-    <param.matlabpath.excludes>
-      <item>/examples/simulink/slprj</item>
-      <item>/examples/simulink/slprj/sim</item>
-      <item>/examples/simulink/slprj/sim/varcache</item>
-      <item>/examples/simulink/slprj/sim/varcache/beamng_simulink_interface_demos</item>
-      <item>/examples/simulink/slprj/sim/varcache/beamng_simulink_interface_demos/tmwinternal</item>
-    </param.matlabpath.excludes>
+    <param.matlabpath.excludes />
     <param.javaclasspath.excludes />
     <param.exported.on.package>false</param.exported.on.package>
     <param.required.addons />
     <param.matlab.project.id />
     <param.matlab.project.name />
-    <param.release.start>R2022b</param.release.start>
+    <param.release.start>R2020b</param.release.start>
     <param.release.end>latest</param.release.end>
     <param.release.current.only>false</param.release.current.only>
     <param.compatiblity.windows>true</param.compatiblity.windows>
@@ -116,10 +85,12 @@
     <unset>
       <param.output />
       <param.platforms />
+      <param.exclude.filters />
       <param.exclude.pcodedmfiles />
       <param.demosxml />
       <param.apps />
       <param.registered.apps />
+      <param.matlabpath.excludes />
       <param.javaclasspath.excludes />
       <param.exported.on.package />
       <param.required.addons />
@@ -144,53 +115,24 @@
       <file>${PROJECT_ROOT}\src\info.xml</file>
       <file>${PROJECT_ROOT}\src\lib</file>
       <file>${PROJECT_ROOT}\src\pictures</file>
+      <file>${PROJECT_ROOT}\src\slprj</file>
     </fileset.rootfiles>
     <fileset.depfun.included />
     <fileset.depfun.excluded />
     <fileset.package />
     <build-deliverables>
-      <file location="${PROJECT_ROOT}" name="MATLAB and Simulink Support for BeamNG.tech.mltbx" optional="false">C:\Users\matti\Documents\Work\BeamNG\GitHub repos\BeamNG-MATLAB-Simulink-integration\MATLAB and Simulink Support for BeamNG.tech.mltbx</file>
+      <file location="${PROJECT_ROOT}" name="MATLAB and Simulink Support for BeamNG.tech.mltbx" optional="false">D:\BeamNG_Technical\repositories\Gitlab\beamng-matlab-simulink-integration\MATLAB and Simulink Support for BeamNG.tech.mltbx</file>
     </build-deliverables>
     <workflow />
     <matlab>
-      <root>C:\Program Files\MATLAB\R2022b</root>
+      <root>C:\Program Files\MATLAB\R2023b</root>
       <toolboxes>
         <toolbox name="matlabcoder" />
-        <toolbox name="embeddedcoder" />
-        <toolbox name="gpucoder" />
-        <toolbox name="fixedpoint" />
-        <toolbox name="matlabhdlcoder" />
-        <toolbox name="neuralnetwork" />
       </toolboxes>
       <toolbox>
         <matlabcoder>
           <enabled>true</enabled>
         </matlabcoder>
-      </toolbox>
-      <toolbox>
-        <embeddedcoder>
-          <enabled>true</enabled>
-        </embeddedcoder>
-      </toolbox>
-      <toolbox>
-        <gpucoder>
-          <enabled>true</enabled>
-        </gpucoder>
-      </toolbox>
-      <toolbox>
-        <fixedpoint>
-          <enabled>true</enabled>
-        </fixedpoint>
-      </toolbox>
-      <toolbox>
-        <matlabhdlcoder>
-          <enabled>true</enabled>
-        </matlabhdlcoder>
-      </toolbox>
-      <toolbox>
-        <neuralnetwork>
-          <enabled>true</enabled>
-        </neuralnetwork>
       </toolbox>
     </matlab>
     <platform>

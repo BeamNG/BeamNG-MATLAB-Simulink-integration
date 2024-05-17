@@ -21,7 +21,7 @@ for i = 1:length(examples_files)
         strcat(examples_folder, 'html/', examples_files{i},'.html'));
 end
 
-examples_folder = 'src/examples/simulink/';
+examples_folder = 'src/examples/simulink/S-function/';
 examples_files = {'simulink_demos'};
 
 for i = 1:length(examples_files)
