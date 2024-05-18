@@ -19,7 +19,6 @@ Both the bridges can be use independently from each other and have different sco
 ## Table of Contents
 - [MATLAB bridge](#matlab_setup)
     - [ Getting Started with MATLAB bridge](#matlab_setup)  
-    - [MATLAB and Simulink Example](#matlab_Simulink_examples)
     - [Examples](#matlab_examples)
 
 - [Simulink bridge](#Simulink_bridge)
@@ -57,6 +56,7 @@ pe.Version % This should return your python version linked with your MATLAB
 pyenv(ExecutionMode="OutOfProcess") % This should return paths for your python executable, library, etc.
 ```
 
+<a name="matlab_examples"></a>
 
 
 ### 1.3 Examples 
@@ -68,7 +68,7 @@ you can see some examples [here](MATLAB.md#1-vehicle-state-plot) of MATLAB scrip
 <a name="Simulink_bridge"></a>
 
 
-[Tightly-coupled](https://documentation.beamng.com/beamng_tech/beamng_tech/cosimulationeditor/tight_coupling/) systems involve two processes running simultaneously and interacting with each other in a dependent way. This involves one side sending data to the other process and vice versa, on a regular cycle. BeamNG can be coupled to a third party (such as MathWorks Simulink) in this manner. This page outlines some considerations which the user should understand when attempting co-simulation with BeamNG.tech.
+[Tightly-coupled](https://documentation.beamng.com/beamng_tech/cosimulationeditor/tight_coupling/) systems involve two processes running simultaneously and interacting with each other in a dependent way. This involves one side sending data to the other process and vice versa, on a regular cycle. BeamNG can be coupled to a third party (such as MathWorks Simulink) in this manner. This page outlines some considerations which the user should understand when attempting co-simulation with BeamNG.tech.
 
 
 <a name="Simulink_setup"></a>
@@ -175,7 +175,7 @@ It's recommended open only one instance of S-function, having more than one inst
 <a name="fmu_start"></a>
 
 ## 2.3 BeamNG.tech integration with Simulink FMI
-A BeamNG FMI for the [Functional Mock-up Interface](https://fmi-standard.org/) allows the BeamNG.tech user to set up a [tightly-coupled](https://documentation.beamng.com/beamng_tech/beamng_tech/cosimulationeditor/tight_coupling/) system between a BeamNG vehicle and third-party software (such as Mathworks Simulink). The ```vehicleSystemsCoupling``` lua controller will facilitates the communication and signal selection. 
+A BeamNG FMI for the [Functional Mock-up Interface](https://fmi-standard.org/) allows the BeamNG.tech user to set up a [tightly-coupled](https://documentation.beamng.com/beamng_tech/cosimulationeditor/tight_coupling/) system between a BeamNG vehicle and third-party software (such as Mathworks Simulink). The ```vehicleSystemsCoupling``` lua controller will facilitates the communication and signal selection. 
 
 
 
