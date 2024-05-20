@@ -18,16 +18,11 @@ examples_files = {'annotation_bounding_boxes'
 
 for i = 1:length(examples_files)
     [~] = export(strcat(examples_folder, examples_files{i}, '.mlx'), ...
-        strcat(examples_folder, 'html/', examples_files{i},'.html'));
+    strcat(examples_folder, 'html/', examples_files{i},'.html'));
 end
 
 examples_folder = 'src/examples/simulink/S-function/';
 examples_files = {'simulink_demos'};
-
-for i = 1:length(examples_files)
-    [~] = export(strcat(examples_folder, examples_files{i}, '.mlx'), ...
-        strcat(examples_folder, 'html/', examples_files{i},'.html'));
-end
 
 %% Publish documentation
 doc_folder = 'doc/';

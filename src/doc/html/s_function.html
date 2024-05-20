@@ -1,12 +1,17 @@
-
-<!DOCTYPE html
-  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head>
-      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-   <!--
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>BeamNG s-function</title><meta name="generator" content="MATLAB 9.13"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-10-24"><meta name="DC.source" content="s_function.m"><style type="text/css">
+      -->
+<title>BeamNG s-function</title>
+<meta name="generator" content="MATLAB 23.2">
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+<meta name="DC.date" content="2024-05-20">
+<meta name="DC.source" content="s_function.m">
+<style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,7 +72,70 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1>BeamNG s-function</h1><!--introduction--><p>Let us now look at the Simulink S-Function in some detail. This is the part of Simulink which handles communication with BeamNG and controls execution in Simulink appropriately. The following figure gives an overview of how the S-function has been implemented.</p><p><img vspace="5" hspace="5" src="pictures/5_The_Simulink_S_Function.png" alt=""> </p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Inputs and Outputs</a></li><li><a href="#2">Instructions</a></li><li><a href="#3">Custom IP adresses and ports</a></li></ul></div><h2 id="1">Inputs and Outputs</h2><p>The inputs are controlled with a message of fixed format, and the outputs are controlled with another message with a different fixed format. These are both described below in detail.</p><p>The input section is split into a core block (containing the core powertrain/vehicle system properties) and a custom block, which can be used by the user to bring any other desired data from BeamNG to Simulink.</p><p>The output section contains eight blocks:</p><p>The driver controls section has signals for; throttle, brake, clutch, parking brake, and steering.</p><p>The body state section has signals for; position, velocity, acceleration, ground speed, roll, pitch, yaw, and altitude.</p><p>The status section has signals for; ignition level, gear, fuel, engine load, high beam, low beam, maximum RPM, reverse, RPM, signal L, signal R, and wheel speed.</p><p>The wheel sections have signals for each wheel of the vehicle; including angular velocity, wheel speed, braking torque, propulsion torque, friction torque, and downforce.</p><p>Finally, the custom section (on the input and output sides) has up to 50 user-defined signals.</p><p>The S-function is designed to transfer data between Simulink and BeamNG using these fixed messaged, where every variable always exists at the same position in the message for every send/receive. These signals are contiguous arrays of double-precision numbers.</p><h2 id="2">Instructions</h2><p>The Lua controller must be loaded in order to start the tight coupling. We can do this with the following three steps:</p><div><ol><li>First, bring up the Lua console debug window with the ' key.</li><li>The vehicle should then be selected at the bottom-left of this screen   (usually this will be "BeamNG - Current Vehicle").</li><li>The following command should be typed into the command bar, to load the controller:   <tt>"controller.loadControllerExternal('tech/vehicleSystemsCoupling',   'vehicleSystemsCoupling', {})"</tt></li></ol></div><p>The Simulink process should also be started. If BeamNG is not running, Simulink will block its execution until it receives a message from BeamNG. The reverse is also true; if Simulink is not executing, BeamNG will block execution.</p><p>When communication has been established over the UDP send and recieve sockets (after both ends of the communication have start executing), the tight coupling process will commence.</p><h2 id="3">Custom IP adresses and ports</h2><p>In order to use different ports and IP addresses than the default ones (64890, 64891, '127.0.0.1', '127.0.0.1') the field <tt>S-Function parameters</tt> can be changed double-clicking on the s-function block in simulink. The parameters in order are:</p><div><ol><li>Simulink receive port</li><li>BeamNG receive port</li><li>Simulink receive IP address</li><li>BeamNG receive IP address</li></ol></div><p>Then, these parameter should be changed also in the lua controller file that can be found at: <tt>lua/vehicle/controller/tech/vehicleSystemCoupling.lua</tt>.</p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022b</a><br></p></div><!--
+  </style>
+</head>
+<body>
+<div class="content">
+<h1>BeamNG s-function</h1>
+<!--introduction-->
+<p>Let us now look at the Simulink S-Function in some detail. This is the part of Simulink which handles communication with BeamNG and controls execution in Simulink appropriately. The following figure gives an overview of how the S-function has been implemented.</p>
+<p>
+<img vspace="5" hspace="5" src="pictures/5_The_Simulink_S_Function.png" alt=""> </p>
+<!--/introduction-->
+<h2>Contents</h2>
+<div>
+<ul>
+<li>
+<a href="#1">Inputs and Outputs</a>
+</li>
+<li>
+<a href="#2">Instructions</a>
+</li>
+<li>
+<a href="#3">Custom IP adresses and ports</a>
+</li>
+</ul>
+</div>
+<h2 id="1">Inputs and Outputs</h2>
+<p>The inputs are controlled with a message of fixed format, and the outputs are controlled with another message with a different fixed format. These are both described below in detail.</p>
+<p>The input section is split into a core block (containing the core powertrain/vehicle system properties) and a custom block, which can be used by the user to bring any other desired data from BeamNG to Simulink.</p>
+<p>The output section contains eight blocks:</p>
+<p>The driver controls section has signals for; throttle, brake, clutch, parking brake, and steering.</p>
+<p>The body state section has signals for; position, velocity, acceleration, ground speed, roll, pitch, yaw, and altitude.</p>
+<p>The status section has signals for; ignition level, gear, fuel, engine load, high beam, low beam, maximum RPM, reverse, RPM, signal L, signal R, and wheel speed.</p>
+<p>The wheel sections have signals for each wheel of the vehicle; including angular velocity, wheel speed, braking torque, propulsion torque, friction torque, and downforce.</p>
+<p>Finally, the custom section (on the input and output sides) has up to 50 user-defined signals.</p>
+<p>The S-function is designed to transfer data between Simulink and BeamNG using these fixed messaged, where every variable always exists at the same position in the message for every send/receive. These signals are contiguous arrays of double-precision numbers.</p>
+<h2 id="2">Instructions</h2>
+<p>The Lua controller must be loaded in order to start the tight coupling. We can do this with the following three steps:</p>
+<div>
+<ol>
+<li>First, bring up the Lua console debug window with the ' key.</li>
+<li>The vehicle should then be selected at the bottom-left of this screen (usually this will be "BeamNG - Current Vehicle").</li>
+<li>The following command should be typed into the command bar, to load the controller: <tt>"controller.loadControllerExternal('tech/vehicleSystemsCoupling', 'vehicleSystemsCoupling', {})"</tt>
+</li>
+</ol>
+</div>
+<p>The Simulink process should also be started. If BeamNG is not running, Simulink will block its execution until it receives a message from BeamNG. The reverse is also true; if Simulink is not executing, BeamNG will block execution.</p>
+<p>When communication has been established over the UDP send and recieve sockets (after both ends of the communication have start executing), the tight coupling process will commence.</p>
+<h2 id="3">Custom IP adresses and ports</h2>
+<p>In order to use different ports and IP addresses than the default ones (64890, 64891, '127.0.0.1', '127.0.0.1') the field <tt>S-Function parameters</tt> can be changed double-clicking on the s-function block in simulink. The parameters in order are:</p>
+<div>
+<ol>
+<li>Simulink receive port</li>
+<li>BeamNG receive port</li>
+<li>Simulink receive IP address</li>
+<li>BeamNG receive IP address</li>
+</ol>
+</div>
+<p>Then, these parameter should be changed also in the lua controller file that can be found at: <tt>lua/vehicle/controller/tech/vehicleSystemCoupling.lua</tt>.</p>
+<p class="footer">
+<br>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2023b</a>
+<br>
+</p>
+</div>
+<!--
 ##### SOURCE BEGIN #####
 %% BeamNG s-function
 %
@@ -146,4 +214,6 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 ##### SOURCE END #####
---></body></html>
+-->
+</body>
+</html>

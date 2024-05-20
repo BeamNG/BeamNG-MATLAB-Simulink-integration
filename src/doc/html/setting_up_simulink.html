@@ -1,12 +1,17 @@
-
-<!DOCTYPE html
-  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head>
-      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-   <!--
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>Setting Up Simulink</title><meta name="generator" content="MATLAB 9.13"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-10-24"><meta name="DC.source" content="setting_up_simulink.m"><style type="text/css">
+      -->
+<title>Setting Up Simulink</title>
+<meta name="generator" content="MATLAB 23.2">
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+<meta name="DC.date" content="2024-05-20">
+<meta name="DC.source" content="setting_up_simulink.m">
+<style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,7 +72,46 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1>Setting Up Simulink</h1><!--introduction--><p>In order to set the simulation time in Simulink to match the simulation time in BeamNG, the user should use the formula:</p><pre>ceil(simulinkDt / physicsDt) * physicsDt</pre><p>where simulinkDt is the Simulink computation time, physicsDt is the BeamNG physics step time (fixed at 0.0005 seconds), and ceil is the ceiling operator. The following figure shows where this is set (highlighted in yellow).</p><p><img vspace="5" hspace="5" src="pictures/2_Setting_The_Simulink_Simulation_Time.png" alt=""> </p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Coupling case 1</a></li><li><a href="#2">Coupling case 2</a></li></ul></div><h2 id="1">Coupling case 1</h2><p><img vspace="5" hspace="5" src="pictures/3_Coupling_Case_1.png" alt=""> </p><p>In this case we have the case where the Simulink computation time is similar in length to the physics steps in BeamNG. However, the UDP round-trip time is significantly larger.</p><p>For efficient coupling, we need to have multiple messages sent out before any are received back in BeamNG. Internally, BeamNG will use the two given time measurements to compute the optimal coupling management, which will send, receive and block execution at the appropriate times.</p><h2 id="2">Coupling case 2</h2><p><img vspace="5" hspace="5" src="pictures/4_Coupling_Case_2.png" alt=""> </p><p>This is the opposite case; the Simulink computation time is much slower than the BeamNG physics step time, but the UDP round-trip time is quite fast.</p><p>Here, it is optimal to have the coupled system skip sending messages on every second physics step. If messages were sent at this time, then Simulink would still be processing the previous step and would need to buffer them, and this buffering would lead to sync problems in a short amount of time. The clear bottleneck here is the Simulink computation time.</p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022b</a><br></p></div><!--
+  </style>
+</head>
+<body>
+<div class="content">
+<h1>Setting Up Simulink</h1>
+<!--introduction-->
+<p>In order to set the simulation time in Simulink to match the simulation time in BeamNG, the user should use the formula:</p>
+<pre>ceil(simulinkDt / physicsDt) * physicsDt</pre>
+<p>where simulinkDt is the Simulink computation time, physicsDt is the BeamNG physics step time (fixed at 0.0005 seconds), and ceil is the ceiling operator. The following figure shows where this is set (highlighted in yellow).</p>
+<p>
+<img vspace="5" hspace="5" src="pictures/2_Setting_The_Simulink_Simulation_Time.png" alt=""> </p>
+<!--/introduction-->
+<h2>Contents</h2>
+<div>
+<ul>
+<li>
+<a href="#1">Coupling case 1</a>
+</li>
+<li>
+<a href="#2">Coupling case 2</a>
+</li>
+</ul>
+</div>
+<h2 id="1">Coupling case 1</h2>
+<p>
+<img vspace="5" hspace="5" src="pictures/3_Coupling_Case_1.png" alt=""> </p>
+<p>In this case we have the case where the Simulink computation time is similar in length to the physics steps in BeamNG. However, the UDP round-trip time is significantly larger.</p>
+<p>For efficient coupling, we need to have multiple messages sent out before any are received back in BeamNG. Internally, BeamNG will use the two given time measurements to compute the optimal coupling management, which will send, receive and block execution at the appropriate times.</p>
+<h2 id="2">Coupling case 2</h2>
+<p>
+<img vspace="5" hspace="5" src="pictures/4_Coupling_Case_2.png" alt=""> </p>
+<p>This is the opposite case; the Simulink computation time is much slower than the BeamNG physics step time, but the UDP round-trip time is quite fast.</p>
+<p>Here, it is optimal to have the coupled system skip sending messages on every second physics step. If messages were sent at this time, then Simulink would still be processing the previous step and would need to buffer them, and this buffering would lead to sync problems in a short amount of time. The clear bottleneck here is the Simulink computation time.</p>
+<p class="footer">
+<br>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2023b</a>
+<br>
+</p>
+</div>
+<!--
 ##### SOURCE BEGIN #####
 %% Setting Up Simulink
 %
@@ -107,4 +151,6 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 % would need to buffer them, and this buffering would lead to sync problems in a short amount of time. 
 % The clear bottleneck here is the Simulink computation time. 
 ##### SOURCE END #####
---></body></html>
+-->
+</body>
+</html>

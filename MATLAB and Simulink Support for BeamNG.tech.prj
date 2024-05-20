@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.toolbox" plugin-version="1.0">
-  <configuration build-checksum="1053822612" file="D:\BeamNG_Technical\repositories\Gitlab\beamng-matlab-simulink-integration\MATLAB and Simulink Support for BeamNG.tech.prj" location="D:\BeamNG_Technical\repositories\Gitlab\beamng-matlab-simulink-integration" name="MATLAB and Simulink Support for BeamNG.tech" target="target.toolbox" target-name="Package Toolbox">
+  <configuration build-checksum="1053822612" file="C:\Users\adami\dev\BeamNG-MATLAB-Simulink-integration\MATLAB and Simulink Support for BeamNG.tech.prj" location="C:\Users\adami\dev\BeamNG-MATLAB-Simulink-integration" name="MATLAB and Simulink Support for BeamNG.tech" target="target.toolbox" target-name="Package Toolbox">
     <param.appname>MATLAB and Simulink Support for BeamNG.tech</param.appname>
     <param.authnamewatermark>BeamNG GmbH</param.authnamewatermark>
     <param.email>tech@beamng.gmbh</param.email>
@@ -121,19 +121,12 @@
     <fileset.depfun.excluded />
     <fileset.package />
     <build-deliverables>
-      <file location="${PROJECT_ROOT}" name="MATLAB and Simulink Support for BeamNG.tech.mltbx" optional="false">D:\BeamNG_Technical\repositories\Gitlab\beamng-matlab-simulink-integration\MATLAB and Simulink Support for BeamNG.tech.mltbx</file>
+      <file location="${PROJECT_ROOT}" name="MATLAB and Simulink Support for BeamNG.tech.mltbx" optional="false">C:\Users\adami\dev\BeamNG-MATLAB-Simulink-integration\MATLAB and Simulink Support for BeamNG.tech.mltbx</file>
     </build-deliverables>
     <workflow />
     <matlab>
       <root>C:\Program Files\MATLAB\R2023b</root>
-      <toolboxes>
-        <toolbox name="matlabcoder" />
-      </toolboxes>
-      <toolbox>
-        <matlabcoder>
-          <enabled>true</enabled>
-        </matlabcoder>
-      </toolbox>
+      <toolboxes />
     </matlab>
     <platform>
       <unix>false</unix>
