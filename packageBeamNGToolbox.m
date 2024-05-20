@@ -38,8 +38,8 @@ for i = 1:length(documentation_files)
 end
 
 %% Package toolbox
-projectFile = 'MATLAB and Simulink Support for BeamNG.tech.prj';
-outputFile = 'MATLAB and Simulink Support for BeamNG.tech.mltbx';
+projectFile = 'BeamNG.tech Support for MATLAB and Simulink.prj';
+outputFile = 'BeamNG.tech Support for MATLAB and Simulink.mltbx';
 
 matlab.addons.toolbox.packageToolbox(projectFile, outputFile)
 

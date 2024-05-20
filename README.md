@@ -1,24 +1,22 @@
-# MATLAB and Simulink Add-On for BeamNG.tech
+# BeamNG.tech Support for MATLAB and Simulink Add-On
 
 [![View BeamNG-MATLAB-Simulink-integration on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://nl.mathworks.com/matlabcentral/fileexchange/136144-beamng-matlab-Simulink-integration)
 
 ![BeamNG-MATLAB-Simulink-integration_Toolbox](media/BeamNG-MATLAB-Simulink-integration_Toolbox.png)
 
-
-
-MATLAB and Simulink Support for BeamNG.tech allows connecting the Mathworks products with the BeamNG.tech software with three different methods:
+BeamNG.tech Support for MATLAB and Simulink allows connecting the Mathworks products with the BeamNG.tech software with three different methods:
 
 - MATLAB $\leftrightarrow$ BeamNGpy $\leftrightarrow$ BeamNG.tech
 - Simulink (S-function) $\leftrightarrow$ BeamNG.tech (co-simulation tool)
 - Simulink (FMI) $\leftrightarrow$ BeamNG.tech (vehicle-lua controller)
 
-Both the bridges can be use independently from each other and have different scopes. However, they can be really handy when used together as in this example . 
+Both the bridges can be use independently from each other and have different scopes. However, they can be really handy when used together as in this example .
 
 
 
 ## Table of Contents
 - [MATLAB bridge](#matlab_setup)
-    - [ Getting Started with MATLAB bridge](#matlab_setup)  
+    - [ Getting Started with MATLAB bridge](#matlab_setup)
     - [Examples](#matlab_examples)
 
 - [Simulink bridge](#Simulink_bridge)
@@ -27,7 +25,7 @@ Both the bridges can be use independently from each other and have different sco
     - [Instructions](#S-function_instructions)
     - [Examples](#S-function_examples)
     - [Disclaimer](#S-function_disclaimer)
-    - [FMI](#fmu_start)   
+    - [FMI](#fmu_start)
     - [Instructions](#fmu_instructions)
     - [Examples](#fmu_examples)
 
@@ -39,15 +37,15 @@ Both the bridges can be use independently from each other and have different sco
 
 <a name="matlab_setup"></a>
 
-## 1. MATLAB bridge 
-The MATLAB bridge with BeamNG.tech is implementation of [BeamNgpy](https://github.com/BeamNG/BeamNGpy) in MATLAB through the [MATLAB-python integration](https://www.mathworks.com/products/matlab/matlab-and-python.html). 
+## 1. MATLAB bridge
+The MATLAB bridge with BeamNG.tech is implementation of [BeamNgpy](https://github.com/BeamNG/BeamNGpy) in MATLAB through the [MATLAB-python integration](https://www.mathworks.com/products/matlab/matlab-and-python.html).
 
 
 
-### 1.1 Setup a compatible python version   
+### 1.1 Setup a compatible python version
 After installing the [compatible python version](https://www.mathworks.com/support/requirements/python-compatibility.html) with MATLAB, make sure to include the path of executable python file (exe) in your in "path" variable of "environment variables" as explained [here](https://learn.microsoft.com/en-us/windows/powertoys/environment-variables).
 
-### 1.2 Test python engine in MATLAB 
+### 1.2 Test python engine in MATLAB
 make sure that python engine is connected to your MATLAB engine
 
 ```
@@ -59,11 +57,11 @@ pyenv(ExecutionMode="OutOfProcess") % This should return paths for your python e
 <a name="matlab_examples"></a>
 
 
-### 1.3 Examples 
+### 1.3 Examples
 you can see some examples [here](MATLAB.md#1-vehicle-state-plot) of MATLAB scripts that uses BeamNGpy to connect with BeamNG.tech.
 
 
-## 2. Simulink bridge 
+## 2. Simulink bridge
 
 <a name="Simulink_bridge"></a>
 
@@ -74,9 +72,9 @@ you can see some examples [here](MATLAB.md#1-vehicle-state-plot) of MATLAB scrip
 <a name="Simulink_setup"></a>
 
 
-## 2.1 Setting up Simulink: 
+## 2.1 Setting up Simulink:
 
-After installing the toolbox, you have to add the toolbox path to MATLAB search path, please do the following steps: 
+After installing the toolbox, you may have to add the toolbox path to MATLAB search path, please do the following steps:
 
 1- open your MATLAB and navigate to your toolbox folder i.e., ```%USERPROFILE%\AppData\Roaming\MathWorks\MATLAB Add-Ons\Toolboxes```
 
@@ -84,43 +82,43 @@ After installing the toolbox, you have to add the toolbox path to MATLAB search 
 
 ![](media/remove_path.png)
 
-Figure 1: Remove toolbox folder from path 
+Figure 1: Remove toolbox folder from path
 
 3-Then, right click on the folder and from ```add path```, select ```Selected Folders and Subfolders``` as shown below
 
   ![](media/add_path.png)
 
-Figure 2: Add toolbox folder and Subfolders to path 
+Figure 2: Add toolbox folder and Subfolders to path
 
 3-Lastly you have to save this changes in ```MATLAB search path```, look for ```Set Path``` option and click ```Save```
 
    ![](media/set_path.png)
 
-Figure 3: Save the changes in ```Set Path```   
+Figure 3: Save the changes in ```Set Path```
 
 <a name="S-function_introduction"></a>
 
 
-## 2.2 BeamNG.tech integration with Simulink S-function 
+## 2.2 BeamNG.tech integration with Simulink S-function
 
 The [Co-Simulation Editor](https://documentation.beamng.com/beamng_tech/cosimulationeditor/introduction/) allows the BeamNG.tech user to set up a tightly-coupled system between a BeamNG vehicle and third-party software (such as Mathworks Simulink). A GUI-based tool facilitates the creation of .csv files which are used as a contract to describe the parameters of the message-passing between the two sides of the coupling. The user can use the mouse to choose from a multitude of properties across the vehicle (kinematic properties, wheel data, vehicle electrics data, powertrain data, etc) - properties which are to be sent to the third party. Incoming properties (from the third party) are also selected in a similar way.
 
 <a name="S-function_instructions"></a>
 
 ### 2.2.1 Instructions
-To establish a tight-coupling communication with Simulink through S-function, follow the following steps: 
+To establish a tight-coupling communication with Simulink through S-function, follow the following steps:
 
 1. Start the BeamNG.tech simulation in your favorite map.
-2. Click ```F11``` to access the ```World Editor ```. 
+2. Click ```F11``` to access the ```World Editor ```.
 3. Click on the [Co-Simulation Editor](https://documentation.beamng.com/beamng_tech/cosimulationeditor/introduction/).
-    
+
     ![](media/wdw1.png)
 
-    Figure 4: The ```Co-Simulation Editor``` window  
+    Figure 4: The ```Co-Simulation Editor``` window
 
 4. If you have a your coupling-configuration csv file in your user-folder (it is located in ```%USERPROFILE%\AppData\Local\BeamNG.tech\0.3x``` by default), you have to reload the csv by clicking on ```Start/stop coupling with 3rd party``` button, then another ```File dialog window``` will appear to load your csv.
 
-    ![](media/select_csv.png) 
+    ![](media/select_csv.png)
 
     Figure 5: The File dialog window to load your csv.
 
@@ -130,7 +128,7 @@ To establish a tight-coupling communication with Simulink through S-function, fo
 
     Figure 6: The ```available signal list``` window.
 
-6. Save your csv by click on ```save the current signals configuration, for this vehicle, to disk``` button. 
+6. Save your csv by click on ```save the current signals configuration, for this vehicle, to disk``` button.
 
     ![](media/save_csv.png)
 
@@ -138,10 +136,10 @@ To establish a tight-coupling communication with Simulink through S-function, fo
 
 7. Click on ```Start/stop coupling with 3rd party``` button at your Co-Simulation Editor window to start the coupling.
 8. Open your Simulink model, add your S-function.
-9. double-click on your S-function, and type the path of your csv file. 
+9. double-click on your S-function, and type the path of your csv file.
 10. Load your csv signals file to your S-function.
- 
-    ![](media/load_csv.png) 
+
+    ![](media/load_csv.png)
 
     Figure 8: Loading csv file window in S-function.
 
@@ -154,7 +152,7 @@ To establish a tight-coupling communication with Simulink through S-function, fo
     ![](media/2_Setting_The_Simulink_Simulation_Time.png)
 
     Figure 9: The Configuration Parameters window of Simulink model.
-    
+
 12. Run your S-function model in Simulink.
 13. To stop coupling, stop coupling at BeamNG.tech end by pressing on the same button that started the coupling i.e., ```Start/stop coupling with 3ed party``` , or click on **CTRL+R** to reload the vehicle, then press on ```Stop``` Simulink end.
 
@@ -162,20 +160,20 @@ To establish a tight-coupling communication with Simulink through S-function, fo
 
 <a name="S-function_examples"></a>
 
-### 2.2.2 Examples 
-We have some examples [here](S-function.md) that shows basic controller that have S-function connected with BeamNG.tech. 
+### 2.2.2 Examples
+We have some examples [here](S-function.md) that shows basic controller that have S-function connected with BeamNG.tech.
 
 
 <a name="S-function_disclaimer"></a>
 
-### 2.2.3 Disclaimer 
-It's recommended open only one instance of S-function, having more than one instance of S-function might disturb the coupling. 
+### 2.2.3 Disclaimer
+It's recommended open only one instance of S-function, having more than one instance of S-function might disturb the coupling.
 
 
 <a name="fmu_start"></a>
 
 ## 2.3 BeamNG.tech integration with Simulink FMI
-A BeamNG FMI for the [Functional Mock-up Interface](https://fmi-standard.org/) allows the BeamNG.tech user to set up a [tightly-coupled](https://documentation.beamng.com/beamng_tech/cosimulationeditor/tight_coupling/) system between a BeamNG vehicle and third-party software (such as Mathworks Simulink). The ```vehicleSystemsCoupling``` lua controller will facilitates the communication and signal selection. 
+A BeamNG FMI for the [Functional Mock-up Interface](https://fmi-standard.org/) allows the BeamNG.tech user to set up a [tightly-coupled](https://documentation.beamng.com/beamng_tech/cosimulationeditor/tight_coupling/) system between a BeamNG vehicle and third-party software (such as Mathworks Simulink). The ```vehicleSystemsCoupling``` lua controller will facilitates the communication and signal selection.
 
 
 
@@ -194,7 +192,7 @@ The Lua controller must be loaded in order to start the tight coupling. We can d
 5. The vehicle should then be selected at the bottom-left of this screen (usually this will be “BeamNG - Current Vehicle”).
 6. The following command should be typed into the command bar, to load the controller: ```controller.loadControllerExternal('tech/vehicleSystemsCoupling', 'vehicleSystemsCoupling', {})```, or you can use the shortcut for the specific controller i.e., **CTRL+V**
 7. Open your Simulink and add your FMI block.
-8. Configure your FMI model by using this format at your Command Window in MATLAB ```fmudialog.createBusType('<YOUR_MODEL>/<FMI_BLOCK>')```. This command should list your inputs and outputs. 
+8. Configure your FMI model by using this format at your Command Window in MATLAB ```fmudialog.createBusType('<YOUR_MODEL>/<FMI_BLOCK>')```. This command should list your inputs and outputs.
 9. Run your FMI model.
 10. To stop coupling, stop coupling at BeamNG.tech end by pressing on **CTRL+V** to stop the coupling or **CTRL+R** to reload the vehicle, then Simulink end.
 
@@ -214,13 +212,13 @@ Figure 10: The Console Window Command Bar
 
 <a name="fmu_examples"></a>
 
-### 2.3.2 Examples 
-you can see some examples [here](FMI.md#examples-with-fmu-in-simulink) with Simulink examples, and Simulink only example. To make your custom FMU model, follow the [BeamNG FMU](https://github.com/BeamNG/BeamNG-FMU) repository. 
+### 2.3.2 Examples
+you can see some examples [here](FMI.md#examples-with-fmu-in-simulink) with Simulink examples, and Simulink only example. To make your custom FMU model, follow the [BeamNG FMU](https://github.com/BeamNG/BeamNG-FMU) repository.
 
 
 <a name="compatibility"></a>
 
-## 3. Compatibility  
+## 3. Compatibility
 
 
 
@@ -228,10 +226,10 @@ Running the BeamNG-MATLAB-Simulink generic interface requires three individual s
 
 | BeamNG.tech | BeamNGpy | BeamNG-MATLAB-Simulink-integration | MATLAB | Python  |
 |-------------|----------|------------------------------------|--------|---------|
-| [0.32](https://BeamNG.tech/blog/beamng-tech-032/)   | [1.29](https://github.com/BeamNG/BeamNGpy/releases/tag/v1.29)     | [1.3.0](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/releases/tag/v1.3.0) | [R2023b & later](https://www.mathworks.com/downloads)  | [3.9](https://www.python.org/downloads/release/python-390/)  | 
-| [0.31](https://BeamNG.tech/blog/beamng-tech-031/)   | [1.28](https://github.com/BeamNG/BeamNGpy/releases/tag/v1.28)     | [1.2.0](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/releases/tag/v1.2.0) | [R2022b & later](https://www.mathworks.com/downloads)  | [3.9](https://www.python.org/downloads/release/python-390/)  | 
-| [0.30](https://BeamNG.tech/blog/beamng-tech-030/)   | [1.27.1](https://github.com/BeamNG/BeamNGpy/releases/tag/v1.26.1) | [1.1.0](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/releases/tag/v1.1.0) | [R2022b & later](https://www.mathworks.com/downloads)  | [3.9](https://www.python.org/downloads/release/python-390/)  | 
-| [0.29](https://BeamNG.tech/blog/beamng-tech-029)    | [1.26.1](https://github.com/BeamNG/BeamNGpy/releases/tag/v1.26)   | [1.0.0](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/releases/tag/v1.0.0) | [R2022b & later](https://www.mathworks.com/downloads)  | [3.9](https://www.python.org/downloads/release/python-390/)     | 
+| [0.32](https://BeamNG.tech/blog/beamng-tech-032/)   | [1.29](https://github.com/BeamNG/BeamNGpy/releases/tag/v1.29)     | [1.3.0](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/releases/tag/v1.3.0) | [R2023b & later](https://www.mathworks.com/downloads)  | [3.9](https://www.python.org/downloads/release/python-390/)  |
+| [0.31](https://BeamNG.tech/blog/beamng-tech-031/)   | [1.28](https://github.com/BeamNG/BeamNGpy/releases/tag/v1.28)     | [1.2.0](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/releases/tag/v1.2.0) | [R2022b & later](https://www.mathworks.com/downloads)  | [3.9](https://www.python.org/downloads/release/python-390/)  |
+| [0.30](https://BeamNG.tech/blog/beamng-tech-030/)   | [1.27.1](https://github.com/BeamNG/BeamNGpy/releases/tag/v1.26.1) | [1.1.0](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/releases/tag/v1.1.0) | [R2022b & later](https://www.mathworks.com/downloads)  | [3.9](https://www.python.org/downloads/release/python-390/)  |
+| [0.29](https://BeamNG.tech/blog/beamng-tech-029)    | [1.26.1](https://github.com/BeamNG/BeamNGpy/releases/tag/v1.26)   | [1.0.0](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/releases/tag/v1.0.0) | [R2022b & later](https://www.mathworks.com/downloads)  | [3.9](https://www.python.org/downloads/release/python-390/)     |
 
 
 
@@ -261,7 +259,7 @@ Copyright &copy; 2024, BeamNG GmbH.
 All rights reserved.
 This project is licensed under the BSD 3-Clause License - see the [LICENSE](LICENSE) file for details.
 
-The [BeamNG FMI](FMI.md) is a fork of the [Reference FMIs](https://github.com/modelica/Reference-FMIs) by Modelica Association Project, which are a fork of the [Test FMIs](https://github.com/CATIA-Systems/Test-FMIs) by Dassault Syst&egrave;mes, which are a fork of the [FMI SDK](https://github.com/qtronic/fmusdk) by QTronic, all of which are released under the 2-Clause BSD License.
+The [BeamNG FMU](FMI.md) is a fork of the [Reference FMUs](https://github.com/modelica/Reference-FMUs) by Modelica Association Project, which are a fork of the [Test FMUs](https://github.com/CATIA-Systems/Test-FMUs) by Dassault Syst&egrave;mes, which are a fork of the [FMU SDK](https://github.com/qtronic/fmusdk) by QTronic, all of which are released under the 2-Clause BSD License.
 
 
 

@@ -1,0 +1,146 @@
+<deployment-project plugin="plugin.toolbox" plugin-version="1.0">
+  <configuration build-checksum="1053822612" file="C:\Users\adami\dev\BeamNG-MATLAB-Simulink-integration\BeamNG.tech Support for MATLAB and Simulink.prj" location="C:\Users\adami\dev\BeamNG-MATLAB-Simulink-integration" name="BeamNG.tech Support for MATLAB and Simulink" target="target.toolbox" target-name="Package Toolbox">
+    <param.appname>BeamNG.tech Support for MATLAB and Simulink</param.appname>
+    <param.authnamewatermark>BeamNG GmbH</param.authnamewatermark>
+    <param.email>tech@beamng.gmbh</param.email>
+    <param.company>BeamNG GmbH</param.company>
+    <param.summary>Connects MATLAB and Simulink to BeamNG.tech</param.summary>
+    <param.description>MATLAB and Simulink Support for BeamNG.tech allows to connect the Mathworks products with the BeamNG.tech software with two different methods:
+
+- MATLAB &lt;&gt; BeamNGpy &lt;&gt; BeamNG.tech
+- Simulink &lt;&gt; BeamNG.tech</param.description>
+    <param.screenshot>${PROJECT_ROOT}\src\pictures\BeamNG-complete-logo.png</param.screenshot>
+    <param.version>1.3.0</param.version>
+    <param.output>${PROJECT_ROOT}\BeamNG.tech Support for MATLAB and Simulink.mltbx</param.output>
+    <param.products.name>
+      <item>MATLAB</item>
+      <item>Simulink</item>
+    </param.products.name>
+    <param.products.id>
+      <item>1</item>
+      <item>2</item>
+    </param.products.id>
+    <param.products.version>
+      <item>23.2</item>
+      <item>23.2</item>
+    </param.products.version>
+    <param.platforms />
+    <param.guid>bc63248b-ec48-40d5-8ace-08d22c71f179</param.guid>
+    <param.exclude.filters>**/slprj
+**/*.fmu</param.exclude.filters>
+    <param.exclude.pcodedmfiles>true</param.exclude.pcodedmfiles>
+    <param.examples>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;examples&gt;
+   &lt;exampleCategory name="matlab"&gt;
+      &lt;example name="annotation_bounding_boxes" type="html"&gt;
+         &lt;file type="source"&gt;/examples/matlab/html/annotation_bounding_boxes.html&lt;/file&gt;
+         &lt;file type="main"&gt;/examples/matlab/annotation_bounding_boxes.mlx&lt;/file&gt;
+         &lt;file type="thumbnail"/&gt;
+      &lt;/example&gt;
+      &lt;example name="lidar_tour" type="html"&gt;
+         &lt;file type="source"&gt;/examples/matlab/html/lidar_tour.html&lt;/file&gt;
+         &lt;file type="main"&gt;/examples/matlab/lidar_tour.mlx&lt;/file&gt;
+         &lt;file type="thumbnail"/&gt;
+      &lt;/example&gt;
+      &lt;example name="multishot_camera" type="html"&gt;
+         &lt;file type="source"&gt;/examples/matlab/html/multishot_camera.html&lt;/file&gt;
+         &lt;file type="main"&gt;/examples/matlab/multishot_camera.mlx&lt;/file&gt;
+         &lt;file type="thumbnail"/&gt;
+      &lt;/example&gt;
+      &lt;example name="object_placement" type="html"&gt;
+         &lt;file type="source"&gt;/examples/matlab/html/object_placement.html&lt;/file&gt;
+         &lt;file type="main"&gt;/examples/matlab/object_placement.mlx&lt;/file&gt;
+         &lt;file type="thumbnail"/&gt;
+      &lt;/example&gt;
+      &lt;example name="vehicle_state_plotting" type="html"&gt;
+         &lt;file type="source"&gt;/examples/matlab/html/vehicle_state_plotting.html&lt;/file&gt;
+         &lt;file type="main"&gt;/examples/matlab/vehicle_state_plotting.mlx&lt;/file&gt;
+         &lt;file type="thumbnail"/&gt;
+      &lt;/example&gt;
+   &lt;/exampleCategory&gt;
+&lt;/examples&gt;</param.examples>
+    <param.demosxml />
+    <param.apps />
+    <param.registered.apps />
+    <param.docs>${PROJECT_ROOT}\src\info.xml</param.docs>
+    <param.getting.started.guide>${PROJECT_ROOT}\src\doc\GettingStarted.mlx</param.getting.started.guide>
+    <param.matlabpath.excludes />
+    <param.javaclasspath.excludes />
+    <param.exported.on.package>false</param.exported.on.package>
+    <param.required.addons />
+    <param.matlab.project.id />
+    <param.matlab.project.name />
+    <param.release.start>R2020b</param.release.start>
+    <param.release.end>latest</param.release.end>
+    <param.release.current.only>false</param.release.current.only>
+    <param.compatiblity.windows>true</param.compatiblity.windows>
+    <param.compatiblity.macos>false</param.compatiblity.macos>
+    <param.compatiblity.linux>true</param.compatiblity.linux>
+    <param.compatiblity.matlabonline>false</param.compatiblity.matlabonline>
+    <param.installation.map />
+    <param.additional.sw.names />
+    <param.additional.sw.licenses />
+    <param.additional.sw.win.url />
+    <param.additional.sw.mac.url />
+    <param.additional.sw.linux.url />
+    <unset>
+      <param.output />
+      <param.platforms />
+      <param.exclude.pcodedmfiles />
+      <param.demosxml />
+      <param.apps />
+      <param.registered.apps />
+      <param.matlabpath.excludes />
+      <param.javaclasspath.excludes />
+      <param.exported.on.package />
+      <param.required.addons />
+      <param.matlab.project.id />
+      <param.matlab.project.name />
+      <param.release.current.only />
+      <param.compatiblity.windows />
+      <param.compatiblity.linux />
+      <param.additional.sw.names />
+      <param.additional.sw.licenses />
+      <param.additional.sw.win.url />
+      <param.additional.sw.mac.url />
+      <param.additional.sw.linux.url />
+    </unset>
+    <fileset.rootdir>
+      <file>${PROJECT_ROOT}\src</file>
+    </fileset.rootdir>
+    <fileset.rootfiles>
+      <file>${PROJECT_ROOT}\src\demos.xml</file>
+      <file>${PROJECT_ROOT}\src\doc</file>
+      <file>${PROJECT_ROOT}\src\examples</file>
+      <file>${PROJECT_ROOT}\src\info.xml</file>
+      <file>${PROJECT_ROOT}\src\lib</file>
+      <file>${PROJECT_ROOT}\src\pictures</file>
+    </fileset.rootfiles>
+    <fileset.depfun.included />
+    <fileset.depfun.excluded />
+    <fileset.package />
+    <build-deliverables>
+      <file location="${PROJECT_ROOT}" name="BeamNG.tech Support for MATLAB and Simulink.mltbx" optional="false">C:\Users\adami\dev\BeamNG-MATLAB-Simulink-integration\BeamNG.tech Support for MATLAB and Simulink.mltbx</file>
+    </build-deliverables>
+    <workflow />
+    <matlab>
+      <root>C:\Program Files\MATLAB\R2023b</root>
+      <toolboxes />
+    </matlab>
+    <platform>
+      <unix>false</unix>
+      <mac>false</mac>
+      <windows>true</windows>
+      <win2k>false</win2k>
+      <winxp>false</winxp>
+      <vista>false</vista>
+      <linux>false</linux>
+      <solaris>false</solaris>
+      <osver>10.0</osver>
+      <os32>false</os32>
+      <os64>true</os64>
+      <arch>win64</arch>
+      <matlab>true</matlab>
+    </platform>
+  </configuration>
+</deployment-project>
