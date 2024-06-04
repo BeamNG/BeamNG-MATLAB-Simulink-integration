@@ -1,6 +1,6 @@
 # BeamNG.tech Support for MATLAB and Simulink Add-On
 
-[![View BeamNG-MATLAB-Simulink-integration on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://nl.mathworks.com/matlabcentral/fileexchange/136144-beamng-matlab-Simulink-integration)
+[![View BeamNG-MATLAB-Simulink-integration on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/166246-beamng-tech-support-for-matlab-and-simulink)
 
 ![BeamNG-MATLAB-Simulink-integration_Toolbox](media/BeamNG-MATLAB-Simulink-integration_Toolbox.png)
 
@@ -74,28 +74,7 @@ you can see some examples [here](MATLAB.md#1-vehicle-state-plot) of MATLAB scrip
 
 ## 2.1 Setting up Simulink:
 
-After installing the toolbox, you may have to add the toolbox path to MATLAB search path, please do the following steps:
-
-1- open your MATLAB and navigate to your toolbox folder i.e., ```%USERPROFILE%\AppData\Roaming\MathWorks\MATLAB Add-Ons\Toolboxes```
-
-2- from ```current folder``` window, right-click on the toolbox folder, and click on ```Remove from path```, select ```Selected Folders``` as shown below
-
-![](media/remove_path.png)
-
-Figure 1: Remove toolbox folder from path
-
-3-Then, right click on the folder and from ```add path```, select ```Selected Folders and Subfolders``` as shown below
-
-  ![](media/add_path.png)
-
-Figure 2: Add toolbox folder and Subfolders to path
-
-3-Lastly you have to save this changes in ```MATLAB search path```, look for ```Set Path``` option and click ```Save```
-
-   ![](media/set_path.png)
-
-Figure 3: Save the changes in ```Set Path```
-
+Just follow [this link](https://www.mathworks.com/matlabcentral/fileexchange/166246-beamng-tech-support-for-matlab-and-simulink), and install the toolbox from the MathWorks file exchange.  
 <a name="S-function_introduction"></a>
 
 
@@ -114,25 +93,25 @@ To establish a tight-coupling communication with Simulink through S-function, fo
 
     ![](media/wdw1.png)
 
-    Figure 4: The ```Co-Simulation Editor``` window
+    Figure 1: The ```Co-Simulation Editor``` window
 
 4. If you have a your coupling-configuration csv file in your user-folder (it is located in ```%USERPROFILE%\AppData\Local\BeamNG.tech\0.3x``` by default), you have to reload the csv by clicking on ```Start/stop coupling with 3rd party``` button, then another ```File dialog window``` will appear to load your csv.
 
     ![](media/select_csv.png)
 
-    Figure 5: The File dialog window to load your csv.
+    Figure 2: The File dialog window to load your csv.
 
 5. If you want to create your signals file, click on ```Open the available signal for this vehicle``` button, it will open another window where you can select your signals ```From``` and ```To``` for sending and receiving signals.
 
     ![](media/sigWdw.png)
 
-    Figure 6: The ```available signal list``` window.
+    Figure 3: The ```available signal list``` window.
 
 6. Save your csv by click on ```save the current signals configuration, for this vehicle, to disk``` button.
 
     ![](media/save_csv.png)
 
-    Figure 7: The File dialog window to save your configuration as csv file.
+    Figure 4: The File dialog window to save your configuration as csv file.
 
 7. Click on ```Start/stop coupling with 3rd party``` button at your Co-Simulation Editor window to start the coupling.
 8. Open your Simulink model, add your S-function.
@@ -141,7 +120,7 @@ To establish a tight-coupling communication with Simulink through S-function, fo
 
     ![](media/load_csv.png)
 
-    Figure 8: Loading csv file window in S-function.
+    Figure 5: Loading csv file window in S-function.
 
 11. Set the Simulation time in Simulink in model settings use ```Fixedstep``` type and calculate your ```Fixed-step size``` to match the simulation time in BeamNG, using the following formula:
 
@@ -151,7 +130,7 @@ To establish a tight-coupling communication with Simulink through S-function, fo
 
     ![](media/2_Setting_The_Simulink_Simulation_Time.png)
 
-    Figure 9: The Configuration Parameters window of Simulink model.
+    Figure 6: The Configuration Parameters window of Simulink model.
 
 12. Run your S-function model in Simulink.
 13. To stop coupling, stop coupling at BeamNG.tech end by pressing on the same button that started the coupling i.e., ```Start/stop coupling with 3ed party``` , or click on **CTRL+R** to reload the vehicle, then press on ```Stop``` Simulink end.
@@ -196,7 +175,7 @@ The Lua controller must be loaded in order to start the tight coupling. We can d
 9. Run your FMI model.
 10. To stop coupling, stop coupling at BeamNG.tech end by pressing on **CTRL+V** to stop the coupling or **CTRL+R** to reload the vehicle, then Simulink end.
 
-Figure 10 shows the bar at the bottom of the console window in detail. Note the vehicle selection menu on the left, and the command bar on the right, where one can enter commands.
+Figure 7 shows the bar at the bottom of the console window in detail. Note the vehicle selection menu on the left, and the command bar on the right, where one can enter commands.
 
 The Simulink process should also be started. If BeamNG is not running, Simulink will block its execution until it receives a message from BeamNG. The reverse is also true; if Simulink is not executing, BeamNG will block execution.
 
@@ -206,7 +185,7 @@ When communication has been established over the UDP send and receive sockets (a
 
 ![](media/8_The_Console_Window_Command_Bar.png)
 
-Figure 10: The Console Window Command Bar
+Figure 7: The Console Window Command Bar
 
 
 
@@ -241,6 +220,29 @@ Running the BeamNG-MATLAB-Simulink generic interface requires three individual s
 This section lists common issues with [BeamNG-MATLAB-Simulink generic interface](https://documentation.beamng.com/beamng_tech/matlab_and_simulink/) in particular. Since this
 library is closely tied to BeamNG.tech, it is also recommended to consult the [support in documentation website](https://documentation.beamng.com/support/troubleshooter/#bng-adventure:/start/techstart) on BeamNG.tech
 
+
+
+If you can not see the toolbox in your Simulink library Browser, you may have to add the toolbox path to MATLAB search path, please do the following steps:
+
+1- open your MATLAB and navigate to your toolbox folder i.e., ```%USERPROFILE%\AppData\Roaming\MathWorks\MATLAB Add-Ons\Toolboxes```
+
+2- from ```current folder``` window, right-click on the toolbox folder, and click on ```Remove from path```, select ```Selected Folders``` as shown below
+
+![](media/remove_path.png)
+
+Figure 8: Remove toolbox folder from path
+
+3-Then, right click on the folder and from ```add path```, select ```Selected Folders and Subfolders``` as shown below
+
+  ![](media/add_path.png)
+
+Figure 9: Add toolbox folder and Subfolders to path
+
+3-Lastly you have to save this changes in ```MATLAB search path```, look for ```Set Path``` option and click ```Save```
+
+   ![](media/set_path.png)
+
+Figure 10: Save the changes in ```Set Path```
 
 
 <a name="Contributions"></a>
