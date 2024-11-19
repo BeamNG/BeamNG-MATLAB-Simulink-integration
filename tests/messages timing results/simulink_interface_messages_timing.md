@@ -138,7 +138,7 @@ clear
 clc
 
 % Start the simulator.
-beamng = py.beamngpy.BeamNGpy('localhost', int32(64256));
+beamng = py.beamngpy.BeamNGpy('localhost', int32(25252));
 
 beamng.open();
 
