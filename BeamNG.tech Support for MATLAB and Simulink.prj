@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.toolbox" plugin-version="1.0">
-  <configuration build-checksum="4136543625" file="D:\BeamNG_Technical\repositories\Github\BeamNG-MATLAB-Simulink-integration\BeamNG.tech Support for MATLAB and Simulink.prj" location="D:\BeamNG_Technical\repositories\Github\BeamNG-MATLAB-Simulink-integration" name="BeamNG.tech Support for MATLAB and Simulink" target="target.toolbox" target-name="Package Toolbox">
+  <configuration build-checksum="2101981118" file="D:\BeamNG_Technical\repositories\Github\BeamNG-MATLAB-Simulink-integration\BeamNG.tech Support for MATLAB and Simulink.prj" location="D:\BeamNG_Technical\repositories\Github\BeamNG-MATLAB-Simulink-integration" name="BeamNG.tech Support for MATLAB and Simulink" target="target.toolbox" target-name="Package Toolbox">
     <param.appname>BeamNG.tech Support for MATLAB and Simulink</param.appname>
     <param.authnamewatermark>BeamNG GmbH</param.authnamewatermark>
     <param.email>tech@beamng.gmbh</param.email>
@@ -10,7 +10,7 @@
 - MATLAB &lt;&gt; BeamNGpy &lt;&gt; BeamNG.tech
 - Simulink &lt;&gt; BeamNG.tech</param.description>
     <param.screenshot>${PROJECT_ROOT}\src\pictures\BeamNG-complete-logo.png</param.screenshot>
-    <param.version>1.3.0</param.version>
+    <param.version>1.3.1.1</param.version>
     <param.output>${PROJECT_ROOT}\BeamNG.tech Support for MATLAB and Simulink.mltbx</param.output>
     <param.products.name>
       <item>MATLAB</item>
@@ -70,7 +70,7 @@
     <param.required.addons />
     <param.matlab.project.id />
     <param.matlab.project.name />
-    <param.release.start>R2020b</param.release.start>
+    <param.release.start>R2023b</param.release.start>
     <param.release.end>latest</param.release.end>
     <param.release.current.only>false</param.release.current.only>
     <param.compatiblity.windows>true</param.compatiblity.windows>
