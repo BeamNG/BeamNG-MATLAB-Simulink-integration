@@ -72,7 +72,7 @@ you can see some examples [here](MATLAB.md#1-vehicle-state-plot) of MATLAB scrip
 <a name="Simulink_setup"></a>
 
 
-## 2.1 Setting up Simulink:
+## 2.1 Setting up Simulink
 
 Just follow [this link](https://www.mathworks.com/matlabcentral/fileexchange/166246-beamng-tech-support-for-matlab-and-simulink), and install the toolbox from the MathWorks file exchange.  
 <a name="S-function_introduction"></a>
