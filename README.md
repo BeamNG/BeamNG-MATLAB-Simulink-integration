@@ -1,6 +1,8 @@
-# BeamNG.tech Support for MATLAB and Simulink Add-On
+# BeamNG.tech Support for MATLAB and Simulink
 
-[![View BeamNG-MATLAB-Simulink-integration on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/166246-beamng-tech-support-for-matlab-and-simulink)
+[![Documentation](https://img.shields.io/badge/Documentation-blue?logo=readthedocs&logoColor=white)](https://documentation.beamng.com/api/matlab-simulink/)
+[![Repository](https://img.shields.io/badge/Repository-grey?logo=github&logoColor=white)](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration)
+[![View on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/166246-beamng-tech-support-for-matlab-and-simulink)
 
 ![BeamNG-MATLAB-Simulink-integration_Toolbox](media/BeamNG-MATLAB-Simulink-integration_Toolbox.png)
 
@@ -18,7 +20,6 @@ Both the bridges can be use independently from each other and have different sco
 - [MATLAB bridge](#matlab_setup)
     - [ Getting Started with MATLAB bridge](#matlab_setup)
     - [Examples](#matlab_examples)
-
 - [Simulink bridge](#Simulink_bridge)
     - [Setting up Simulink](#Simulink_setup)
     - [S-function](#S-function_introduction)
@@ -28,7 +29,6 @@ Both the bridges can be use independently from each other and have different sco
     - [FMI](#fmu_start)
     - [Instructions](#fmu_instructions)
     - [Examples](#fmu_examples)
-
 - [Compatibility](#compatibility)
 - [Troubleshooting](#troubleshooting)
 - [Contributions](#Contributions)
