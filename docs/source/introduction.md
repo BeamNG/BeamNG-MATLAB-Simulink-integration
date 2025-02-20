@@ -2,7 +2,7 @@
 
 ## About
 
-BeamNG.tech Support for MATLAB and Simulink allows connecting the Mathworks products with the BeamNG.tech software with three different methods:
+BeamNG.tech Support for MATLAB and Simulink allows connecting the MathWorks products with the BeamNG.tech software with three different methods:
 
 - MATLAB ↔ BeamNGpy ↔ BeamNG.tech
 - Simulink (S-function) ↔ BeamNG.tech (co-simulation tool)
