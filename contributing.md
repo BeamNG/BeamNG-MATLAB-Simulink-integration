@@ -32,4 +32,4 @@ When you create a new pull request on BeamNG-MATLAB-Simulink-integration, our CL
 
 Congratulations 🎉🎉 The BeamNG team thanks you ✨.
 
-Once your PR is merged, your contributions will be publicly visible on the [BeamNG-MATLAB-Simulink-integration Contributors page](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/graphs/contributors).
+Once your pull request is merged, your contributions will be publicly visible on the [Contributors](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/graphs/contributors) page.
