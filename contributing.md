@@ -30,6 +30,6 @@ When you create a new pull request on BeamNG-MATLAB-Simulink-integration, our CL
 3. Push your branch to your fork and create a pull request from your branch to the dev branch. Posting the pull request will trigger a git action requesting you to accept the contribution license agreement.
 
 
-Congratulations :tada::tada: The BeamNG team thanks you :sparkles:.
+Congratulations 🎉🎉 The BeamNG team thanks you ✨.
 
 Once your PR is merged, your contributions will be publicly visible on the [BeamNG-MATLAB-Simulink-integration Contributors page](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/graphs/contributors).
