@@ -18,13 +18,13 @@ Version 1.2.0
 
 
 Version 1.1.0
-===========
+=============
 
 - updated the code with latest BeamNGpy 1.26 and BeamNG.tech 0.28
 
 
 Version 1.0.0
-===========
+=============
 - We have developed Five fundamental scripts that showcase the versatility of using the MATLAB bridge to launch the Beamng.Tech simulator. 
 - the Five scripts are: 
     - annotation_bounding_boxes.m
