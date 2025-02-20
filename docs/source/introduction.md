@@ -12,24 +12,6 @@ Both the bridges can be use independently from each other and have different sco
 
 ![BeamNG-MATLAB-Simulink-integration_Toolbox](media/BeamNG-MATLAB-Simulink-integration_Toolbox.png)
 
-## Table of Contents
-- [MATLAB bridge](#matlab_setup)
-    - [ Getting Started with MATLAB bridge](#matlab_setup)
-    - [Examples](#matlab_examples)
-- [Simulink bridge](#Simulink_bridge)
-    - [Setting up Simulink](#Simulink_setup)
-    - [S-function](#S-function_introduction)
-    - [Instructions](#S-function_instructions)
-    - [Examples](#S-function_examples)
-    - [Disclaimer](#S-function_disclaimer)
-    - [FMI](#fmu_start)
-    - [Instructions](#fmu_instructions)
-    - [Examples](#fmu_examples)
-- [Compatibility](#compatibility)
-- [Troubleshooting](#troubleshooting)
-- [Contributions](#Contributions)
-- [License](#license)
-
 ## Getting started
 
 ### System Requirements
@@ -166,11 +148,7 @@ A BeamNG FMI for the [Functional Mock-up Interface](https://fmi-standard.org/) a
 
 
 
-
 ## 2.3.1 Run BeamNG FMI in Simulink
-
-<a name="fmu_instructions"></a>
-
 
 The Lua controller must be loaded in order to start the tight coupling. We can do this with the following three steps:
 

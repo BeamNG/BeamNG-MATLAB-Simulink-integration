@@ -63,6 +63,8 @@ source_suffix = {
     '.md': 'markdown',
 }
 
+myst_heading_anchors = 3
+
 # -- Napoleon options --------------------------------------------------------
 napoleon_google_docstring = True
 
