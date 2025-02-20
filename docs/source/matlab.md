@@ -8,26 +8,24 @@ We have developed 5 fundamental scripts that showcase the versatility of using t
 ### 1. Vehicle State Plot
 Use the state sensor to plot some graphs of the vehicle position, wheel speed and direction, throttle, and brake. 
 
-<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/main/media/vehicle_state_ploting.png" alt="Vehicle state plotting" >
-
+![Vehicle state plotting](media/vehicle_state_ploting.png)
     
 ### 2. Running Lidar sensor, and AI control. 
 Create a simple scenario and use the simulator's AI with BeamNGpy.
 
-<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/main/media/lidar_tour.png" alt="Lidar sensor and AI control mode" >
+![Lidar sensor and AI control mode](media/lidar_tour.png)
 
 ### 3. Multi-shot Camera    
 Change the position and rotation of a camera.
 
-<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/main/media/multi_shots_1.png" alt="Multi-shot Camera" >
+![Multi-shot Camera](media/multi_shots_1.png)
 
 ### 4. Object Placement    
 Define a custom scenario for a given map and generate procedural content, i.e. simple meshes.
 
-<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/main/media/object_placment_0.png" alt="Object Placement" >
+![Object Placement](media/object_placment_0.png)
 
 ### 5. Annotation and Bounding Boxes
 Get semantic annotations, instance annotations, and draw bounding boxes (note that this feature is not ready for use yet).
 
-<img src="https://raw.githubusercontent.com/BeamNG/BeamNG-MATLAB-Simulink-integration/main/media/annotation_bounding_boxes.png" alt="Annotation and Bounding Boxes" >
-
+![Annotation and Bounding Boxes](media/annotation_bounding_boxes.png)
