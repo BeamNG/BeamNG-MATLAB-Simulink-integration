@@ -1,11 +1,9 @@
-BeamNG.tech Support for MATLAB and Simulink
-===========================================
-
-Welcome to the documentation of the BeamNG integration for MATLAB and Simulink.
+.. include:: ../../README.md
+   :parser: myst_parser.sphinx_
 
 .. toctree::
    :maxdepth: 1
    :caption: Contents
 
-   Introduction <readme.rst>
+   Introduction <introduction.rst>
    changelog.rst
