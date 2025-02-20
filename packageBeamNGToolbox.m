@@ -5,6 +5,7 @@
 close all
 clear
 clc
+cleanup
 
 addpath(genpath(pwd))
 
