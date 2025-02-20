@@ -6,6 +6,7 @@ Version 1.3.1.1
 ===============
 
 Minor updates:
+
 - mltbx and prj files with the updated examples
 - fix the object_placement example
 
@@ -44,6 +45,7 @@ Version 1.0.0
 =============
 
 New BeamNG Matlab and Simulink bridge.
+
 - Added a Simulink subsystem that wraps the S-function returning busses instead of arrays as outputs.
 - Changed the Simulink S-function that now takes as parameters the UDP ports and addresses.
 - Added the Matlab function setup_beamngpy that allows to connect easily any python environment with BeamNGpy installed to Matlab.
