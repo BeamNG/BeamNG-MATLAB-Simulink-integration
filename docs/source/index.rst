@@ -3,7 +3,19 @@
 
 .. toctree::
    :maxdepth: 1
-   :caption: Contents
+   :caption: User Guide
 
-   Introduction <introduction.rst>
+   introduction.md
+   matlab.md
+   sfunction.md
+   fmi.md
    changelog.rst
+   license.rst
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Developer Guide
+
+   Contributing <contributing.rst>
+   Guidelines <developing.md>
+   authors.rst
