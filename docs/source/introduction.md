@@ -50,7 +50,7 @@ pyenv(ExecutionMode="OutOfProcess") % This should return paths for your python e
 
 
 ### 1.3 Examples
-you can see some examples [here](MATLAB.md#1-vehicle-state-plot) of MATLAB scripts that uses BeamNGpy to connect with BeamNG.tech.
+you can see some examples [here](matlab.md#1-vehicle-state-plot) of MATLAB scripts that uses BeamNGpy to connect with BeamNG.tech.
 
 
 ## 2. Simulink bridge
@@ -132,7 +132,7 @@ To establish a tight-coupling communication with Simulink through S-function, fo
 <a name="S-function_examples"></a>
 
 ### 2.2.2 Examples
-We have some examples [here](S-function.md) that shows basic controller that have S-function connected with BeamNG.tech.
+We have some examples [here](sfunction.md) that shows basic controller that have S-function connected with BeamNG.tech.
 
 
 <a name="S-function_disclaimer"></a>
@@ -180,7 +180,7 @@ Figure 7: The Console Window Command Bar
 <a name="fmu_examples"></a>
 
 ### 2.3.2 Examples
-you can see some examples [here](FMI.md#examples-with-fmu-in-simulink) with Simulink examples, and Simulink only example. To make your custom FMU model, follow the [BeamNG FMU](https://github.com/BeamNG/BeamNG-FMU) repository.
+you can see some examples [here](fmi.md#examples-with-fmu-in-simulink) with Simulink examples, and Simulink only example. To make your custom FMU model, follow the [BeamNG FMU](https://github.com/BeamNG/BeamNG-FMU) repository.
 
 
 <a name="compatibility"></a>
@@ -240,7 +240,7 @@ Figure 10: Save the changes in ```Set Path```
 ## 5. Contributions
 
 
-We always welcome user contributions, be sure to check out our [contribution guidelines](contributing.md) first, before starting your work.
+We always welcome user contributions, be sure to check out our [contribution guidelines](contributing.rst) first, before starting your work.
 
 
 <a name="license"></a>
@@ -249,6 +249,6 @@ We always welcome user contributions, be sure to check out our [contribution gui
 
 Copyright &copy; 2024, BeamNG GmbH.
 All rights reserved.
-This project is licensed under the BSD 3-Clause License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the BSD 3-Clause License - see the [LICENSE](license.rst) file for details.
 
-The [BeamNG FMU](FMI.md) is a fork of the [Reference FMUs](https://github.com/modelica/Reference-FMUs) by Modelica Association Project, which are a fork of the [Test FMUs](https://github.com/CATIA-Systems/Test-FMUs) by Dassault Syst&egrave;mes, which are a fork of the [FMU SDK](https://github.com/qtronic/fmusdk) by QTronic, all of which are released under the 2-Clause BSD License.
+The [BeamNG FMU](fmi.md) is a fork of the [Reference FMUs](https://github.com/modelica/Reference-FMUs) by Modelica Association Project, which are a fork of the [Test FMUs](https://github.com/CATIA-Systems/Test-FMUs) by Dassault Syst&egrave;mes, which are a fork of the [FMU SDK](https://github.com/qtronic/fmusdk) by QTronic, all of which are released under the 2-Clause BSD License.
