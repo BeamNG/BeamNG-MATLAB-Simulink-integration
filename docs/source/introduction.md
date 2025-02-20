@@ -4,11 +4,11 @@
 
 BeamNG.tech Support for MATLAB and Simulink allows connecting the Mathworks products with the BeamNG.tech software with three different methods:
 
-- MATLAB $\leftrightarrow$ BeamNGpy $\leftrightarrow$ BeamNG.tech
-- Simulink (S-function) $\leftrightarrow$ BeamNG.tech (co-simulation tool)
-- Simulink (FMI) $\leftrightarrow$ BeamNG.tech (vehicle-lua controller)
+- MATLAB ↔ BeamNGpy ↔ BeamNG.tech
+- Simulink (S-function) ↔ BeamNG.tech (co-simulation tool)
+- Simulink (FMU) ↔ BeamNG.tech (vehicle-lua controller)
 
-Both the bridges can be use independently from each other and have different scopes. However, they can be really handy when used together as in this example .
+Both the bridges can be use independently from each other and have different scopes. However, they can be really handy when used together as in this example.
 
 ![BeamNG-MATLAB-Simulink-integration_Toolbox](media/BeamNG-MATLAB-Simulink-integration_Toolbox.png)
 
@@ -30,6 +30,20 @@ Both the bridges can be use independently from each other and have different sco
 - [Contributions](#Contributions)
 - [License](#license)
 
+## Getting started
+
+### System Requirements
+
+* MATLAB requires Python setup with MATLAB, BeamNGpy, BeamNG.tech
+* Simulink integration requires Simulink, BeamNG.tech
+
+### Features
+
+This toolbox allows the BeamNG.tech user to set up a tightly-coupled system between a BeamNG vehicle and third-party software (such as Simulink).
+
+### Examples
+
+Take a look into the examples folder.
 
 <a name="matlab_setup"></a>
 
