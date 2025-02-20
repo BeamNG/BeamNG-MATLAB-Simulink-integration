@@ -4,7 +4,7 @@ Thank you for investing your time in contributing to our project!
 
 ## New contributor guide
 
-To get an overview of the project, read the [README](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/blob/master/README.md) file. Here are some resources to help you get started with open source contributions:
+To get an overview of the project, read the [README](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/blob/main/README.md) file. Here are some resources to help you get started with open source contributions:
 
 - [Finding ways to contribute to open source on GitHub](https://docs.github.com/en/get-started/exploring-projects-on-github/finding-ways-to-contribute-to-open-source-on-github)
 - [Set up Git](https://docs.github.com/en/get-started/getting-started-with-git/set-up-git)

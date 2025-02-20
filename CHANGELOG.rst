@@ -52,11 +52,11 @@ New BeamNG Matlab and Simulink bridge.
 - Added the Matlab function load_lua_controller to load the vehicleSystemCoupling.lua controller directly from Matlab through BeamNGpy.
 - We have developed five fundamental scripts that showcase the versatility of using the MATLAB bridge
   to launch the Beamng.Tech simulator:
-    - annotation_bounding_boxes.m
-    - lidar_tour.m
-    - lidar_tour.m
-    - multishot_camera.m
-    - object_placement.m
-    - vehicle_state_plotting.m
+  - annotation_bounding_boxes.m
+  - lidar_tour.m
+  - lidar_tour.m
+  - multishot_camera.m
+  - object_placement.m
+  - vehicle_state_plotting.m
 - Basic prototype UDP tight-coupling system for Simulink model with the BeamNG simulator.
   This prototype solution demonstrates typical communication between both ends of the system.
