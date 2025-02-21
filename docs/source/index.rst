@@ -7,6 +7,7 @@
 
    introduction.md
    installation.md
+   compatibility.md
    simulink/index.rst
    matlab.md
    sfunction.md

@@ -6,7 +6,11 @@ To make MATLAB and Simulink work with BeamNG.tech, you have to install and confi
 * BeamNG.tech
 * *BeamNG.tech Support for MATLAB and Simulink* (this toolbox)
 
-The following sections describe the installation process in detail. Before continuing, check [Compatibility](compatibility.md) to make sure you install the correct versions.
+The following sections describe the installation process in detail.
+
+```{note}
+Before continuing, check [Compatibility](compatibility.md) to make sure you install the correct versions.
+```
 
 ## Install BeamNG.tech
 
@@ -25,9 +29,9 @@ the _Variable value_ field, then press _OK_.
 
 ## Install and set up Python
 
-Once you have BeamNG.tech installed you can proceed creating a Python environment. 
+Once you have BeamNG.tech installed you can proceed installing [Python](https://www.python.org/). 
 Install a
-[Python version compatible with your MATLAB version](https://nl.mathworks.com/support/requirements/python-compatibility.html).
+[Python version compatible with your MATLAB version](https://nl.mathworks.com/support/requirements/python-compatibility.html). During installation, make sure you check **Add Python to PATH**, so that it is recognized as an available program.
 
 ## Install *beamngpy*
 
@@ -37,7 +41,17 @@ so keep in mind to comply with the
 [compatibility table
 between BeamNGpy and BeamNG.tech](https://github.com/BeamNG/BeamNGpy#compatibility).
 
-TODO: describe how to install it with pip (also different version)
+You can install BeamNGpy using `pip`. Open a Command Prompt or Terminal and type the following to install the latest version of BeamNGpy.
+
+```
+pip install beamngpy
+```
+
+To install a different version (e.g. `1.30`), type
+
+```
+pip install beamngpy==1.30
+```
 
 ## Install *BeamNG.tech Support for MATLAB and Simulink*
 
