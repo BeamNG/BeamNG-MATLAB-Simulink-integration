@@ -6,7 +6,7 @@
    :caption: User Guide
 
    introduction.md
-   setup.md
+   installation.md
    simulink/index.rst
    matlab.md
    sfunction.md
