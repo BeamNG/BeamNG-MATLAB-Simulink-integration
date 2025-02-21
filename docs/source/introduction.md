@@ -50,7 +50,7 @@ pyenv(ExecutionMode="OutOfProcess") % This should return paths for your python e
 
 
 ### 1.3 Examples
-you can see some examples [here](matlab.md#1-vehicle-state-plot) of MATLAB scripts that uses BeamNGpy to connect with BeamNG.tech.
+you can see some examples [here](matlab.md#example-1-vehicle-state-plotting) of MATLAB scripts that uses BeamNGpy to connect with BeamNG.tech.
 
 
 ## 2. Simulink bridge
