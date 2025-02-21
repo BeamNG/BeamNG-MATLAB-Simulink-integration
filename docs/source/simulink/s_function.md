@@ -75,3 +75,7 @@ that can be found at:
 ```
 lua/vehicle/controller/tech/vehicleSystemCoupling.lua
 ```
+
+```{warning}
+It is recommended to use only one instance of BeamNG's S-function, having more than one instance might disturb the coupling.
+```

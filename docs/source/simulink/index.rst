@@ -11,4 +11,5 @@ Simulink Bridge allows co-simulation between tightly coupled systems.
    simulink_interface.md
    setting_up_simulink.md
    s_function.md
+   fmu.md
    configure.md
