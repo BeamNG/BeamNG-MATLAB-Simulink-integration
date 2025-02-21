@@ -1,4 +1,4 @@
-# Examples with FMU in Simulink
+# Simulink FMU Examples
 
 These steps guide you through using FMU (Functional Mock-up Unit) integration with Simulink for co-simulation with BeamNG.tech, supporting both FMI 2 and FMI 3 standards. To make your custom FMU model, follow the [BeamNG FMU](https://github.com/BeamNG/BeamNG-FMU) repository. 
 

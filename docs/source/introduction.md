@@ -32,17 +32,12 @@ The **MATLAB Bridge** and the **Simulink Bridge** can be used independently from
 
 ## 2. Simulink bridge
 
-<a name="S-function_examples"></a>
-
-### 2.2.2 Examples
-We have some examples [here](sfunction.md) that shows basic controller that have S-function connected with BeamNG.tech.
-
-
-<a name="S-function_disclaimer"></a>
 
 ### 2.2.3 Disclaimer
-It's recommended open only one instance of S-function, having more than one instance of S-function might disturb the coupling.
 
+```{warning}
+It's recommended open only one instance of S-function, having more than one instance of S-function might disturb the coupling.
+```
 
 <a name="fmu_start"></a>
 
