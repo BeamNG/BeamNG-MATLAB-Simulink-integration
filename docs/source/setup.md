@@ -1,18 +1,8 @@
-# MATLAB and Simulink Support for BeamNG.tech
+# Installation
 
-MATLAB and Simulink Support for BeamNG.tech allows to connect the Mathworks
-products with the BeamNG.tech software with two different methods:
+To make MATLAB and Simulink work with BeamNG.tech, you have to install and configure several software components first. This page describes the installation process in detail.
 
-* MATLAB ↔ BeamNGpy ↔ BeamNG.tech
-* Simulink ↔ BeamNG.tech
-
-Both the bridges can be use independently from each other and have
-different scopes. However, they can be really handy when used together as
-in this [example](simulink_demos).
-
-## MATLAB bridge setup
-
-### Install BeamNG.tech
+## Install BeamNG.tech
 
 The first step to used the MATLAB bridge is to have a working version of
 [BeamNG.tech](https://beamng.tech/). As an optional point you can create an
@@ -27,17 +17,35 @@ the _Variable value_ field, then press _OK_.
 
 ![new_environment_variable](pictures/new_environment_variable.png)
 
-### Setup python environment
+## Install and set up Python
 
-Once you have BeamNG.tech installed you can proceed creating a python environment. 
-Be careful to use a
-[python version compatible with your MATLAB version](https://nl.mathworks.com/support/requirements/python-compatibility.html). Having a python
-environment ready, you can proceed installing BeamNGpy on it, when doing
+Once you have BeamNG.tech installed you can proceed creating a Python environment. 
+Install a
+[Python version compatible with your MATLAB version](https://nl.mathworks.com/support/requirements/python-compatibility.html).
+
+## Install *beamngpy*
+
+Having a Python
+environment ready, you can proceed installing [BeamNGpy](https://beamngpy.readthedocs.io/) on it, when doing
 so keep in mind to comply with the
 [compatibility table
 between BeamNGpy and BeamNG.tech](https://github.com/BeamNG/BeamNGpy#compatibility).
 
-### Connect MATLAB to python
+TODO: describe how to install it with pip (also different version)
+
+## Install *BeamNG.tech Support for MATLAB and Simulink*
+
+The simplest way is to install the latest version via the MATLAB Add-On Manager ([Option 1](#option-1-install-latest-version-via-add-on-manager)). However, you can also manually install any version of the toolbox, including older versions ([Option 2](#option-2-manually-install-any-desired-version)).
+
+### Option 1: Install latest version via Add-On Manager
+
+TODO
+
+### Option 2: Manually install any desired version
+
+TODO
+
+## Connect MATLAB to Python
 
 The last step that you need to perform is to connect MATLAB to your new
 python environment. 
@@ -49,16 +57,8 @@ this function from the command window with a similar input:
 setup_beamngpy('C:\Users\<username>\miniconda3\envs\<env-name>\python.exe')
 ```
 
-Now you are ready to use BeamNGpy through MATLAB, to see some examples on
-how to use it look at the [MATLAB examples](matlab.md).
-For more information about BeamNGpy refer to its [documentation](https://beamngpy.readthedocs.io/en/latest/).
+Now you are ready to use BeamNGpy through MATLAB. If you have Simulink installed, you can also use the Simulink co-simulation functionalities now.
 
-## Simulink bridge setup
+## Test if it works
 
-### Install BeamNG.tech
-
-In order to use the Simulink bridge the only thing that you need to have
-other than Simulink is a working version of [BeamNG.tech](https://beamng.tech/).
-
-For more information regarding the Simulink interface refer to the
-corresponding section in the documentation.
+TODO: minimal example to test
