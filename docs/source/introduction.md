@@ -1,39 +1,31 @@
 # Introduction
 
-*BeamNG.tech Support for MATLAB and Simulink* allows connecting [MathWorks](https://www.mathworks.com/) products with [BeamNG.tech](https://beamng.tech/). It comes with two functionalities:
+**BeamNG.tech Support for MATLAB and Simulink** is a MATLAB toolbox that allows you to connect [MathWorks](https://www.mathworks.com/) products with [BeamNG.tech](https://beamng.tech/). It comes with two components:
 
 **MATLAB Bridge** allows you to control BeamNG from MATLAB scripts, for example to set up scenarios or to query vehicle information. This uses [BeamNGpy](https://beamngpy.readthedocs.io/) and MATLAB's ability to call Python code in the background.
 
+```{mermaid}
+graph LR;
+  ml(MATLAB)<-->py(BeamNGpy)<-->bng(BeamNG.tech);
+```
+
+**Simulink Bridge** allows you to set up a co-simulation between a Simulink model and a BeamNG vehicle. It comes with 2 options:
+
+* S-function block: Uses Simulink's s-function mechanism to communicate to BeamNG via the UDP protocol.
+
   ```{mermaid}
-    graph TD;
-      A-->B;
-      A-->C;
-      B-->D;
-      C-->D;
+  graph LR;
+    sl(Simulink)<-->sf(S-function)<-->|UDP|bng(BeamNG.tech);
   ```
 
-- MATLAB ↔ BeamNGpy ↔ BeamNG.tech
-- Simulink (S-function) ↔ BeamNG.tech (co-simulation tool)
-- Simulink (FMU) ↔ BeamNG.tech (vehicle-lua controller)
+* FMU block according to the [FMI Standard](https://fmi-standard.org/): Uses Simulink's FMU block with an exported FMU by BeamNG to communicate to BeamNG via the UDP protocol. Both FMI 2.0 and FMI 3.0 versions are available.
 
-Both the bridges can be use independently from each other and have different scopes. However, they can be really handy when used together as in this example.
+  ```{mermaid}
+  graph LR;
+    sl(Simulink)<-->fmu(FMU)<-->|UDP|bng(BeamNG.tech);
+  ```
 
-![BeamNG-MATLAB-Simulink-integration_Toolbox](media/BeamNG-MATLAB-Simulink-integration_Toolbox.png)
-
-## Getting started
-
-### System Requirements
-
-* MATLAB requires Python setup with MATLAB, BeamNGpy, BeamNG.tech
-* Simulink integration requires Simulink, BeamNG.tech
-
-### Features
-
-This toolbox allows the BeamNG.tech user to set up a tightly-coupled system between a BeamNG vehicle and third-party software (such as Simulink).
-
-### Examples
-
-Take a look into the examples folder.
+The **MATLAB Bridge** and the **Simulink Bridge** can be used independently from each other and have different scopes. However, they can be also used together, see [Combined Example](combined.md).
 
 <a name="matlab_setup"></a>
 
@@ -189,27 +181,6 @@ Figure 7: The Console Window Command Bar
 
 ### 2.3.2 Examples
 you can see some examples [here](fmi.md#examples-with-fmu-in-simulink) with Simulink examples, and Simulink only example. To make your custom FMU model, follow the [BeamNG FMU](https://github.com/BeamNG/BeamNG-FMU) repository.
-
-
-<a name="compatibility"></a>
-
-## 3. Compatibility
-
-
-
-Running the BeamNG-MATLAB-Simulink generic interface requires three individual software components, here is a list of compatible versions.
-
-| BeamNG.tech | BeamNGpy | BeamNG-MATLAB-Simulink-integration | MATLAB | Python  |
-|-------------|----------|------------------------------------|--------|---------|
-| [0.34](https://BeamNG.tech/blog/beamng-tech-034/)   | [1.31](https://github.com/BeamNG/BeamNGpy/releases/tag/v1.31)     | [1.3.1](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/releases/tag/v1.3.1) | [R2023b & later](https://www.mathworks.com/downloads)  | [3.9](https://www.python.org/downloads/release/python-390/)  |
-| [0.33.3](https://BeamNG.tech/blog/beamng-tech-033/)   | [1.30](https://github.com/BeamNG/BeamNGpy/releases/tag/v1.30)     | [1.3.0](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/releases/tag/v1.3.0) | [R2023b & later](https://www.mathworks.com/downloads)  | [3.9](https://www.python.org/downloads/release/python-390/)  |
-| [0.32](https://BeamNG.tech/blog/beamng-tech-032/)   | [1.29](https://github.com/BeamNG/BeamNGpy/releases/tag/v1.29)     | [1.3.0](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/releases/tag/v1.3.0) | [R2023b & later](https://www.mathworks.com/downloads)  | [3.9](https://www.python.org/downloads/release/python-390/)  |
-| [0.31](https://BeamNG.tech/blog/beamng-tech-031/)   | [1.28](https://github.com/BeamNG/BeamNGpy/releases/tag/v1.28)     | [1.2.0](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/releases/tag/v1.2.0) | [R2022b & later](https://www.mathworks.com/downloads)  | [3.9](https://www.python.org/downloads/release/python-390/)  |
-| [0.30](https://BeamNG.tech/blog/beamng-tech-030/)   | [1.27.1](https://github.com/BeamNG/BeamNGpy/releases/tag/v1.26.1) | [1.1.0](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/releases/tag/v1.1.0) | [R2022b & later](https://www.mathworks.com/downloads)  | [3.9](https://www.python.org/downloads/release/python-390/)  |
-| [0.29](https://BeamNG.tech/blog/beamng-tech-029)    | [1.26.1](https://github.com/BeamNG/BeamNGpy/releases/tag/v1.26)   | [1.0.0](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/releases/tag/v1.0.0) | [R2022b & later](https://www.mathworks.com/downloads)  | [3.9](https://www.python.org/downloads/release/python-390/)     |
-
-
-
 
 
 ## 4. Troubleshooting

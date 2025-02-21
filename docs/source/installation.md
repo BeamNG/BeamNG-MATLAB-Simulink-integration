@@ -1,6 +1,12 @@
 # Installation
 
-To make MATLAB and Simulink work with BeamNG.tech, you have to install and configure several software components first. This page describes the installation process in detail.
+To make MATLAB and Simulink work with BeamNG.tech, you have to install and configure several software components first:
+* MATLAB and optionally Simulink
+* Python
+* BeamNG.tech
+* *BeamNG.tech Support for MATLAB and Simulink* (this toolbox)
+
+The following sections describe the installation process in detail. Before continuing, check [Compatibility](compatibility.md) to make sure you install the correct versions.
 
 ## Install BeamNG.tech
 
@@ -40,6 +46,8 @@ The simplest way is to install the latest version via the MATLAB Add-On Manager 
 ### Option 1: Install latest version via Add-On Manager
 
 TODO
+
+![BeamNG-MATLAB-Simulink-integration_Toolbox](media/BeamNG-MATLAB-Simulink-integration_Toolbox.png)
 
 ### Option 2: Manually install any desired version
 
