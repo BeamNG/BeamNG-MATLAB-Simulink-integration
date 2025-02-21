@@ -1,8 +1,16 @@
 # Introduction
 
-## About
+*BeamNG.tech Support for MATLAB and Simulink* allows connecting [MathWorks](https://www.mathworks.com/) products with [BeamNG.tech](https://beamng.tech/). It comes with two functionalities:
 
-BeamNG.tech Support for MATLAB and Simulink allows connecting the MathWorks products with the BeamNG.tech software with three different methods:
+**MATLAB Bridge** allows you to control BeamNG from MATLAB scripts, for example to set up scenarios or to query vehicle information. This uses [BeamNGpy](https://beamngpy.readthedocs.io/) and MATLAB's ability to call Python code in the background.
+
+  ```{mermaid}
+    graph TD;
+      A-->B;
+      A-->C;
+      B-->D;
+      C-->D;
+  ```
 
 - MATLAB ↔ BeamNGpy ↔ BeamNG.tech
 - Simulink (S-function) ↔ BeamNG.tech (co-simulation tool)

@@ -30,6 +30,7 @@ extensions = [
     "sphinx.ext.autodoc",
     "sphinx_rtd_theme",
     "myst_parser",
+    "sphinxcontrib.mermaid",
     "sphinx_multiversion",
 ]
 
