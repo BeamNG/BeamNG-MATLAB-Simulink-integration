@@ -9,22 +9,6 @@ cleanup
 
 addpath(genpath(pwd))
 
-%% Publish examples
-examples_folder = 'src/examples/matlab/';
-examples_files = {'annotation_bounding_boxes'
-                  'lidar_tour'
-                  'multishot_camera'
-                  'object_placement'
-                  'vehicle_state_plotting'};
-
-for i = 1:length(examples_files)
-    [~] = export(strcat(examples_folder, examples_files{i}, '.mlx'), ...
-    strcat(examples_folder, 'html/', examples_files{i},'.html'));
-end
-
-examples_folder = 'src/examples/simulink/S-function/';
-examples_files = {'simulink_demos'};
-
 %% Publish documentation
 doc_folder = 'doc/';
 src_doc_folder = 'src/doc/html/';
