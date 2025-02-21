@@ -6,6 +6,8 @@
    :caption: User Guide
 
    introduction.md
+   setup.md
+   simulink/index.rst
    matlab.md
    sfunction.md
    fmi.md

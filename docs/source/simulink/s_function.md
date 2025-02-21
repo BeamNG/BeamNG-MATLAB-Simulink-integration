@@ -5,7 +5,7 @@ This is the part of Simulink which handles communication with BeamNG and control
 execution in Simulink appropriately. 
 The following figure gives an overview of how the S-function has been implemented.
 
-![The_Simulink_S_Function](pictures/5_The_Simulink_S_Function.png)
+![The_Simulink_S_Function](../pictures/5_The_Simulink_S_Function.png)
 
 ## Inputs and Outputs
 
@@ -61,8 +61,8 @@ the tight coupling process will commence.
 ## Custom IP adresses and ports
 
 In order to use different ports and IP addresses than the default ones
-(64890, 64891, '127.0.0.1', '127.0.0.1') the field |S-Function
-parameters| can be changed double-clicking on the s-function block in
+(64890, 64891, '127.0.0.1', '127.0.0.1') the field `S-Function
+parameters` can be changed double-clicking on the s-function block in
 Simulink. The parameters in order are:
 
 1. Simulink receive port
