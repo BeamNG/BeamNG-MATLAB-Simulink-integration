@@ -1,4 +1,4 @@
-# Configure block interface
+# Configure Block Interface
 
 When you use the *S-function* block you can configure the inputs and outputs that are communicated to BeamNG using the **Co-Simulation Editor** in BeamNG.
 
