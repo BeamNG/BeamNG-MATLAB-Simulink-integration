@@ -15,7 +15,7 @@
    combined.md
    troubleshooting.md
    changelog.rst
-   license.rst
+   license.md
 
 .. toctree::
    :maxdepth: 1
