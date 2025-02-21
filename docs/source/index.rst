@@ -8,8 +8,8 @@
    introduction.md
    installation.md
    compatibility.md
-   simulink/index.rst
    matlab.md
+   simulink/index.rst
    sfunction.md
    fmi.md
    combined.md
