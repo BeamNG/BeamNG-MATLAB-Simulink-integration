@@ -2,7 +2,7 @@
 
 **BeamNG.tech Support for MATLAB and Simulink** is a MATLAB toolbox that allows you to connect [MathWorks](https://www.mathworks.com/) products with [BeamNG.tech](https://beamng.tech/). It comes with two components:
 
-**MATLAB Bridge** allows you to control BeamNG from MATLAB scripts, for example to set up scenarios or to query vehicle information. This uses [BeamNGpy](https://beamngpy.readthedocs.io/) and MATLAB's ability to call Python code in the background.
+**MATLAB Bridge** allows you to control BeamNG from MATLAB scripts, for example to set up scenarios or to query vehicle information. This uses [BeamNGpy](https://github.com/BeamNG/BeamNGpy) and MATLAB's [ability to call Python libraries](https://www.mathworks.com/products/matlab/matlab-and-python.html) in the background.
 
 ```{mermaid}
 graph LR;
@@ -27,42 +27,10 @@ graph LR;
 
 The **MATLAB Bridge** and the **Simulink Bridge** can be used independently from each other and have different scopes. However, they can be also used together, see [Combined Example](combined.md).
 
-<a name="matlab_setup"></a>
 
-## 1. MATLAB bridge
-The MATLAB bridge with BeamNG.tech is implementation of [BeamNgpy](https://github.com/BeamNG/BeamNGpy) in MATLAB through the [MATLAB-python integration](https://www.mathworks.com/products/matlab/matlab-and-python.html).
-
-
-
-### 1.1 Setup a compatible python version
-After installing the [compatible python version](https://www.mathworks.com/support/requirements/python-compatibility.html) with MATLAB, make sure to include the path of executable python file (exe) in your in "path" variable of "environment variables" as explained [here](https://learn.microsoft.com/en-us/windows/powertoys/environment-variables).
-
-### 1.2 Test python engine in MATLAB
-make sure that python engine is connected to your MATLAB engine
-
-```
-pe = pyenv;
-pe.Version % This should return your python version linked with your MATLAB
-pyenv(ExecutionMode="OutOfProcess") % This should return paths for your python executable, library, etc.
-```
-
-<a name="matlab_examples"></a>
-
-
-### 1.3 Examples
-you can see some examples [here](matlab.md#example-1-vehicle-state-plotting) of MATLAB scripts that uses BeamNGpy to connect with BeamNG.tech.
 
 
 ## 2. Simulink bridge
-
-<a name="Simulink_bridge"></a>
-
-
-[Tightly-coupled](https://documentation.beamng.com/beamng_tech/cosimulationeditor/tight_coupling/) systems involve two processes running simultaneously and interacting with each other in a dependent way. This involves one side sending data to the other process and vice versa, on a regular cycle. BeamNG can be coupled to a third party (such as MathWorks Simulink) in this manner. This page outlines some considerations which the user should understand when attempting co-simulation with BeamNG.tech.
-
-
-<a name="Simulink_setup"></a>
-
 
 ## 2.1 Setting up Simulink
 

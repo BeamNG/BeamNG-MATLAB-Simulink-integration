@@ -1,8 +1,6 @@
-<a name="matlab_start"></a>
+# MATLAB Bridge Examples
 
-# Getting Started with MATLAB bridge 
-
-We have developed 5 live scripts that showcase the versatility of using the MATLAB bridge to launch the BeamNG.tech simulator. These scripts demonstrate various capabilities such as utilizing sensors, creating scenarios, capturing screenshots from multiple viewpoints, analyzing movements, and visualizing sensors including lidar, depth camera, and AI driving for the vehicle.
+We provide 5 live scripts that showcase the versatility of using the MATLAB bridge to launch the BeamNG.tech simulator. These scripts demonstrate various capabilities such as utilizing sensors, creating scenarios, capturing screenshots from multiple viewpoints, analyzing movements, and visualizing sensors including lidar, depth camera, and AI driving for the vehicle.
 
 To open the scripts, copy the examples folder to your current working directory, by running the following in the MATLAB command window:
 

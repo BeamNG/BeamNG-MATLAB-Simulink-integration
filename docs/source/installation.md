@@ -33,6 +33,10 @@ Once you have BeamNG.tech installed you can proceed installing [Python](https://
 Install a
 [Python version compatible with your MATLAB version](https://nl.mathworks.com/support/requirements/python-compatibility.html). During installation, make sure you check **Add Python to PATH**, so that it is recognized as an available program.
 
+```{tip}
+If you forgot to tick the adding to PATH option during installation, you can also add the path of the executable Python file to your in `PATH` environment variable as explained in [Environment Variables](https://learn.microsoft.com/en-us/windows/powertoys/environment-variables).
+```
+
 ## Install *beamngpy*
 
 Having a Python
@@ -84,3 +88,11 @@ Now you are ready to use BeamNGpy through MATLAB. If you have Simulink installed
 ## Test if it works
 
 TODO: minimal example to test
+
+Make sure that python engine is connected to your MATLAB engine
+
+```matlab
+pe = pyenv;
+pe.Version % This should return your python version linked with your MATLAB
+pyenv(ExecutionMode="OutOfProcess") % This should return paths for your python executable, library, etc.
+```
