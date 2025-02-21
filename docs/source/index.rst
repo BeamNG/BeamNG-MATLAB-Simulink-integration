@@ -11,6 +11,7 @@
    matlab.md
    sfunction.md
    fmi.md
+   combined.md
    changelog.rst
    license.rst
 
