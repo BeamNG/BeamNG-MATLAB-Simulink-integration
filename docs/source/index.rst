@@ -13,6 +13,7 @@
    sfunction.md
    fmi.md
    combined.md
+   troubleshooting.md
    changelog.rst
    license.rst
 
