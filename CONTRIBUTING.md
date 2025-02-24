@@ -1,4 +1,4 @@
-# Welcome to BeamNG-MATLAB-Simulink-integration's contributing guide <!-- omit in toc -->
+# Contributing Guide
 
 Thank you for investing your time in contributing to our project! 
 
@@ -11,7 +11,7 @@ To get an overview of the project, read the [README](https://github.com/BeamNG/B
 - [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow)
 - [Collaborating with pull requests](https://docs.github.com/en/github/collaborating-with-pull-requests)
 
-## How to Contribute to BeamNG-MATLAB-Simulink-integration
+## How to Contribute
 
 ### Before Starting
 
