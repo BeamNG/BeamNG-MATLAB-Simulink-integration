@@ -5,7 +5,7 @@
 
 ## MATLAB Bridge
 
-**MATLAB Bridge** allows you to control BeamNG from MATLAB scripts, for example to set up scenarios or to query vehicle information. This uses [BeamNGpy](https://github.com/BeamNG/BeamNGpy) and MATLAB's [ability to call Python libraries](https://www.mathworks.com/products/matlab/matlab-and-python.html) in the background.
+**MATLAB Bridge** allows you to control BeamNG from MATLAB scripts, for example to set up scenarios or to query vehicle information. This uses [BeamNGpy](https://github.com/BeamNG/BeamNGpy) leveraging MATLAB's [ability to call Python libraries](https://www.mathworks.com/products/matlab/matlab-and-python.html) under the hood.
 
 ```{mermaid}
 graph LR;
