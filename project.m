@@ -11,6 +11,7 @@ opts.Summary = 'Connects MATLAB and Simulink to BeamNG.tech';
 opts.Description = 'This toolbox allows you to connect MathWorks products with BeamNG.tech.';
 opts.ToolboxImageFile = 'src/pictures/BeamNG-complete-logo.png';
 opts.ToolboxGettingStartedGuide = 'src/doc/GettingStarted.mlx';
+opts.ToolboxMatlabPath = {'src/lib'};
 opts.MinimumMatlabRelease = 'R2023b';
 opts.MaximumMatlabRelease = '';
 opts.SupportedPlatforms.Win64 = true;
