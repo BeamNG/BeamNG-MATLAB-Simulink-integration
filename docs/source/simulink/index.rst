@@ -8,8 +8,9 @@ Simulink Bridge allows co-simulation between tightly coupled systems.
 .. toctree::
    :maxdepth: 1
 
-   simulink_interface.md
+   introduction.md
    setting_up_simulink.md
    s_function.md
    fmu.md
    configure.md
+   examples/index.rst

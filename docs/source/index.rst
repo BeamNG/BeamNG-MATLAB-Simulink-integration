@@ -10,8 +10,6 @@
    compatibility.md
    matlab/index.rst
    simulink/index.rst
-   sfunction.md
-   fmi.md
    combined.md
    troubleshooting.md
    changelog.rst

@@ -1,4 +1,4 @@
-# Simulink FMU Examples
+# FMU Examples
 
 ```{tip}
 To make your custom FMU model, follow the instructions in the [BeamNG FMU](https://github.com/BeamNG/BeamNG-FMU) repository.
@@ -15,7 +15,7 @@ beamng_copy_examples
 1. **Open an Example Model:**
    Begin by opening one of the example models, *FMI2.slx* or *FMI3.slx*, available in the `examples/simulink/FMI` folder.
 
-   ![FMU-Simulink Model](media/FMI.png)
+   ![FMU-Simulink Model](../../media/FMI.png)
     Figure 1: The FMU-Simulink model
 
 2. **Configure the FMU Block:**
@@ -24,11 +24,11 @@ beamng_copy_examples
 3. **Edit FMU Parameters:**
    To modify the FMU parameters such as input/output ports and simulation time, double-click the FMU file. 
 
-   ![FMU Parameters](media/fmu_parameters.png)
+   ![FMU Parameters](../../media/fmu_parameters.png)
     Figure 2: The FMU-Simulink model parameters
 
 4. **Start the Vehicle Coupling:**
-   Follow the [integration instructions](simulink/fmu.md#set-up-the-fmu-co-simulation) similar to those for the S-function Simulink integration to start the vehicle coupling. Alternatively, use the `Ctrl+Shift+V` shortcut to initiate coupling directly in BeamNG. Once started, the vehicle will begin moving, and you should observe a simulation environment similar to the following:
+   Follow the [integration instructions](../fmu.md#set-up-the-fmu-co-simulation) similar to those for the S-function Simulink integration to start the vehicle coupling. Alternatively, use the `Ctrl+Shift+V` shortcut to initiate coupling directly in BeamNG. Once started, the vehicle will begin moving, and you should observe a simulation environment similar to the following:
 
-   ![Running FMU-Simulink Integration](media/fmu_simulink_running.jpg)
+   ![Running FMU-Simulink Integration](../../media/fmu_simulink_running.jpg)
     Figure 3: The FMU-Simulink model running
