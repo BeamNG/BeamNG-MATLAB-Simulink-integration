@@ -37,7 +37,7 @@ However, there is no guarantee as to when – inside the current frame –
 these steps will be computed; only that they must be computed ahead of wall-clock time, 
 in order to keep the simulation real-time.
 
-![BeamNG Multithreading](../pictures/1_BeamNG_Multithreading.png)
+![BeamNG Multithreading](../media/1_BeamNG_Multithreading.png)
 
 This pictures shows a simplified overview of this, 
 where the physics steps are shown to be running concurrently with various other processes.

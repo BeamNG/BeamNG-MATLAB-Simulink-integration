@@ -12,11 +12,11 @@ where `simulinkDt` is the Simulink computation time,
 and `ceil` is the ceiling operator.
 The following figure shows where this is set (highlighted in yellow).
 
-![Setting_The_Simulink_Simulation_Time](../pictures/2_Setting_The_Simulink_Simulation_Time.png)
+![Setting_The_Simulink_Simulation_Time](../media/2_Setting_The_Simulink_Simulation_Time.png)
 
 ## Coupling case 1
 
-![_Coupling_Case_1](../pictures/3_Coupling_Case_1.png)
+![_Coupling_Case_1](../media/3_Coupling_Case_1.png)
 
 In this case we have the case where the Simulink computation time is similar 
 in length to the physics steps in BeamNG. However, the UDP round-trip time is significantly larger.
@@ -27,7 +27,7 @@ which will send, receive and block execution at the appropriate times.
 
 ## Coupling case 2
 
-![Coupling_Case_2](../pictures/4_Coupling_Case_2.png)
+![Coupling_Case_2](../media/4_Coupling_Case_2.png)
 
 This is the opposite case; the Simulink computation time is much slower than the BeamNG physics step time, 
 but the UDP round-trip time is quite fast.

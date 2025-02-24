@@ -5,7 +5,7 @@ This is the part of Simulink which handles communication with BeamNG and control
 execution in Simulink appropriately. 
 The following figure gives an overview of how the S-function has been implemented.
 
-![The_Simulink_S_Function](../pictures/5_The_Simulink_S_Function.png)
+![The_Simulink_S_Function](../media/5_The_Simulink_S_Function.png)
 
 ## Inputs and Outputs
 

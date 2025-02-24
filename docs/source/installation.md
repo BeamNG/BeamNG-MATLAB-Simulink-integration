@@ -24,7 +24,7 @@ hardcode this path in you scripts. To create a new environment variable on **Win
 2. Click on **Edit environment variables for your account** (or if you have administrator privileges, you can also choose **Edit the system environment variables** and then **Environment Variables...**)
 3. Click **New...** and enter the following information:
    
-   ![new_environment_variable](pictures/new_environment_variable.png)
+   ![new_environment_variable](media/new_environment_variable.png)
 
    The variable value is the path to the **folder** where the file **BeamNG.drive.exe** is located.
 4. Click OK
