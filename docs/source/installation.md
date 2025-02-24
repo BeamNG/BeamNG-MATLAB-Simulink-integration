@@ -9,7 +9,7 @@ To make MATLAB and Simulink work with BeamNG.tech, you have to install and confi
 The following sections describe the installation process in detail.
 
 ```{note}
-Before continuing, check [Compatibility](compatibility.md) to make sure you install the correct versions.
+Before continuing, check [Compatibility](compatibility.md) to make sure you install compatible versions.
 ```
 
 ## Install BeamNG.tech
