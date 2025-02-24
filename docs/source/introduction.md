@@ -2,12 +2,17 @@
 
 **BeamNG.tech Support for MATLAB and Simulink** is a MATLAB toolbox that allows you to connect [MathWorks](https://www.mathworks.com/) products with [BeamNG.tech](https://beamng.tech/). It comes with two components:
 
+
+## MATLAB Bridge
+
 **MATLAB Bridge** allows you to control BeamNG from MATLAB scripts, for example to set up scenarios or to query vehicle information. This uses [BeamNGpy](https://github.com/BeamNG/BeamNGpy) and MATLAB's [ability to call Python libraries](https://www.mathworks.com/products/matlab/matlab-and-python.html) in the background.
 
 ```{mermaid}
 graph LR;
   ml(MATLAB)<-->py(BeamNGpy)<-->bng(BeamNG.tech);
 ```
+
+## Simulink Bridge
 
 **Simulink Bridge** allows you to set up a co-simulation between a Simulink model and a BeamNG vehicle. It comes with 2 options:
 
