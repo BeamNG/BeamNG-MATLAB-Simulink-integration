@@ -2,7 +2,7 @@
 
 To make MATLAB and Simulink work with BeamNG.tech, you have to install and configure several software components first:
 * MATLAB and optionally Simulink
-* Python
+* Python and the BeamNGpy package
 * BeamNG.tech
 * *BeamNG.tech Support for MATLAB and Simulink* (this toolbox)
 
@@ -14,18 +14,20 @@ Before continuing, check [Compatibility](compatibility.md) to make sure you inst
 
 ## Install BeamNG.tech
 
-The first step to used the MATLAB bridge is to have a working version of
-[BeamNG.tech](https://beamng.tech/). As an optional point you can create an
-evironment variable `BNG_HOME` pointing to the folder containing the
-BeamNG.tech executable. 
-This allows you to omit this path when creating an instance of the BeamNGpy class. 
-To create a new environment variable go to _Edit system environment
-variables/Environment Variables.../New..._. You should now see the
-following window, where you have to insert `BNG_HOME` in the _Variable name_ 
-field and the path of the folder containing the BeamNG.tech executable in
-the _Variable value_ field, then press _OK_.
+The first step is to install [BeamNG.tech](https://beamng.tech/). Check the website how to
+acquire a license, and follow the provided instructions to download and install the software.
 
-![new_environment_variable](pictures/new_environment_variable.png)
+It is also recommended to create an environment variable `BNG_HOME` pointing to the folder containing the
+BeamNG.tech executable. With this your scripts become simpler and more portable, because you don't need to
+hardcode this path in you scripts. To create a new environment variable on **Windows**, perform the following steps:
+1. Click **Start** and enter *environment*
+2. Click on **Edit environment variables for your account** (or if you have administrator privileges, you can also choose **Edit the system environment variables** and then **Environment Variables...**)
+3. Click **New...** and enter the following information:
+   
+   ![new_environment_variable](pictures/new_environment_variable.png)
+
+   The variable value is the path to the **folder** where the file **BeamNG.drive.exe** is located.
+4. Click OK
 
 ## Install and set up Python
 
@@ -34,13 +36,13 @@ Install a
 [Python version compatible with your MATLAB version](https://nl.mathworks.com/support/requirements/python-compatibility.html). During installation, make sure you check **Add Python to PATH**, so that it is recognized as an available program.
 
 ```{tip}
-If you forgot to tick the adding to PATH option during installation, you can also add the path of the executable Python file to your in `PATH` environment variable as explained in [Environment Variables](https://learn.microsoft.com/en-us/windows/powertoys/environment-variables).
+If you forgot to tick the adding to PATH option during installation, you can either re-run the Python installer and check it this time, or you can add the following two entries to your in `PATH` environment variable (see how to set environment variables above): `path\to\python` and `path\to\python\Scripts`.
 ```
 
 ## Install *beamngpy*
 
 Having a Python
-environment ready, you can proceed installing [BeamNGpy](https://beamngpy.readthedocs.io/) on it, when doing
+environment ready, you can proceed installing [BeamNGpy](https://github.com/BeamNG/BeamNGpy) on it, when doing
 so keep in mind to comply with the
 [compatibility table
 between BeamNGpy and BeamNG.tech](https://github.com/BeamNG/BeamNGpy#compatibility).
