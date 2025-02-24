@@ -3,7 +3,8 @@ function setup_beamngpy(executable_path)
     % python.exe file of an environment with BeamNGpy installed. As a first
     % step this function tries to connect to the python environment and
     % prints the detected python version, then tries to import the BeamNGpy
-    % module.
+    % module. If no path is given as argument, it will use the current
+    % default Python environment.
     %
     % If both the steps are successful the output in the command window
     % should be something like this:
@@ -21,7 +22,11 @@ function setup_beamngpy(executable_path)
     disp("--------- Start BeamNGpy setup ---------")
     disp(" ")
 
-    pe = pyenv(Version=executable_path);
+    if nargin < 1
+        pe = pyenv();
+    else
+        pe = pyenv(Version=executable_path);
+    end
 
     disp("Python environment connected")
     disp(strcat("Detected version: ", pe.Version))

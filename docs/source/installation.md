@@ -39,10 +39,9 @@ Install a
 If you forgot to tick the adding to PATH option during installation, you can either re-run the Python installer and check it this time, or you can add the following two entries to your in `PATH` environment variable (see how to set environment variables above): `path\to\python` and `path\to\python\Scripts`.
 ```
 
-## Install *beamngpy*
+## Install BeamNGpy
 
-Having a Python
-environment ready, you can proceed installing [BeamNGpy](https://github.com/BeamNG/BeamNGpy) on it, when doing
+Having a Python environment ready, you can proceed installing [BeamNGpy](https://github.com/BeamNG/BeamNGpy) on it, when doing
 so keep in mind to comply with the
 [compatibility table
 between BeamNGpy and BeamNG.tech](https://github.com/BeamNG/BeamNGpy#compatibility).
@@ -65,36 +64,62 @@ The simplest way is to install the latest version via the MATLAB Add-On Manager 
 
 ### Option 1: Install latest version via Add-On Manager
 
-TODO
+Perform the following steps to install the toolbox:
+1. Launch MATLAB
+2. In the **Home** tab, under **Add-Ons** select **Get Add-Ons**
 
-![BeamNG-MATLAB-Simulink-integration_Toolbox](media/BeamNG-MATLAB-Simulink-integration_Toolbox.png)
+   ![Matlab-Addons](media/Matlab-Addons.png)
+
+3. The **Add-On Explorer** will open. Search for *BeamNG* and select **BeamNG.tech Support for MATLAB and Simulink**
+
+   ![BeamNG-MATLAB-Simulink-integration_Toolbox](media/BeamNG-MATLAB-Simulink-integration_Toolbox.png)
+
+4. Click on the **Add** button to install and accept the license agreement
+
+After successful installation you can open the **Getting Started Guide** which will bring you back to this documentation you are currently reading.
 
 ### Option 2: Manually install any desired version
 
-TODO
+To manually download and install a specific version, perform the following steps:
+
+1. Open the [Releases](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/releases) page of the GitHub repository
+2. Scroll to the desired version and download the `.mltbx` file under **Assets**
+3. In MATLAB go to the directory where the file was downloaded and double-click on the `.mltbx` file
+4. The toolbox version will be installed
+
 
 ## Connect MATLAB to Python
 
 The last step that you need to perform is to connect MATLAB to your new
-python environment. 
-This can be easily done using the `setup_beamngpy` function. 
-For example, if you have a conda python environment you just need to call
-this function from the command window with a similar input:
+Python environment. This can be easily done using the `setup_beamngpy` function.
 
-```matlab
-setup_beamngpy('C:\Users\<username>\miniconda3\envs\<env-name>\python.exe')
-```
+* To use your current default Python environment, just run:
 
-Now you are ready to use BeamNGpy through MATLAB. If you have Simulink installed, you can also use the Simulink co-simulation functionalities now.
+  ```matlab
+  setup_beamngpy
+  ```
 
-## Test if it works
+* Advanced users, who have multiple Python versions or virtual environments installed, can define the Python environment they want to use with by specifying the path to the Python executable, similar to this example:
 
-TODO: minimal example to test
+  ```matlab
+  setup_beamngpy('C:\Users\<username>\miniconda3\envs\<env-name>\python.exe')
+  ```
 
-Make sure that python engine is connected to your MATLAB engine
+If no errors occur and you see the text `BeamNGpy detected`, you are now ready to use BeamNG through MATLAB. If you have Simulink installed, you can also use the Simulink co-simulation functionalities now.
 
-```matlab
-pe = pyenv;
-pe.Version % This should return your python version linked with your MATLAB
-pyenv(ExecutionMode="OutOfProcess") % This should return paths for your python executable, library, etc.
-```
+## Uninstall
+
+If you want to uninstall *BeamNG.tech Support for MATLAB and Simulink* from your Add-ons in MATLAB, perform the following steps.
+
+1. Launch MATLAB
+2. In the **Home** tab, under **Add-Ons** select **Manage Add-Ons**
+
+   ![Matlab-Addons](media/Matlab-Addons.png)
+
+3. In the line **BeamNG.tech Support for MATLAB and Simulink**, click on the 3 dots on the right and select **Uninstall**
+
+   ![](media/Uninstall.png)
+
+4. The toolbox will be uninstalled
+
+To uninstall the other software components (BeamNGpy, Python, BeamNG.tech, MATLAB) follow the uninstall guides in the corresponding documentation of each component.
