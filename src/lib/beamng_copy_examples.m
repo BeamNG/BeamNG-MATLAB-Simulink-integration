@@ -9,8 +9,7 @@ if isfile(target_dir) || isfolder(target_dir)
     },'');
     error(msg)
 end
-p = fileparts(fileparts(mfilename("fullpath")));
-source_dir = fullfile(p,'examples');
+source_dir = beamng_toolboxpath().examples;
 copyfile(source_dir,target_dir);
 disp('Copied BeamNG examples to "examples" folder in the current working directory.');
 end
