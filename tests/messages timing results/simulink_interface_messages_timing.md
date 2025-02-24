@@ -22,7 +22,7 @@ In order to compute these tests a Matlab file has been used. The script loads au
 - `simulinkReceiveLog.csv`: this file has one row for each message received by lua with one column for the time at which the message was received and the other columns containing all the values contained in the message itself. 
 - `simulinkPhysicsStepsLog.csv`: this file has one row for each physics step occured with the lua controller loaded with only one column containing the time at which the physics step began.
 
-After loading the controller, the Matlab script runs a simple Simulink model that uses the BeamNG s-function to receive and store the messages coming from lua in the Matlab workspace and sends messages full of NaNs (exept the message id which is sent with the proper value) back to lua. In addition to this, the model has a Matlab function that takes a number of milliseconds as input and pause the computation for that amount of time. This is needed in order to simulate a bigger computation time of the Simulink model. 
+After loading the controller, the Matlab script runs a simple Simulink model that uses the BeamNG S-function to receive and store the messages coming from lua in the Matlab workspace and sends messages full of NaNs (exept the message id which is sent with the proper value) back to lua. In addition to this, the model has a Matlab function that takes a number of milliseconds as input and pause the computation for that amount of time. This is needed in order to simulate a bigger computation time of the Simulink model. 
 
 Once the simulation finishes, Matlab creates the plots presented in this document loading the data from the CSV files.
 The code of the Matlab file can be found in the [Appendix](#appendix).

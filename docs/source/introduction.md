@@ -16,7 +16,7 @@ graph LR;
 
 **Simulink Bridge** allows you to set up a co-simulation between a Simulink model and a BeamNG vehicle. It comes with 2 options:
 
-* S-function block: Uses Simulink's s-function mechanism to communicate to BeamNG via the UDP protocol.
+* S-function block: Uses Simulink's S-function mechanism to communicate to BeamNG via the UDP protocol.
 
   ```{mermaid}
   graph LR;
