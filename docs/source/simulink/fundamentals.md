@@ -1,4 +1,6 @@
-# Introduction
+# Fundamental Concepts
+
+[Tightly-coupled](https://documentation.beamng.com/beamng_tech/cosimulationeditor/tight_coupling/) systems involve two processes running simultaneously and interacting with each other in a dependent way. This involves one side sending data to the other process and vice versa, on a regular cycle. BeamNG can be coupled to a third party (such as Simulink) in this manner.
 
 This document provides details and contains instructions for 
 using the prototype UDP tight-coupling system for Simulink 
