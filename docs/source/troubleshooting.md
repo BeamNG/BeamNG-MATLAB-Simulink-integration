@@ -11,3 +11,9 @@ toolbox is closely tied to BeamNG.tech, it is also recommended to consult the [s
 **Solution**: You may have to add the toolbox path to MATLAB search path. Try the following steps:
 1. Re-start MATLAB and check if the `beamng` command works now.
 2. If this does not work, try to [install](installation.md#install-beamngtech-support-for-matlab-and-simulink) the toolbox again (you probably have to [uninstall](installation.md#uninstall) the toolbox first).
+
+## Environment variable not recognized
+
+**Problem**: The environment variable `BNG_HOME` is not recognized in MATLAB or BeamNGpy, although you set it.
+
+**Solution**: Environment variables are read by an application when the application is started. Re-start MATLAB or the Python process so that changes take effect.

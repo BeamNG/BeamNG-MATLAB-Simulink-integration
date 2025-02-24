@@ -29,6 +29,10 @@ hardcode this path in you scripts. To create a new environment variable on **Win
    The variable value is the path to the **folder** where the file **BeamNG.drive.exe** is located.
 4. Click OK
 
+```{note}
+If you are already running an instance of MATLAB, you need to re-start MATLAB so that changes to environment variables take effect in MATLAB.
+```
+
 ## Install and set up Python
 
 Once you have BeamNG.tech installed you can proceed installing [Python](https://www.python.org/). 
