@@ -1,6 +1,8 @@
-# BeamNG FMUs
+# FMU Blocks
 
-A BeamNG FMI for the [Functional Mock-up Interface](https://fmi-standard.org/) allows the BeamNG.tech user to set up a [tightly-coupled](https://documentation.beamng.com/beamng_tech/cosimulationeditor/tight_coupling/) system between a BeamNG vehicle and third-party software (such as Mathworks Simulink). The ```vehicleSystemsCoupling``` lua controller will facilitates the communication and signal selection.
+BeamNG's FMU blocks according to the [FMI Standard](https://fmi-standard.org/) allows the BeamNG.tech user to set up a [tightly-coupled](https://documentation.beamng.com/beamng_tech/cosimulationeditor/tight_coupling/) system between a BeamNG vehicle and third-party software (such as Mathworks Simulink). We support FMI 2.0 and FMI 3.0.
+
+The `vehicleSystemsCoupling` lua controller will facilitates the communication and signal selection.
 
 ## Set up the FMU co-simulation
 

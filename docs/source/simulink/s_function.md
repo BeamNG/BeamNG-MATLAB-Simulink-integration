@@ -1,4 +1,4 @@
-# S-function
+# S-function Block
 
 Let us now look at the Simulink S-function in some detail. 
 This is the part of Simulink which handles communication with BeamNG and controls 

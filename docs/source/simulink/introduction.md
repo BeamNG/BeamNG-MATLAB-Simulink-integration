@@ -1,4 +1,4 @@
-# Simulink Interface
+# Introduction
 
 This document provides details and contains instructions for 
 using the prototype UDP tight-coupling system for Simulink 
