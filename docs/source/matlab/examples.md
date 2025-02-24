@@ -39,8 +39,4 @@ The script `object_placement.mlx` defines a custom scenario for a given map and 
 
 In the script `annotation_bounding_boxes.mlx` you get semantic annotations, instance annotations, and draw bounding boxes.
 
-```{note}
-The bounding boxes feature is not ready for use yet.
-```
-
 ![Annotation and Bounding Boxes](../media/annotation_bounding_boxes.png)
