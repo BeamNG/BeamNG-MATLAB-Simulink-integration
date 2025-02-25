@@ -1,9 +1,9 @@
 # S-function Examples
 
-We have provided some Simulink code examples to demonstrate the BeamNG-Simulink coupling in action. To execute these examples effectively, it is crucial to configure the three control parameters described in this document: window width, send wait, and send offset. The examples are available in the models named *throttle_example.slx* and *torques_example.slx*, detailed below:
+We provide Simulink examples to demonstrate the BeamNG-Simulink co-simulation in action. To execute these examples effectively, it is crucial to configure the three control parameters described in this document: window width, send wait, and send offset. The examples are available in the models named *throttle_example.slx* and *torques_example.slx*, detailed below:
 
-![Figure 1: The controller function of the Simulink model](../../media/m_function.png)
-    Figure 1: The M-function in the example model
+![Figure 1: The controller used in both examples](../../media/m_function.png)
+    Figure 1: The controller used in both examples
 
 
 Copy the examples folder to your current working directory, by running the following in the MATLAB command window:
@@ -12,19 +12,19 @@ Copy the examples folder to your current working directory, by running the follo
 beamng_copy_examples
 ```
 
-Both examples are located in `examples/simulink/S-function`.
+Both examples are located in `examples/simulink/S-function`. Change your working directory to this folder.
 
 ## Example 1: Pedal Control to Maintain Speed Limit
 
-This example (*throttle_example.slx*) allows users to test a coupling example that maintains the vehicle's speed limit and orientation angle on the map. The block receives vehicle orientation information as input and controls the vehicle via throttle. The speed limit can be adjusted using the `speed_input` constant block, and the orientation angle with the `Desired_steering_angle_input` constant input to the M-function as illustrated in Figure 1.
+The example *throttle_example.slx* maintains the vehicle's speed limit and orientation angle on the map. The block receives vehicle orientation information (yaw angle) and speed as input and controls the vehicle via throttle and steering angle. The speed limit can be adjusted using the `speed_input` constant block, and the orientation angle with the `Desired_steering_angle_input` constant block to the controller as shown in Figure 1.
 
 ![Figure 2: The controller function of the Simulink model](../../media/throttle.png)
-    Figure 2: The example 1 model 
+    Figure 2: Throttle example
 
 ## Example 2: Wheel Torque to Control Speed Limit
 
-This example (*torques_example.slx*) allows users to test another coupling scenario that maintains the vehicle's speed limit and orientation angle on the map. In this case, the block receives vehicle orientation information as input and controls the vehicle through torques applied to each wheel. Adjustments to the speed limit and orientation angle are made via the `speed_input` and `Desired_steering_angle_input` constant blocks, respectively, as shown in Figure 3.
+The example *torques_example.slx* also maintains the vehicle's speed limit and orientation angle on the map. In this case, the vehicle is controlled through torques applied to each wheel. Adjustments to the speed limit and orientation angle are made in the same way as in the throttle example.
 
 
-![Figure 2: The controller function of the Simulink model](../../media/torques.png)
-    Figure 3: The example 2 model
+![Figure 3: The controller function of the Simulink model](../../media/torques.png)
+    Figure 3: Torques example
