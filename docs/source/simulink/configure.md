@@ -15,7 +15,7 @@ The [Co-Simulation Editor](https://documentation.beamng.com/beamng_tech/cosimula
 To establish a tight-coupling communication with Simulink through S-function, follow the following steps:
 
 1. Start the BeamNG.tech simulation in your favorite map.
-2. Click ```F11``` to access the ```World Editor ```.
+2. Press `F11` to open the **World Editor**.
 3. Click on the [Co-Simulation Editor](https://documentation.beamng.com/beamng_tech/cosimulationeditor/introduction/).
 
     ![](../media/wdw1.png)
