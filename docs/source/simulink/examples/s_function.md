@@ -28,3 +28,20 @@ The example *torques_example.slx* also maintains the vehicle's speed limit and o
 
 ![Figure 3: The controller function of the Simulink model](../../media/torques.png)
     Figure 3: Torques example
+
+## How to run each example
+
+To run one of above examples, follow these steps:
+
+1. Launch BeamNG.tech
+2. Click on **Freeroam**
+3. Select a map, e.g. **Grid, Small, Pure** and choose a spawn point, click **Spawn**
+3. The default vehicle will be used, if you want to use another vehicle, press `Esc` and click on *Vehicles* or press `Ctrl+E` and choose the vehicle you like
+   
+   ```{note}
+   Note that the communication interface (csv file) is vehicle-specific, because not all signals are available for all vehicles. These examples, however, use only basic signals available for all vehicles that have a powertrain (but not other objects selectable in the vehicles menu such as a cone).
+   ```
+4. In the simulation, press `F11` to open the **World Editor**
+5. Click on **Co-Simulation Editor** to open it
+6. TODO
+
