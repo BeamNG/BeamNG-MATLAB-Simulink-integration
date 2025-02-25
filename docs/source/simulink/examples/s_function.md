@@ -21,7 +21,7 @@ The example *throttle_example.slx* maintains the vehicle's speed limit and orien
 ![Figure 2: The controller function of the Simulink model](../../media/throttle.png)
     Figure 2: Throttle example
 
-## Example 2: Wheel Torque to Control Speed Limit
+## Example 2: Wheel Torques to Maintain Speed Limit
 
 The example *torques_example.slx* also maintains the vehicle's speed limit and orientation angle on the map. In this case, the vehicle is controlled through torques applied to each wheel. Adjustments to the speed limit and orientation angle are made in the same way as in the throttle example.
 
