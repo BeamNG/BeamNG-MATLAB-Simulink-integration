@@ -6,8 +6,9 @@ classdef beamng_toolboxpath
     end
 
     properties (Dependent)
-        lib
+        lib  % this is the only folder added to MATLAB path
         examples
+        assets
     end
     
     methods
@@ -22,6 +23,10 @@ classdef beamng_toolboxpath
 
         function path = get.examples(obj)
             path = fullfile(obj.root,'examples');
+        end
+
+        function path = get.assets(obj)
+            path = fullfile(obj.root,'assets');
         end
     end
 end
