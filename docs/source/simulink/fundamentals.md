@@ -41,9 +41,9 @@ in order to keep the simulation real-time.
 
 ![BeamNG Multithreading](../media/1_BeamNG_Multithreading.png)
 
-This pictures shows a simplified overview of this, 
+This picture shows a simplified overview of this, 
 where the physics steps are shown to be running concurrently with various other processes.
-In particular in this picutre two cases are hilighted:
+In particular in this picture two cases are highlighted:
 
 * In frame 1 (left), we have the case where the physics steps are computed earlier than 
   the work being performed on the other concurrent threads. 
