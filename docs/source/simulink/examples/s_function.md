@@ -47,7 +47,9 @@ To run one of above examples, follow these steps:
 8. Copy both `.csv` files from your MATLAB working directory to `C:\Users\<User>\AppData\Local\BeamNG.drive\<Version>`, where `<User>` is your username and `<Version>` is the version of BeamNG you are using.
 9. In the **Co-Simulation Editor**, select **CoSim** from the dropdown menu
 10. Click **Start/stop coupling with 3rd party**, select the `.csv` file of the example you want to run (e.g. `throttle_example.csv` for the throttle example) and click **Open**
-11. BeamNG will freeze and the window might be still open for a while. This is normal.
-12. Open the Simulink model you want to run (e.g. `throttle_example.slx` for the throttle example) and click **Run**
+11. BeamNG will freeze and the window might be still open for a while. This is normal, as it is waiting for Simulink to start the co-simulation.
+12. Open the Simulink model you want to run (e.g. `throttle_example.slx` for the throttle example) and click **Run**. The co-simulation will start and the vehicle will start driving.
 13. The model is configured to run indefinitely, so you can stop it anytime by clicking **Stop**. This will stop the Simulink model, but BeamNG will still wait for the next Simulink step and looks frozen.
 14. To stop BeamNG waiting for Simulink, click on **Start/stop coupling with 3rd party** again.
+
+This concludes running the basic co-simulation examples. You could attach some scopes in Simulink or play with the controller parameters to see how the vehicle behaves.
