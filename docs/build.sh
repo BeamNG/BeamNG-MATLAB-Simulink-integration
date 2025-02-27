@@ -21,4 +21,5 @@ rm -rf build
 pip install -r requirements.txt
 git config --global --add safe.directory $(dirname "$PWD")
 sphinx-multiversion source build
+# sphinx-build source build    # use this to build only a single version
 python generate_index.py $BRANCH build/index.html
