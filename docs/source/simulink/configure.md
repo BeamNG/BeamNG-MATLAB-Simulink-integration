@@ -22,7 +22,7 @@ To establish a tight-coupling communication with Simulink through S-function, fo
 
     Figure 1: The ```Co-Simulation Editor``` window
 
-4. If you have a your coupling-configuration csv file in your user-folder (it is located in ```%USERPROFILE%\AppData\Local\BeamNG.tech\0.3x``` by default), you have to reload the csv by clicking on ```Start/stop coupling with 3rd party``` button, then another ```File dialog window``` will appear to load your csv.
+4. If you have a your coupling-configuration csv file in your user-folder (it is located in ```%USERPROFILE%\AppData\Local\BeamNG.tech\0.3x``` by default), you have to reload the csv by clicking on ```Start coupling with 3rd party``` button, then another ```File dialog window``` will appear to load your csv.
 
     ![](../media/select_csv.png)
 
@@ -40,7 +40,7 @@ To establish a tight-coupling communication with Simulink through S-function, fo
 
     Figure 4: The File dialog window to save your configuration as csv file.
 
-7. Click on ```Start/stop coupling with 3rd party``` button at your Co-Simulation Editor window to start the coupling.
+7. Click on ```Start coupling with 3rd party``` button at your Co-Simulation Editor window to start the coupling.
 8. Open your Simulink model, add your S-function.
 9. double-click on your S-function, and type the path of your csv file.
 10. Load your csv signals file to your S-function.
@@ -60,5 +60,5 @@ To establish a tight-coupling communication with Simulink through S-function, fo
     Figure 6: The Configuration Parameters window of Simulink model.
 
 12. Run your S-function model in Simulink.
-13. To stop coupling, stop coupling at BeamNG.tech end by pressing on the same button that started the coupling i.e., ```Start/stop coupling with 3ed party``` , or click on **CTRL+R** to reload the vehicle, then press on ```Stop``` Simulink end.
+13. To stop coupling, stop coupling at BeamNG.tech end by pressing on the same button that started the coupling i.e., ```Stop coupling with 3rd party``` , or press **CTRL+R** to reload the vehicle, then click on ```Stop``` in Simulink.
 
