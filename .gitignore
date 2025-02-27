@@ -2,5 +2,6 @@ slprj/
 *.slxc
 *.original
 *.bak
+*.asv
 *.r2022b
 docs/build/
