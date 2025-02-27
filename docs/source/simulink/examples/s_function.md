@@ -51,4 +51,4 @@ To run one of above examples, follow these steps:
 12. Open the Simulink model you want to run (e.g. `throttle_example.slx` for the throttle example) and click **Run**. The co-simulation will start and the vehicle will start driving.
 13. The model is configured to run indefinitely. To stop the co-simulation, click on **Stop coupling with 3rd party** in BeamNG. This will also stop the Simulink model after a short period due to a network timeout.
 
-This concludes running the basic co-simulation examples. You could attach some scopes in Simulink or play with the controller parameters to see how the vehicle behaves.
+This concludes running the basic co-simulation examples. You could view the scope signals in Simulink or play with the controller parameters to see how the vehicle behaves.
