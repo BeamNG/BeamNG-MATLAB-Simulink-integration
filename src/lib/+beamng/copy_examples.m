@@ -1,5 +1,5 @@
-function beamng_copy_examples()
-%BEAMNG_COPY_EXAMPLES  Copy BeamNG examples to current working directory.
+function copy_examples()
+%BEAMNG.COPY_EXAMPLES  Copy BeamNG examples to current working directory.
 target_dir = 'examples';
 if isfile(target_dir) || isfolder(target_dir)
     msg = strjoin({
@@ -9,7 +9,7 @@ if isfile(target_dir) || isfolder(target_dir)
     },'');
     error(msg)
 end
-source_dir = beamng_toolboxpath().examples;
+source_dir = beamng.toolboxpath().examples;
 copyfile(source_dir,target_dir);
 disp('Copied BeamNG examples to "examples" folder in the current working directory.');
 end

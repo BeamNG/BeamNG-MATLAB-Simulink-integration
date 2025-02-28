@@ -1,5 +1,5 @@
-classdef beamng_toolboxpath
-    %beamng_toolboxpath  Path to BeamNG toolbox.
+classdef toolboxpath
+    %beamng.toolboxpath  Path to BeamNG toolbox.
     
     properties
         root
@@ -12,7 +12,7 @@ classdef beamng_toolboxpath
     end
     
     methods
-        function obj = beamng_toolboxpath()
+        function obj = toolboxpath()
             p = fileparts(fileparts(mfilename("fullpath")));
             obj.root = p;
         end

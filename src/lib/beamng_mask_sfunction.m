@@ -24,7 +24,7 @@ function fullpath = getFullFilePath(filepath)
 % - otherwise: convert relative path to absolute path with
 %   respect to current working directory
 if isempty(filepath)
-    assets_path = beamng_toolboxpath().assets;
+    assets_path = beamng.toolboxpath().assets;
     fullpath = fullfile(assets_path, 'default_interface.csv');
 elseif is_absolute_path(filepath)
     fullpath = filepath;
