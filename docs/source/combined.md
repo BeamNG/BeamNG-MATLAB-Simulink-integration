@@ -10,6 +10,6 @@ beamng_copy_examples
 
 Both files are directly located in the `examples` folder.
 
-You can open the script `expo_demo.mlx` and run it section by section. The output should look similar to the following figure.
+You can open the script `expo_demo.mlx` and run it. The output should look similar to the following figure.
 
 ![demo_output](media/Simulink_demo_figure_3.jpg)

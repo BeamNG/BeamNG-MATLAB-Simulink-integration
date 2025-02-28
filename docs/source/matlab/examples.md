@@ -8,7 +8,7 @@ To open the scripts, copy the examples folder to your current working directory,
 beamng_copy_examples
 ```
 
-The live scripts are located in `examples/matlab`. We recommend you to run all examples yourself *section by section* by clicking on the **Run Section** button in the MATLAB Toolstrip at the top of the Live Editor.
+The live scripts are located in `examples/matlab`. We recommend you to run all examples yourself by clicking on the **Run** button in the MATLAB Toolstrip at the top of the Live Editor.
 
 ## Example 1: Vehicle State Plotting
 
