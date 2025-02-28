@@ -3,6 +3,9 @@ function startCoupling(vehicle,debug)
 %   startCoupling(vehicle,debug) starts co-simulation coupling on the given
 %   vehicle (beamngpy Vehicle class instance). The flag debug is a boolean
 %   flag indicating if debug mode should be used (default false).
+if nargin < 2
+    debug = false;
+end
 if debug
     debug_arg = '{debugFile=true}';
 else

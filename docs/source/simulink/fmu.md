@@ -13,7 +13,11 @@ The Lua controller must be loaded in order to start the tight coupling. We can d
 3. Choose your preferred map from the available options.
 4. Access the Lua console debug window by pressing the backtick (`) key or the tilde (~) key.
 5. The vehicle should then be selected at the bottom-left of this screen (usually this will be “BeamNG - Current Vehicle”).
-6. The following command should be typed into the command bar, to load the controller: ```controller.loadControllerExternal('tech/vehicleSystemsCoupling', 'vehicleSystemsCoupling', {})```, or you can use the shortcut for the specific controller i.e., **CTRL+V**
+6. The following command should be typed into the command bar, to load the controller:
+   ```
+   controller.loadControllerExternal('tech/vehicleSystemsCoupling', 'vehicleSystemsCoupling', {})
+   ```
+   or you can use the shortcut for the specific controller i.e., **CTRL+V**
 7. Open your Simulink and add your FMI block.
 8. Configure your FMI model by using this format at your Command Window in MATLAB ```fmudialog.createBusType('<YOUR_MODEL>/<FMI_BLOCK>')```. This command should list your inputs and outputs.
 9. Run your FMI model.
