@@ -5,7 +5,7 @@ We provide 5 live scripts that showcase the versatility of using **MATLAB Bridge
 To open the scripts, copy the examples folder to your current working directory, by running the following in the MATLAB command window:
 
 ```
-beamng_copy_examples
+beamng.copy_examples
 ```
 
 The live scripts are located in `examples/matlab`. We recommend you to run all examples yourself by clicking on the **Run** button in the MATLAB Toolstrip at the top of the Live Editor.

@@ -9,7 +9,7 @@ These steps guide you through using FMU (Functional Mock-up Unit) integration wi
 Copy the examples folder to your current working directory, by running the following in the MATLAB command window:
 
 ```
-beamng_copy_examples
+beamng.copy_examples
 ```
 
 1. **Open an Example Model:**

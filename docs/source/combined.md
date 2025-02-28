@@ -5,7 +5,7 @@ The example script `expo_demo.mlx` together with the Simulink model `expo_model.
 To open the example, copy the examples folder to your current working directory, by running the following in the MATLAB command window:
 
 ```
-beamng_copy_examples
+beamng.copy_examples
 ```
 
 Both files are directly located in the `examples` folder.

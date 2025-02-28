@@ -9,7 +9,7 @@ We provide Simulink examples to demonstrate the BeamNG-Simulink co-simulation in
 Copy the examples folder to your current working directory, by running the following in the MATLAB command window:
 
 ```
-beamng_copy_examples
+beamng.copy_examples
 ```
 
 Both examples are located in `examples/simulink/S-function`. Change your working directory to this folder.
@@ -33,7 +33,7 @@ The example *torques_example.slx* also maintains the vehicle's speed limit and o
 
 To run one of above examples, follow these steps:
 
-1. In MATLAB, change your working directory to `examples/simulink/S-function` (run `beamng_copy_examples` if you haven't done so yet)
+1. In MATLAB, change your working directory to `examples/simulink/S-function` (run `beamng.copy_examples` if you haven't done so yet)
 2. Launch BeamNG.tech
 3. Click on **Freeroam**
 4. Select a map, e.g. **Grid, Small, Pure** and choose a spawn point, click **Spawn**
