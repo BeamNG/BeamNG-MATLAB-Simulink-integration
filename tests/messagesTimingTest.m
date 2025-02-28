@@ -3,9 +3,9 @@ clear
 clc
 
 % Start the simulator.
-beamng = py.beamngpy.BeamNGpy('localhost', int32(25252));
+bng = py.beamngpy.BeamNGpy('localhost', int32(25252));
 
-beamng.open();
+bng.open();
 
 % Create a vehicle.
 vehicle = py.beamngpy.Vehicle('etk800', ...
@@ -16,20 +16,20 @@ scenario = py.beamngpy.Scenario('smallgrid', 'simulink', ...
     pyargs('description', 'Message Consitency Test'));
 
 scenario.add_vehicle(vehicle)
-scenario.make(beamng)
-beamng.load_scenario(scenario)
-beamng.start_scenario()
+scenario.make(bng)
+bng.load_scenario(scenario)
+bng.start_scenario()
 
 pause(2)
 
-load_lua_controller(vehicle, true);
+beamng.cosim.startCoupling(vehicle, true);
 
 set_param('testModel', 'SimulationCommand', 'start')
 
 pause(60)
 
-beamng.restart_scenario();
-beamng.close()
+bng.restart_scenario();
+bng.close()
 
 pause(4)
 
