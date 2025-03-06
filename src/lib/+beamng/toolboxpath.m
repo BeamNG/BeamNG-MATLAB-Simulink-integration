@@ -13,7 +13,7 @@ classdef toolboxpath
     
     methods
         function obj = toolboxpath()
-            p = fileparts(fileparts(mfilename("fullpath")));
+            p = fileparts(fileparts(fileparts(mfilename("fullpath"))));
             obj.root = p;
         end
         
