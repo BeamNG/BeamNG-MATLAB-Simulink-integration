@@ -5,3 +5,4 @@ slprj/
 *.asv
 *.r2022b
 docs/build/
+/release
