@@ -10,6 +10,6 @@ This includes features such as:
 * Access to Road Network & Scenario Objects
 * and more
 
-To see all available functions in BeamNGpy, check the [BeamNGpy Documentation](https://beamngpy.readthedocs.io/).
+To see all available functions in BeamNGpy, check the [BeamNGpy Documentation](https://documentation.beamng.com/api/beamngpy/).
 
 To see how it can be used from MATLAB, continue with the [MATLAB Bridge Examples](examples.md).
