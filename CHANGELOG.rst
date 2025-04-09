@@ -5,7 +5,7 @@ Changelog
 Version 1.4.0
 =============
 
-- New [documentation site](https://documentation.beamng.com/api/matlab-simulink/) with updated and improved content
+- New `documentation site <https://documentation.beamng.com/api/matlab-simulink/>`_ with updated and improved content
 - Add easy way to get examples from installed toolbox using ``beamng.copy_examples``
 - S-function block preserves user-defined path to CSV file now (no more automatic conversion to absolute path)
 - S-function path empty string (``''``) now means "use path to default CSV file"
