@@ -5,6 +5,7 @@ default:
 
 stages:
   - build
+  - release
   - deploy
 
 build-docs-preview:
@@ -32,6 +33,16 @@ build-docs-production:
   artifacts:
     paths:
       - docs/build
+  only:
+    - main
+
+tag-and-release:
+  stage: release
+  variables:
+    GIT_STRATEGY: clone
+  script:
+    - pip install requests
+    - python ci/release.py
   only:
     - main
 
