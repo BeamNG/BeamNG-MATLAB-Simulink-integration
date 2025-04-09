@@ -7,7 +7,7 @@ stages:
   - build
   - deploy
 
-build-pages:
+build-docs-preview:
   stage: build
   variables:
     GIT_STRATEGY: clone  # use fresh clone of repository (avoiding any old branches)
@@ -22,11 +22,22 @@ build-pages:
   only:
     - dev
 
-deploy-production:
-  stage: deploy
+build-docs-production:
+  stage: build
   variables:
     GIT_STRATEGY: clone  # use fresh clone of repository (avoiding any old branches)
     USE_DEV_BRANCH: "false"
+  script:
+    - bash docs/build.sh
+  artifacts:
+    paths:
+      - docs/build
+  only:
+    - main
+
+deploy-docs-production:
+  stage: deploy
+  variables:
     DOCUMENTATION_REPOSITORY: "$DOCUMENTATION_REPOSITORY"
     DOCUMENTATION_BRANCH: "master"
     DOCUMENTATION_LOCAL_REPO: "docs/production"
@@ -36,10 +47,6 @@ deploy-production:
     DOCUMENTATION_ARTIFACTS_PATH: "docs/build"
     DOCUMENTATION_TARGET_PATH: "static/api/matlab-simulink"
   script:
-    - bash docs/build.sh
     - bash docs/deploy_production.sh
-  artifacts:
-    paths:
-      - docs/build
   only:
     - main
