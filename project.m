@@ -18,5 +18,5 @@ opts.SupportedPlatforms.Win64 = true;
 opts.SupportedPlatforms.Glnxa64 = true;
 opts.SupportedPlatforms.Maci64 = false;
 opts.SupportedPlatforms.MatlabOnline = false;
-opts.OutputFile = 'release/BeamNG.tech Support for MATLAB and Simulink.mltbx';
+opts.OutputFile = 'release/BeamNG.tech-Support-for-MATLAB-and-Simulink.mltbx';
 end
