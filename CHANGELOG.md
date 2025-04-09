@@ -1,32 +1,26 @@
-=========
-Changelog
-=========
+# Changelog
 
-Version 1.4.0
-=============
+## Version 1.4.0
 
-- New `documentation site <https://documentation.beamng.com/api/matlab-simulink/>`_ with updated and improved content
-- Add easy way to get examples from installed toolbox using ``beamng.copy_examples``
+- New [documentation site](https://documentation.beamng.com/api/matlab-simulink/) with updated and improved content
+- Add easy way to get examples from installed toolbox using `beamng.copy_examples`
 - S-function block preserves user-defined path to CSV file now (no more automatic conversion to absolute path)
-- S-function path empty string (``''``) now means "use path to default CSV file"
+- S-function path empty string (`''`) now means "use path to default CSV file"
 - Minor improvements in examples
 
-Version 1.3.1.1
-===============
+## Version 1.3.1.1
 
 Minor updates:
 
 - mltbx and prj files with the updated examples
 - fix the object_placement example
 
-Version 1.3.1
-=============
+## Version 1.3.1
 
 - Port Update: The used port with BeamNG is now 25252 instead of 64256.
 - Updated the code Code is updated with latest BeamNGpy v1.31 and BeamNG.tech v0.34.
 
-Version 1.3.0
-=============
+## Version 1.3.0
 
 - Added Simulink integration using FMI.
 - Added Examples with FMI.
@@ -34,8 +28,7 @@ Version 1.3.0
 - Added the integration with co-simulation tool in BeamNG.tech.
 - Updated the code with latest BeamNGpy 1.29 and BeamNG.tech 0.32.
 
-Version 1.2.0
-=============
+## Version 1.2.0
 
 - fix windows send function.
 - Added new example
@@ -43,15 +36,13 @@ Version 1.2.0
 - updated the code with latest BeamNGpy 1.28 and BeamNG.tech 0.31
 
 
-Version 1.1.0
-=============
+## Version 1.1.0
 
 - Add linux compatibility
 - updated the code with latest BeamNGpy 1.26 and BeamNG.tech 0.28
 
 
-Version 1.0.0
-=============
+## Version 1.0.0
 
 New BeamNG Matlab and Simulink bridge.
 
@@ -61,13 +52,11 @@ New BeamNG Matlab and Simulink bridge.
 - Added the Matlab function load_lua_controller to load the vehicleSystemCoupling.lua controller directly from Matlab through BeamNGpy.
 - We have developed five fundamental scripts that showcase the versatility of using the MATLAB bridge
   to launch the Beamng.Tech simulator:
-
-  - ``annotation_bounding_boxes.m``
-  - ``lidar_tour.m``
-  - ``lidar_tour.m``
-  - ``multishot_camera.m``
-  - ``object_placement.m``
-  - ``vehicle_state_plotting.m``
-
+  - `annotation_bounding_boxes.m`
+  - `lidar_tour.m`
+  - `lidar_tour.m`
+  - `multishot_camera.m`
+  - `object_placement.m`
+  - `vehicle_state_plotting.m`
 - Basic prototype UDP tight-coupling system for Simulink model with the BeamNG simulator.
   This prototype solution demonstrates typical communication between both ends of the system.
