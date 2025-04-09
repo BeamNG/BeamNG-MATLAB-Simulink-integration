@@ -21,12 +21,12 @@ Follow the following steps to release a new version:
 * In MATLAB, run `make_release` to package the `.mltbx` file in the `release` folder
 * Commit your changes to the `dev` branch (although it is a derived file, we will commit the `.mltbx` file so that it can be picked up as release artifact)
 * Merge branch `dev` into `main`
-* Push both `dev` and `main` to GitLab, it will trigger rebuild of documentation and if the version number is new it will create a tag and a release
+* Push both `dev` and `main` to GitLab, ~~it will trigger rebuild of documentation and if the version number is new it will create a tag and a release~~ [not yet implemented, instead create a tag and a release manually]
 * Pull tags with `git pull origin --tags`
 * Push `main` and tags to GitHub with:
   ```
   git push github main
   git push github --tags
   ```
-  It will trigger creating the release on GitHub. This new release will automatically create a new version on Matlab File Exchange.
+  ~~It will trigger creating the release on GitHub. This new release will automatically create a new version on Matlab File Exchange.~~ [not yet implemented, instead do these steps manually]
 * Check if the [Documentation](https://documentation.beamng.com/api/matlab-simulink/) has the new version, check [Releases](https://github.com/BeamNG/BeamNG-MATLAB-Simulink-integration/releases) if the release is there, check [File Exchange](https://www.mathworks.com/matlabcentral/fileexchange/166246-beamng-tech-support-for-matlab-and-simulink) if the version was published
