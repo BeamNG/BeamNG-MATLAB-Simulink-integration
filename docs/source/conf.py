@@ -16,7 +16,7 @@ import sys
 # -- Project information -----------------------------------------------------
 
 project = "BeamNG-MATLAB-Simulink"
-copyright = "2025, BeamNG GmbH"
+copyright = "2026, BeamNG GmbH"
 author = "BeamNG GmbH"
 
 
